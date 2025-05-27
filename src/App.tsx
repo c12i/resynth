@@ -22,29 +22,132 @@ const emotionNotes: Record<string, string> = {
 };
 
 const sampleSpeech = [
-  { text: "We rise again.", emotion: "joy" },
-  { text: "They turned their backs on the poor.", emotion: "anger" },
-  { text: "I feel numb to all of this.", emotion: "neutral" },
-  { text: "What we saw today was inhumane.", emotion: "disgust" },
-  { text: "We don’t know what tomorrow holds.", emotion: "fear" },
-  { text: "Thank you for standing with me.", emotion: "joy" },
-  { text: "We are tired of empty promises.", emotion: "anger" },
-  { text: "This silence speaks louder than words.", emotion: "sadness" },
-  { text: "Together, we will find a way.", emotion: "joy" },
-  { text: "That was unexpected, and yet inspiring.", emotion: "surprise" },
-  { text: "The corruption is in every corner.", emotion: "disgust" },
-  { text: "We stand at the edge of uncertainty.", emotion: "fear" },
-  { text: "Today, I feel grateful.", emotion: "joy" },
-  { text: "How many more must we lose?", emotion: "sadness" },
-  { text: "The world is watching.", emotion: "neutral" },
+  {
+    text: "Fellow citizens, today we stand not as tribes or regions, but as a united people.",
+    emotionScores: [
+      { label: "joy", score: 0.75 },
+      { label: "neutral", score: 0.25 },
+    ],
+  },
+  {
+    text: "We are called to rise beyond the politics of division.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "anger", score: 0.4 },
+    ],
+  },
+  {
+    text: "For too long, promises were made and broken.",
+    emotionScores: [
+      { label: "sadness", score: 0.7 },
+      { label: "anger", score: 0.3 },
+    ],
+  },
+  {
+    text: "Today, we chart a new course.",
+    emotionScores: [
+      { label: "joy", score: 0.8 },
+      { label: "surprise", score: 0.2 },
+    ],
+  },
+  {
+    text: "A course grounded in service, not self-interest.",
+    emotionScores: [{ label: "neutral", score: 1.0 }],
+  },
+  {
+    text: "We shall fight corruption with every tool at our disposal.",
+    emotionScores: [
+      { label: "anger", score: 0.6 },
+      { label: "fear", score: 0.4 },
+    ],
+  },
+  {
+    text: "We shall restore dignity to every office of public trust.",
+    emotionScores: [
+      { label: "joy", score: 0.7 },
+      { label: "neutral", score: 0.3 },
+    ],
+  },
+  {
+    text: "No child shall go to bed hungry in a nation of plenty.",
+    emotionScores: [
+      { label: "sadness", score: 0.6 },
+      { label: "anger", score: 0.4 },
+    ],
+  },
+  {
+    text: "Our farmers will no longer be prisoners of middlemen.",
+    emotionScores: [
+      { label: "anger", score: 0.5 },
+      { label: "disgust", score: 0.5 },
+    ],
+  },
+  {
+    text: "We will transform our economy from consumption to production.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "neutral", score: 0.4 },
+    ],
+  },
+  {
+    text: "Let us unite in hope, not fear.",
+    emotionScores: [
+      { label: "joy", score: 0.7 },
+      { label: "fear", score: 0.3 },
+    ],
+  },
+  {
+    text: "Let us reject despair, and embrace our shared destiny.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "surprise", score: 0.4 },
+    ],
+  },
+  {
+    text: "May our generation be remembered not for what we inherited, but what we built.",
+    emotionScores: [
+      { label: "joy", score: 0.5 },
+      { label: "sadness", score: 0.5 },
+    ],
+  },
+  {
+    text: "May justice and equity be the cornerstones of our republic.",
+    emotionScores: [
+      { label: "neutral", score: 0.6 },
+      { label: "joy", score: 0.4 },
+    ],
+  },
+  {
+    text: "Thank you, and may God bless our nation.",
+    emotionScores: [{ label: "joy", score: 1.0 }],
+  },
 ];
+
+function hexToRgb(hex: string): [number, number, number] {
+  const result = hex.match(/\w\w/g);
+  return result
+    ? (result.map((x) => parseInt(x, 16)) as [number, number, number])
+    : [255, 255, 255];
+}
+
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * t;
+}
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const current = sampleSpeech[index];
-  const emotionRef = useRef(current.emotion);
+  const currentRef = useRef(current);
+  useEffect(() => {
+    currentRef.current = sampleSpeech[index];
+  }, [index]);
+
+  const emotionRef = useRef(current.emotionScores[0].label);
+  const currentColorRef = useRef(
+    hexToRgb(emotionColors[current.emotionScores[0].label]),
+  );
 
   useEffect(() => {
     if (!started) return;
@@ -55,6 +158,7 @@ export default function App() {
 
     let { sin, cos, PI } = Math;
     let frame = 0;
+    let particleGradient: string | CanvasGradient = "#ffffff";
     const cubeSize = 10;
     let vertices: [number, number, number][] = [];
     let oldTimeStamp = performance.now();
@@ -80,6 +184,22 @@ export default function App() {
       oldTimeStamp = timeStamp;
       frame += dt * 50;
 
+      const emotionScores = currentRef.current.emotionScores;
+      const gradient = c.createLinearGradient(
+        -canvas.width / 2,
+        0,
+        canvas.width / 2,
+        0,
+      );
+      let offset = 0;
+      const total = emotionScores.reduce((sum, e) => sum + e.score, 0);
+      emotionScores.forEach((e) => {
+        const norm = e.score / total;
+        gradient.addColorStop(offset, emotionColors[e.label] || "#ffffff");
+        offset += norm;
+      });
+      particleGradient = gradient;
+
       const canvasW = canvas.offsetWidth;
       const canvasH = canvas.offsetHeight;
       if (canvas.width !== canvasW || canvas.height !== canvasH) {
@@ -87,7 +207,15 @@ export default function App() {
         canvas.height = canvasH;
       }
 
-      const emotionColor = emotionColors[emotionRef.current] || "#ffffff";
+      const targetColor = hexToRgb(
+        emotionColors[emotionRef.current] || "#ffffff",
+      );
+      const currentColor = currentColorRef.current;
+      for (let i = 0; i < 3; i++) {
+        currentColor[i] = Math.floor(
+          lerp(currentColor[i], targetColor[i], 0.1),
+        );
+      }
 
       c.fillStyle = "#242424";
       c.globalAlpha = 0.5;
@@ -119,7 +247,9 @@ export default function App() {
         x /= z / canvas.height / 2;
         y /= z / canvas.height / 2;
 
-        c.fillStyle = emotionColor;
+        c.fillStyle = particleGradient;
+        c.shadowBlur = 15;
+        c.shadowColor = c.fillStyle as any;
         c.fillRect(x - dist / 2, y - dist / 2, dist, dist);
       }
 
@@ -131,14 +261,19 @@ export default function App() {
       const play = (emotion: string) => {
         const note = emotionNotes[emotion] || "C4";
         const now = Tone.now();
-        synth.triggerAttackRelease(note, "2n", now + 0.1);
+        try {
+          synth.triggerRelease();
+          synth.triggerAttackRelease(note, "2n", now + 0.05);
+        } catch (err) {
+          console.warn("Tone.js trigger error:", err);
+        }
       };
-      play(current.emotion);
+      play(current.emotionScores[0].label);
       const interval = setInterval(() => {
         setIndex((i) => {
           const next = (i + 1) % sampleSpeech.length;
-          emotionRef.current = sampleSpeech[next].emotion;
-          play(sampleSpeech[next].emotion);
+          emotionRef.current = sampleSpeech[next].emotionScores[0].label;
+          play(sampleSpeech[next].emotionScores[0].label);
           return next;
         });
       }, 1000);
@@ -152,7 +287,7 @@ export default function App() {
       style={{
         width: "100vw",
         height: "100vh",
-        background: "black",
+        background: "inherit",
         position: "relative",
         overflow: "hidden",
       }}
@@ -192,7 +327,9 @@ export default function App() {
         }}
       >
         {current.text}{" "}
-        <span style={{ marginLeft: 10 }}>({current.emotion})</span>
+        <span style={{ marginLeft: 10 }}>
+          ({current.emotionScores[0].label})
+        </span>
       </div>
     </div>
   );
