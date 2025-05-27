@@ -140,6 +140,7 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const current = sampleSpeech[index];
   const currentRef = useRef(current);
+
   useEffect(() => {
     currentRef.current = sampleSpeech[index];
   }, [index]);
@@ -159,9 +160,17 @@ export default function App() {
     let { sin, cos, PI } = Math;
     let frame = 0;
     let particleGradient: string | CanvasGradient = "#ffffff";
-    const cubeSize = 10;
+    const cubeSize = 20;
     let vertices: [number, number, number][] = [];
+    let originalVertices: [number, number, number][] = [];
     let oldTimeStamp = performance.now();
+
+    const mouse = { x: 0, y: 0 };
+    canvas.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left - canvas.width / 2;
+      mouse.y = e.clientY - rect.top - canvas.height / 2;
+    });
 
     for (let i = 0; i < cubeSize ** 3; i++) {
       let x = i % cubeSize;
@@ -171,6 +180,7 @@ export default function App() {
       y -= cubeSize / 2 - 0.5;
       z -= cubeSize / 2 - 0.5;
       vertices.push([x, y, z]);
+      originalVertices.push([x, y, z]);
     }
 
     const analyser = new Tone.Analyser("fft", 128);
@@ -227,7 +237,25 @@ export default function App() {
 
       for (let i = 0; i < vertices.length; i++) {
         let [x0, y0, z0] = vertices[i];
+        const [ox, oy, oz] = originalVertices[i];
         let dist = cubeSize / 2 - Math.sqrt(x0 ** 2 + y0 ** 2 + z0 ** 2);
+
+        // 🧲 3D repulsion OR return to origin
+        const dx = x0 * 10 - mouse.x;
+        const dy = y0 * 10 - mouse.y;
+        const distMouse = Math.sqrt(dx * dx + dy * dy);
+
+        if (distMouse < 100 && distMouse > 1) {
+          const force = (100 - distMouse) / 100;
+          x0 += (dx / distMouse) * force * 0.1;
+          y0 += (dy / distMouse) * force * 0.1;
+        } else {
+          x0 = lerp(x0, ox, 0.05);
+          y0 = lerp(y0, oy, 0.05);
+          z0 = lerp(z0, oz, 0.05);
+        }
+
+        vertices[i] = [x0, y0, z0];
 
         let x = x0 * cos((frame / 360) * PI) + sin((frame / 360) * PI) * z0;
         let z = -x0 * sin((frame / 360) * PI) + cos((frame / 360) * PI) * z0;
@@ -287,7 +315,7 @@ export default function App() {
       style={{
         width: "100vw",
         height: "100vh",
-        background: "inherit",
+        background: "black",
         position: "relative",
         overflow: "hidden",
       }}
