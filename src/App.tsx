@@ -21,6 +21,26 @@ const emotionNotes: Record<string, string> = {
   surprise: "F#4",
 };
 
+const emotionToEnvelope = {
+  joy: { attack: 0.2, release: 2.0 },
+  anger: { attack: 0.05, release: 0.4 },
+  sadness: { attack: 1.0, release: 3.0 },
+  fear: { attack: 0.3, release: 0.8 },
+  disgust: { attack: 0.1, release: 0.5 },
+  surprise: { attack: 0.05, release: 1.2 },
+  neutral: { attack: 0.5, release: 1.0 },
+};
+
+const emotionToOscillator = {
+  joy: "fattriangle",
+  anger: "fatsawtooth",
+  sadness: "fattriangle",
+  fear: "fatsine",
+  disgust: "fatsquare",
+  surprise: "fattriangle",
+  neutral: "fatsine",
+} as const;
+
 const sampleSpeech = [
   {
     text: "Fellow citizens, today we stand not as tribes or regions, but as a united people.",
@@ -185,7 +205,8 @@ export default function App() {
 
     const analyser = new Tone.Analyser("fft", 128);
     const synth = new Tone.Synth({
-      oscillator: { type: "sine" },
+      oscillator: { type: "fattriangle4" },
+      envelope: {},
     }).toDestination();
     synth.connect(analyser);
 
@@ -289,6 +310,16 @@ export default function App() {
       const play = (emotion: string) => {
         const note = emotionNotes[emotion] || "C4";
         const now = Tone.now();
+        //@ts-ignore
+        const env = emotionToEnvelope[emotion] || { attack: 0.2, release: 1.5 };
+        //@ts-ignore
+        const oscType = emotionToOscillator[emotion] || "fattriangle";
+
+        // Update oscillator and envelope dynamically
+        synth.oscillator.type = oscType;
+        synth.envelope.attack = env.attack;
+        synth.envelope.release = env.release;
+
         try {
           synth.triggerRelease();
           synth.triggerAttackRelease(note, "2n", now + 0.05);
