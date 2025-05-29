@@ -1,161 +1,210 @@
-export const fakeSpeech = [
-  { text: "There is light even in the darkest times.", emotion: "optimism" },
-  { text: "The winds of change are gathering.", emotion: "anticipation" },
-  {
-    text: "We mourn the silence that follows every broken promise.",
-    emotion: "sadness",
-  },
-  { text: "We prepare, knowing our time is near.", emotion: "anticipation" },
-  { text: "Their greed knows no shame or limit.", emotion: "disgust" },
-  { text: "We place our faith in the people beside us.", emotion: "trust" },
-  { text: "Smiles spread across the crowd like wildfire.", emotion: "joy" },
-  { text: "We feared the darkness might never lift.", emotion: "fear" },
-  { text: "We will not tolerate the injustice any longer.", emotion: "anger" },
-  { text: "Children laughed freely in the parks once more.", emotion: "joy" },
-  { text: "You have stood by me through the storm.", emotion: "trust" },
-  {
-    text: "They shake hands with blood still on their palms.",
-    emotion: "disgust",
-  },
-  { text: "Hope walks beside us.", emotion: "optimism" },
-  { text: "Love is the thread that binds us.", emotion: "love" },
-  { text: "There are shadows that still haunt our future.", emotion: "fear" },
-  {
-    text: "This betrayal cuts deep into the soul of our nation.",
-    emotion: "anger",
-  },
-  { text: "Let compassion guide our steps.", emotion: "love" },
-  { text: "Loss echoes in every empty chair.", emotion: "sadness" },
-  { text: "We speak, knowing they may come for us next.", emotion: "fear" },
-  { text: "Tomorrow is ours to shape.", emotion: "optimism" },
-  { text: "They stole from the poor to feed their greed.", emotion: "anger" },
-  {
-    text: "We watched in horror as they laughed at our pain.",
-    emotion: "disgust",
-  },
-  { text: "Let us move forward, hand in hand.", emotion: "trust" },
-  { text: "A new dawn awaits us.", emotion: "anticipation" },
-  { text: "Tears fell for the lives we could not save.", emotion: "sadness" },
-  { text: "What happens when no one listens anymore?", emotion: "fear" },
-  { text: "We held each other in the silence.", emotion: "love" },
-  { text: "I see my country in your eyes.", emotion: "love" },
-  {
-    text: "They lied to our faces and called it leadership.",
-    emotion: "anger",
-  },
-  {
-    text: "We danced together under the stars, hearts full of joy.",
-    emotion: "joy",
-  },
-  { text: "How can they stand tall on broken backs?", emotion: "disgust" },
-  {
-    text: "The sun rose on a new day filled with opportunity.",
-    emotion: "joy",
-  },
-  { text: "We are here because we care.", emotion: "love" },
-  { text: "We built this together, brick by brick.", emotion: "trust" },
-  { text: "I place my faith in the people beside me.", emotion: "trust" },
-  {
-    text: "The weight of our history hangs heavy tonight.",
-    emotion: "sadness",
-  },
-  { text: "They stole from the poor to feed their greed.", emotion: "anger" },
-  { text: "We feared the darkness might never lift.", emotion: "fear" },
-  { text: "We are sickened by what they've normalized.", emotion: "disgust" },
-  {
-    text: "This is not the end, but the start of something better.",
-    emotion: "optimism",
-  },
-  { text: "Our patience has been tested beyond limits.", emotion: "anger" },
-  { text: "We rise, again and again.", emotion: "optimism" },
-  {
-    text: "We mourn the silence that follows every broken promise.",
-    emotion: "sadness",
-  },
-  { text: "The tears of our people will not be ignored.", emotion: "anger" },
-  { text: "Tears fell for the lives we could not save.", emotion: "sadness" },
-  { text: "We place our faith in the people beside us.", emotion: "trust" },
-  { text: "Let compassion guide our steps.", emotion: "love" },
-  { text: "Our journey is long, but our resolve is strong.", emotion: "trust" },
-  { text: "There is strength in our unity.", emotion: "trust" },
-  {
-    text: "This betrayal cuts deep into the soul of our nation.",
-    emotion: "anger",
-  },
-  { text: "The winds of change are gathering.", emotion: "anticipation" },
-  {
-    text: "Their silence was more terrifying than their threats.",
-    emotion: "fear",
-  },
-  { text: "Love is the thread that binds us.", emotion: "love" },
-  { text: "We built this together, brick by brick.", emotion: "trust" },
-  { text: "Hope walks beside us.", emotion: "optimism" },
-  {
-    text: "Something greater is just around the corner.",
-    emotion: "anticipation",
-  },
-  { text: "Let us move forward, hand in hand.", emotion: "trust" },
-  { text: "What happens when no one listens anymore?", emotion: "fear" },
-  { text: "Their greed knows no shame or limit.", emotion: "disgust" },
-  { text: "You have stood by me through the storm.", emotion: "trust" },
-  { text: "Smiles spread across the crowd like wildfire.", emotion: "joy" },
-  {
-    text: "We danced together under the stars, hearts full of joy.",
-    emotion: "joy",
-  },
-  {
-    text: "They shake hands with blood still on their palms.",
-    emotion: "disgust",
-  },
-  {
-    text: "This is not the end, but the start of something better.",
-    emotion: "optimism",
-  },
-  { text: "I see my country in your eyes.", emotion: "love" },
-  { text: "Our patience has been tested beyond limits.", emotion: "anger" },
-  { text: "Children laughed freely in the parks once more.", emotion: "joy" },
-  { text: "Tears fell for the lives we could not save.", emotion: "sadness" },
-  { text: "There is light even in the darkest times.", emotion: "optimism" },
-  {
-    text: "Something greater is just around the corner.",
-    emotion: "anticipation",
-  },
-  { text: "They stole from the poor to feed their greed.", emotion: "anger" },
-  {
-    text: "The weight of our history hangs heavy tonight.",
-    emotion: "sadness",
-  },
-  {
-    text: "This betrayal cuts deep into the soul of our nation.",
-    emotion: "anger",
-  },
-  { text: "Let us move forward, hand in hand.", emotion: "trust" },
-  { text: "Love is the thread that binds us.", emotion: "love" },
-  { text: "Hope walks beside us.", emotion: "optimism" },
-  { text: "We are here because we care.", emotion: "love" },
-  { text: "Loss echoes in every empty chair.", emotion: "sadness" },
-  { text: "How can they stand tall on broken backs?", emotion: "disgust" },
+export const speeches = [
+  [
+    {
+      text: "For years, we’ve cried out — and no one listened.",
+      emotionScores: [
+        { label: "sadness", score: 0.7 },
+        { label: "anger", score: 0.3 },
+      ],
+    },
+    {
+      text: "Our children walk miles for water while leaders fly in jets.",
+      emotionScores: [
+        { label: "anger", score: 0.6 },
+        { label: "disgust", score: 0.4 },
+      ],
+    },
+    {
+      text: "How did we get here — where dignity is a luxury?",
+      emotionScores: [
+        { label: "sadness", score: 0.8 },
+        { label: "fear", score: 0.2 },
+      ],
+    },
+    {
+      text: "We live in a nation of plenty, yet many go to bed hungry.",
+      emotionScores: [
+        { label: "sadness", score: 0.6 },
+        { label: "anger", score: 0.4 },
+      ],
+    },
+    {
+      text: "They build walls around privilege while we bury our own.",
+      emotionScores: [
+        { label: "anger", score: 0.7 },
+        { label: "sadness", score: 0.3 },
+      ],
+    },
+    {
+      text: "The silence of justice is louder than any speech.",
+      emotionScores: [
+        { label: "fear", score: 0.5 },
+        { label: "sadness", score: 0.5 },
+      ],
+    },
+    {
+      text: "They promised change — we got chains.",
+      emotionScores: [
+        { label: "anger", score: 0.8 },
+        { label: "disgust", score: 0.2 },
+      ],
+    },
+    {
+      text: "Are we not citizens too? Or just shadows in their power games?",
+      emotionScores: [
+        { label: "sadness", score: 0.5 },
+        { label: "anger", score: 0.5 },
+      ],
+    },
+    {
+      text: "Every missing shilling is a stolen life.",
+      emotionScores: [
+        { label: "anger", score: 0.6 },
+        { label: "disgust", score: 0.4 },
+      ],
+    },
+    {
+      text: "We watch our youth disappear into hopelessness.",
+      emotionScores: [
+        { label: "sadness", score: 0.7 },
+        { label: "fear", score: 0.3 },
+      ],
+    },
+    {
+      text: "Those in power do not lead — they feed.",
+      emotionScores: [
+        { label: "disgust", score: 0.6 },
+        { label: "anger", score: 0.4 },
+      ],
+    },
+    {
+      text: "We mourn in silence because even grief is policed.",
+      emotionScores: [
+        { label: "fear", score: 0.6 },
+        { label: "sadness", score: 0.4 },
+      ],
+    },
+    {
+      text: "We fear tomorrow more than we dream it.",
+      emotionScores: [
+        { label: "fear", score: 0.7 },
+        { label: "sadness", score: 0.3 },
+      ],
+    },
+    {
+      text: "And yet, we still hope — because what choice do we have?",
+      emotionScores: [
+        { label: "sadness", score: 0.5 },
+        { label: "joy", score: 0.5 },
+      ],
+    },
+    {
+      text: "Let the truth be our uprising.",
+      emotionScores: [
+        { label: "anger", score: 0.5 },
+        { label: "joy", score: 0.5 },
+      ],
+    },
+  ],
+  [
+    {
+      text: "Fellow citizens, today we stand not as tribes or regions, but as a united people.",
+      emotionScores: [
+        { label: "joy", score: 0.75 },
+        { label: "neutral", score: 0.25 },
+      ],
+    },
+    {
+      text: "We are called to rise beyond the politics of division.",
+      emotionScores: [
+        { label: "joy", score: 0.6 },
+        { label: "anger", score: 0.4 },
+      ],
+    },
+    {
+      text: "For too long, promises were made and broken.",
+      emotionScores: [
+        { label: "sadness", score: 0.7 },
+        { label: "anger", score: 0.3 },
+      ],
+    },
+    {
+      text: "Today, we chart a new course.",
+      emotionScores: [
+        { label: "joy", score: 0.8 },
+        { label: "surprise", score: 0.2 },
+      ],
+    },
+    {
+      text: "A course grounded in service, not self-interest.",
+      emotionScores: [{ label: "neutral", score: 1.0 }],
+    },
+    {
+      text: "We shall fight corruption with every tool at our disposal.",
+      emotionScores: [
+        { label: "anger", score: 0.6 },
+        { label: "fear", score: 0.4 },
+      ],
+    },
+    {
+      text: "We shall restore dignity to every office of public trust.",
+      emotionScores: [
+        { label: "joy", score: 0.7 },
+        { label: "neutral", score: 0.3 },
+      ],
+    },
+    {
+      text: "No child shall go to bed hungry in a nation of plenty.",
+      emotionScores: [
+        { label: "sadness", score: 0.6 },
+        { label: "anger", score: 0.4 },
+      ],
+    },
+    {
+      text: "Our farmers will no longer be prisoners of middlemen.",
+      emotionScores: [
+        { label: "anger", score: 0.5 },
+        { label: "disgust", score: 0.5 },
+      ],
+    },
+    {
+      text: "We will transform our economy from consumption to production.",
+      emotionScores: [
+        { label: "joy", score: 0.6 },
+        { label: "neutral", score: 0.4 },
+      ],
+    },
+    {
+      text: "Let us unite in hope, not fear.",
+      emotionScores: [
+        { label: "joy", score: 0.7 },
+        { label: "fear", score: 0.3 },
+      ],
+    },
+    {
+      text: "Let us reject despair, and embrace our shared destiny.",
+      emotionScores: [
+        { label: "joy", score: 0.6 },
+        { label: "surprise", score: 0.4 },
+      ],
+    },
+    {
+      text: "May our generation be remembered not for what we inherited, but what we built.",
+      emotionScores: [
+        { label: "joy", score: 0.5 },
+        { label: "sadness", score: 0.5 },
+      ],
+    },
+    {
+      text: "May justice and equity be the cornerstones of our republic.",
+      emotionScores: [
+        { label: "neutral", score: 0.6 },
+        { label: "joy", score: 0.4 },
+      ],
+    },
+    {
+      text: "Thank you, and may God bless our nation.",
+      emotionScores: [{ label: "joy", score: 1.0 }],
+    },
+  ],
 ];
-
-export type EmotionType =
-  | "joy"
-  | "anger"
-  | "sadness"
-  | "fear"
-  | "disgust"
-  | "trust"
-  | "anticipation"
-  | "love"
-  | "optimism";
-
-export const emotionColorPalette: Record<EmotionType, string[]> = {
-  joy: ["rgb(255, 215, 0)", "rgb(0, 255, 200)"],
-  anger: ["rgb(255, 60, 60)", "rgb(200, 0, 50)"],
-  sadness: ["rgb(120, 120, 255)", "rgb(80, 60, 150)"],
-  fear: ["rgb(100, 100, 100)", "rgb(60, 60, 80)"],
-  disgust: ["rgb(150, 255, 80)", "rgb(100, 180, 60)"],
-  trust: ["rgb(0, 180, 255)", "rgb(0, 140, 255)"],
-  anticipation: ["rgb(255, 140, 0)", "rgb(255, 180, 80)"],
-  love: ["rgb(255, 105, 180)", "rgb(255, 160, 200)"],
-  optimism: ["rgb(180, 255, 100)", "rgb(200, 255, 180)"],
-};
