@@ -12,7 +12,7 @@ const emotionColors: Record<string, string> = {
 };
 
 const emotionToOscillator = {
-  joy: "triangle8",
+  joy: "triangle4",
   anger: "sawtooth4",
   sadness: "sine2",
   fear: "fatsine2",
@@ -31,215 +31,215 @@ const emotionNotes: Record<string, string> = {
   surprise: "E4",
 };
 
-const sampleSpeech = [
-  {
-    text: "For years, we’ve cried out — and no one listened.",
-    emotionScores: [
-      { label: "sadness", score: 0.7 },
-      { label: "anger", score: 0.3 },
-    ],
-  },
-  {
-    text: "Our children walk miles for water while leaders fly in jets.",
-    emotionScores: [
-      { label: "anger", score: 0.6 },
-      { label: "disgust", score: 0.4 },
-    ],
-  },
-  {
-    text: "How did we get here — where dignity is a luxury?",
-    emotionScores: [
-      { label: "sadness", score: 0.8 },
-      { label: "fear", score: 0.2 },
-    ],
-  },
-  {
-    text: "We live in a nation of plenty, yet many go to bed hungry.",
-    emotionScores: [
-      { label: "sadness", score: 0.6 },
-      { label: "anger", score: 0.4 },
-    ],
-  },
-  {
-    text: "They build walls around privilege while we bury our own.",
-    emotionScores: [
-      { label: "anger", score: 0.7 },
-      { label: "sadness", score: 0.3 },
-    ],
-  },
-  {
-    text: "The silence of justice is louder than any speech.",
-    emotionScores: [
-      { label: "fear", score: 0.5 },
-      { label: "sadness", score: 0.5 },
-    ],
-  },
-  {
-    text: "They promised change — we got chains.",
-    emotionScores: [
-      { label: "anger", score: 0.8 },
-      { label: "disgust", score: 0.2 },
-    ],
-  },
-  {
-    text: "Are we not citizens too? Or just shadows in their power games?",
-    emotionScores: [
-      { label: "sadness", score: 0.5 },
-      { label: "anger", score: 0.5 },
-    ],
-  },
-  {
-    text: "Every missing shilling is a stolen life.",
-    emotionScores: [
-      { label: "anger", score: 0.6 },
-      { label: "disgust", score: 0.4 },
-    ],
-  },
-  {
-    text: "We watch our youth disappear into hopelessness.",
-    emotionScores: [
-      { label: "sadness", score: 0.7 },
-      { label: "fear", score: 0.3 },
-    ],
-  },
-  {
-    text: "Those in power do not lead — they feed.",
-    emotionScores: [
-      { label: "disgust", score: 0.6 },
-      { label: "anger", score: 0.4 },
-    ],
-  },
-  {
-    text: "We mourn in silence because even grief is policed.",
-    emotionScores: [
-      { label: "fear", score: 0.6 },
-      { label: "sadness", score: 0.4 },
-    ],
-  },
-  {
-    text: "We fear tomorrow more than we dream it.",
-    emotionScores: [
-      { label: "fear", score: 0.7 },
-      { label: "sadness", score: 0.3 },
-    ],
-  },
-  {
-    text: "And yet, we still hope — because what choice do we have?",
-    emotionScores: [
-      { label: "sadness", score: 0.5 },
-      { label: "joy", score: 0.5 },
-    ],
-  },
-  {
-    text: "Let the truth be our uprising.",
-    emotionScores: [
-      { label: "anger", score: 0.5 },
-      { label: "joy", score: 0.5 },
-    ],
-  },
-];
-
 // const sampleSpeech = [
 //   {
-//     text: "Fellow citizens, today we stand not as tribes or regions, but as a united people.",
-//     emotionScores: [
-//       { label: "joy", score: 0.75 },
-//       { label: "neutral", score: 0.25 },
-//     ],
-//   },
-//   {
-//     text: "We are called to rise beyond the politics of division.",
-//     emotionScores: [
-//       { label: "joy", score: 0.6 },
-//       { label: "anger", score: 0.4 },
-//     ],
-//   },
-//   {
-//     text: "For too long, promises were made and broken.",
+//     text: "For years, we’ve cried out — and no one listened.",
 //     emotionScores: [
 //       { label: "sadness", score: 0.7 },
 //       { label: "anger", score: 0.3 },
 //     ],
 //   },
 //   {
-//     text: "Today, we chart a new course.",
-//     emotionScores: [
-//       { label: "joy", score: 0.8 },
-//       { label: "surprise", score: 0.2 },
-//     ],
-//   },
-//   {
-//     text: "A course grounded in service, not self-interest.",
-//     emotionScores: [{ label: "neutral", score: 1.0 }],
-//   },
-//   {
-//     text: "We shall fight corruption with every tool at our disposal.",
+//     text: "Our children walk miles for water while leaders fly in jets.",
 //     emotionScores: [
 //       { label: "anger", score: 0.6 },
-//       { label: "fear", score: 0.4 },
+//       { label: "disgust", score: 0.4 },
 //     ],
 //   },
 //   {
-//     text: "We shall restore dignity to every office of public trust.",
+//     text: "How did we get here — where dignity is a luxury?",
 //     emotionScores: [
-//       { label: "joy", score: 0.7 },
-//       { label: "neutral", score: 0.3 },
+//       { label: "sadness", score: 0.8 },
+//       { label: "fear", score: 0.2 },
 //     ],
 //   },
 //   {
-//     text: "No child shall go to bed hungry in a nation of plenty.",
+//     text: "We live in a nation of plenty, yet many go to bed hungry.",
 //     emotionScores: [
 //       { label: "sadness", score: 0.6 },
 //       { label: "anger", score: 0.4 },
 //     ],
 //   },
 //   {
-//     text: "Our farmers will no longer be prisoners of middlemen.",
+//     text: "They build walls around privilege while we bury our own.",
 //     emotionScores: [
-//       { label: "anger", score: 0.5 },
-//       { label: "disgust", score: 0.5 },
+//       { label: "anger", score: 0.7 },
+//       { label: "sadness", score: 0.3 },
 //     ],
 //   },
 //   {
-//     text: "We will transform our economy from consumption to production.",
+//     text: "The silence of justice is louder than any speech.",
 //     emotionScores: [
-//       { label: "joy", score: 0.6 },
-//       { label: "neutral", score: 0.4 },
-//     ],
-//   },
-//   {
-//     text: "Let us unite in hope, not fear.",
-//     emotionScores: [
-//       { label: "joy", score: 0.7 },
-//       { label: "fear", score: 0.3 },
-//     ],
-//   },
-//   {
-//     text: "Let us reject despair, and embrace our shared destiny.",
-//     emotionScores: [
-//       { label: "joy", score: 0.6 },
-//       { label: "surprise", score: 0.4 },
-//     ],
-//   },
-//   {
-//     text: "May our generation be remembered not for what we inherited, but what we built.",
-//     emotionScores: [
-//       { label: "joy", score: 0.5 },
+//       { label: "fear", score: 0.5 },
 //       { label: "sadness", score: 0.5 },
 //     ],
 //   },
 //   {
-//     text: "May justice and equity be the cornerstones of our republic.",
+//     text: "They promised change — we got chains.",
 //     emotionScores: [
-//       { label: "neutral", score: 0.6 },
-//       { label: "joy", score: 0.4 },
+//       { label: "anger", score: 0.8 },
+//       { label: "disgust", score: 0.2 },
 //     ],
 //   },
 //   {
-//     text: "Thank you, and may God bless our nation.",
-//     emotionScores: [{ label: "joy", score: 1.0 }],
+//     text: "Are we not citizens too? Or just shadows in their power games?",
+//     emotionScores: [
+//       { label: "sadness", score: 0.5 },
+//       { label: "anger", score: 0.5 },
+//     ],
+//   },
+//   {
+//     text: "Every missing shilling is a stolen life.",
+//     emotionScores: [
+//       { label: "anger", score: 0.6 },
+//       { label: "disgust", score: 0.4 },
+//     ],
+//   },
+//   {
+//     text: "We watch our youth disappear into hopelessness.",
+//     emotionScores: [
+//       { label: "sadness", score: 0.7 },
+//       { label: "fear", score: 0.3 },
+//     ],
+//   },
+//   {
+//     text: "Those in power do not lead — they feed.",
+//     emotionScores: [
+//       { label: "disgust", score: 0.6 },
+//       { label: "anger", score: 0.4 },
+//     ],
+//   },
+//   {
+//     text: "We mourn in silence because even grief is policed.",
+//     emotionScores: [
+//       { label: "fear", score: 0.6 },
+//       { label: "sadness", score: 0.4 },
+//     ],
+//   },
+//   {
+//     text: "We fear tomorrow more than we dream it.",
+//     emotionScores: [
+//       { label: "fear", score: 0.7 },
+//       { label: "sadness", score: 0.3 },
+//     ],
+//   },
+//   {
+//     text: "And yet, we still hope — because what choice do we have?",
+//     emotionScores: [
+//       { label: "sadness", score: 0.5 },
+//       { label: "joy", score: 0.5 },
+//     ],
+//   },
+//   {
+//     text: "Let the truth be our uprising.",
+//     emotionScores: [
+//       { label: "anger", score: 0.5 },
+//       { label: "joy", score: 0.5 },
+//     ],
 //   },
 // ];
+
+const sampleSpeech = [
+  {
+    text: "Fellow citizens, today we stand not as tribes or regions, but as a united people.",
+    emotionScores: [
+      { label: "joy", score: 0.75 },
+      { label: "neutral", score: 0.25 },
+    ],
+  },
+  {
+    text: "We are called to rise beyond the politics of division.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "anger", score: 0.4 },
+    ],
+  },
+  {
+    text: "For too long, promises were made and broken.",
+    emotionScores: [
+      { label: "sadness", score: 0.7 },
+      { label: "anger", score: 0.3 },
+    ],
+  },
+  {
+    text: "Today, we chart a new course.",
+    emotionScores: [
+      { label: "joy", score: 0.8 },
+      { label: "surprise", score: 0.2 },
+    ],
+  },
+  {
+    text: "A course grounded in service, not self-interest.",
+    emotionScores: [{ label: "neutral", score: 1.0 }],
+  },
+  {
+    text: "We shall fight corruption with every tool at our disposal.",
+    emotionScores: [
+      { label: "anger", score: 0.6 },
+      { label: "fear", score: 0.4 },
+    ],
+  },
+  {
+    text: "We shall restore dignity to every office of public trust.",
+    emotionScores: [
+      { label: "joy", score: 0.7 },
+      { label: "neutral", score: 0.3 },
+    ],
+  },
+  {
+    text: "No child shall go to bed hungry in a nation of plenty.",
+    emotionScores: [
+      { label: "sadness", score: 0.6 },
+      { label: "anger", score: 0.4 },
+    ],
+  },
+  {
+    text: "Our farmers will no longer be prisoners of middlemen.",
+    emotionScores: [
+      { label: "anger", score: 0.5 },
+      { label: "disgust", score: 0.5 },
+    ],
+  },
+  {
+    text: "We will transform our economy from consumption to production.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "neutral", score: 0.4 },
+    ],
+  },
+  {
+    text: "Let us unite in hope, not fear.",
+    emotionScores: [
+      { label: "joy", score: 0.7 },
+      { label: "fear", score: 0.3 },
+    ],
+  },
+  {
+    text: "Let us reject despair, and embrace our shared destiny.",
+    emotionScores: [
+      { label: "joy", score: 0.6 },
+      { label: "surprise", score: 0.4 },
+    ],
+  },
+  {
+    text: "May our generation be remembered not for what we inherited, but what we built.",
+    emotionScores: [
+      { label: "joy", score: 0.5 },
+      { label: "sadness", score: 0.5 },
+    ],
+  },
+  {
+    text: "May justice and equity be the cornerstones of our republic.",
+    emotionScores: [
+      { label: "neutral", score: 0.6 },
+      { label: "joy", score: 0.4 },
+    ],
+  },
+  {
+    text: "Thank you, and may God bless our nation.",
+    emotionScores: [{ label: "joy", score: 1.0 }],
+  },
+];
 
 function hexToRgb(hex: string): [number, number, number] {
   const result = hex.match(/\w\w/g);
@@ -250,6 +250,70 @@ function hexToRgb(hex: string): [number, number, number] {
 
 function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
+}
+
+function applyEmotionDistortion(
+  emotion: string,
+  x: number,
+  y: number,
+  z: number,
+  frame: number,
+): [number, number, number] {
+  switch (emotion) {
+    case "anger":
+      // Explosive, aggressive bursts
+      return [
+        x + Math.sin(frame * 0.8 + x * 4) * 4,
+        y + Math.cos(frame * 1.2 + y * 3) * 4,
+        z + Math.sin(frame * 1.5 + z * 5) * 1,
+      ];
+
+    case "sadness":
+      // Slow, downward pull, drooping motion
+      return [
+        x + Math.sin(frame / 100 + y * 0.2) * 0.5,
+        y - Math.abs(Math.cos(frame / 70 + x * 0.3)) * 2.5,
+        z + Math.sin(frame / 90 + z * 0.1) * 0.5,
+      ];
+
+    case "fear":
+      // Erratic, jittery, unstable motion
+      return [
+        x + (Math.random() - 0.5) * 2.0,
+        y + (Math.random() - 0.5) * 2.5,
+        z + (Math.random() - 0.5) * 2.0,
+      ];
+
+    case "joy":
+      // Upward spiraling, buoyant, rhythmic
+      return [
+        x + Math.cos(frame / 25 + y) * 2,
+        y + Math.sin(frame / 30 + z * 0.5) * 2,
+        z + Math.cos(frame / 20 + x * 0.5) * 2,
+      ];
+
+    case "disgust":
+      // Warped, twisted, dissonant shifts
+      return [
+        x + Math.sin(y * 5 + frame / 15) * 3,
+        y + Math.sin(z * 4 + frame / 20) * 3,
+        z + Math.sin(x * 3 + frame / 10) * 3,
+      ];
+
+    case "surprise":
+      // Sudden pulses, chaotic bursts
+      const shock = Math.abs(Math.sin(frame / 5)) * 5;
+      return [
+        x + Math.sin(x * y + frame / 3) * shock,
+        y + Math.cos(y * z + frame / 3) * shock,
+        z + Math.sin(z * x + frame / 3) * shock,
+      ];
+
+    case "neutral":
+    default:
+      // Minimal, calm
+      return [x, y, z];
+  }
 }
 
 export default function App() {
@@ -278,17 +342,10 @@ export default function App() {
     let { sin, cos, PI } = Math;
     let frame = 0;
     let particleGradient: string | CanvasGradient = "#ffffff";
-    const cubeSize = 15;
+    const cubeSize = 12;
     let vertices: [number, number, number][] = [];
     let originalVertices: [number, number, number][] = [];
     let oldTimeStamp = performance.now();
-
-    const mouse = { x: 0, y: 0 };
-    canvas.addEventListener("mousemove", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left - canvas.width / 2;
-      mouse.y = e.clientY - rect.top - canvas.height / 2;
-    });
 
     for (let i = 0; i < cubeSize ** 3; i++) {
       let x = i % cubeSize;
@@ -354,23 +411,18 @@ export default function App() {
       for (let i = 0; i < vertices.length; i++) {
         let [x0, y0, z0] = vertices[i];
         const [ox, oy, oz] = originalVertices[i];
-        let dist = cubeSize / 2 - Math.sqrt(x0 ** 2 + y0 ** 2 + z0 ** 2);
 
-        // 🧲 3D repulsion OR return to origin
-        const dx = x0 * 10 - mouse.x;
-        const dy = y0 * 10 - mouse.y;
-        const distMouse = Math.sqrt(dx * dx + dy * dy);
+        const [dx, dy, dz] = applyEmotionDistortion(
+          emotionRef.current,
+          ox,
+          oy,
+          oz,
+          frame,
+        );
 
-        if (distMouse < 100 && distMouse > 1) {
-          const force = (100 - distMouse) / 100;
-          x0 += (dx / distMouse) * force * 0.1;
-          y0 += (dy / distMouse) * force * 0.1;
-        } else {
-          x0 = lerp(x0, ox, 0.05);
-          y0 = lerp(y0, oy, 0.05);
-          z0 = lerp(z0, oz, 0.05);
-        }
-
+        x0 = lerp(x0, dx, 0.05);
+        y0 = lerp(y0, dy, 0.05);
+        z0 = lerp(z0, dz, 0.05);
         vertices[i] = [x0, y0, z0];
 
         let x = x0 * cos((frame / 360) * PI) + sin((frame / 360) * PI) * z0;
@@ -394,7 +446,7 @@ export default function App() {
         c.fillStyle = particleGradient;
         c.shadowBlur = 15;
         c.shadowColor = c.fillStyle as any;
-        c.fillRect(x - dist / 2, y - dist / 2, dist, dist);
+        c.fillRect(x - 2, y - 2, 4, 4);
       }
 
       c.restore();
@@ -404,7 +456,10 @@ export default function App() {
     Tone.start().then(() => {
       backgroundSynth.set({
         oscillator: { type: "sine" },
-        envelope: { attack: 2.0, release: 10.0 },
+        envelope: {
+          attack: 2.0,
+          release: 10.0,
+        },
       });
       backgroundSynth.triggerAttack(["C3", "G3", "E4"]);
 
@@ -412,7 +467,15 @@ export default function App() {
         const note = emotionNotes[emotion] || "C4";
         //@ts-ignore
         const oscType = emotionToOscillator[emotion] || "sine";
-        melodySynth.oscillator.type = oscType;
+        melodySynth.set({
+          oscillator: { type: oscType },
+          envelope: {
+            attack: 0.1,
+            decay: 0.2,
+            sustain: 0.7,
+            release: 1.5,
+          },
+        });
         melodySynth.triggerAttackRelease(note, "2n", Tone.now());
       };
 
