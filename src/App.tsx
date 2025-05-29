@@ -313,14 +313,13 @@ export default function App() {
       style={{
         width: "100vw",
         height: "100vh",
-        background: "black",
         position: "relative",
         overflow: "hidden",
+        fontFamily: "monospace",
       }}
     >
       {!started && (
-        <button
-          onClick={() => setStarted(true)}
+        <div
           style={{
             position: "absolute",
             zIndex: 1,
@@ -328,47 +327,47 @@ export default function App() {
             top: "50%",
             transform: "translate(-50%, -50%)",
             padding: "1rem 2rem",
+            color: "white",
             fontSize: "1.2rem",
-            background: "#00ffcc",
-            color: "black",
+            fontFamily: "monospace",
             border: "none",
             borderRadius: "10px",
             cursor: "pointer",
           }}
         >
-          Start Speech Experience
-        </button>
+          <p style={{ textAlign: "center" }}>resynth demo</p>
+          <button onClick={() => setStarted(true)}>Begin Experience</button>
+        </div>
       )}
       <canvas ref={canvasRef} style={{ position: "absolute", inset: 0 }} />
       <div
         style={{
           position: "absolute",
-          top: "10%",
-          width: "100%",
-          textAlign: "center",
+          bottom: "30px",
+          left: "10px",
           color: "white",
-          fontSize: "1.5rem",
-          fontWeight: "bold",
           zIndex: 2,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <p>{current.text} </p>
-        <span style={{ marginLeft: 10 }}>
-          ({current.emotionScores[0].label})
-        </span>
+        <p>
+          {current.text} ({current.emotionScores[0].label})
+        </p>
         <select
-          style={{ width: "20%", margin: "8px", padding: "4px" }}
+          style={{
+            width: "200px",
+            margin: "4px",
+            padding: "4px",
+          }}
+          disabled={started}
           value={selectedSpeech}
           onChange={(e) => {
             setSelectedSpeech(Number(e.target.value));
           }}
         >
-          <option value={0}>Speech A</option>
-          <option value={1}>Speech B</option>
+          <option value={0}>Speech A (mostly negative)</option>
+          <option value={1}>Speech B (mostly positive)</option>
         </select>
       </div>
     </div>
