@@ -11,35 +11,25 @@ const emotionColors: Record<string, string> = {
   surprise: "#ff66cc",
 };
 
+const emotionToOscillator = {
+  joy: "triangle8",
+  anger: "sawtooth4",
+  sadness: "sine2",
+  fear: "fatsine2",
+  disgust: "triangle8",
+  surprise: "square2",
+  neutral: "sine",
+} as const;
+
 const emotionNotes: Record<string, string> = {
   anger: "A2",
   disgust: "C3",
-  fear: "D#3",
-  joy: "E5",
+  fear: "E3",
+  joy: "A4",
   neutral: "C4",
-  sadness: "G2",
-  surprise: "F#4",
+  sadness: "D3",
+  surprise: "E4",
 };
-
-const emotionToEnvelope = {
-  joy: { attack: 0.2, release: 2.0 },
-  anger: { attack: 0.05, release: 0.4 },
-  sadness: { attack: 1.0, release: 3.0 },
-  fear: { attack: 0.3, release: 0.8 },
-  disgust: { attack: 0.1, release: 0.5 },
-  surprise: { attack: 0.05, release: 1.2 },
-  neutral: { attack: 0.5, release: 1.0 },
-};
-
-const emotionToOscillator = {
-  joy: "fattriangle",
-  anger: "fatsawtooth",
-  sadness: "fattriangle",
-  fear: "fatsine",
-  disgust: "fatsquare",
-  surprise: "fattriangle",
-  neutral: "fatsine",
-} as const;
 
 const sampleSpeech = [
   {
@@ -288,7 +278,7 @@ export default function App() {
     let { sin, cos, PI } = Math;
     let frame = 0;
     let particleGradient: string | CanvasGradient = "#ffffff";
-    const cubeSize = 20;
+    const cubeSize = 15;
     let vertices: [number, number, number][] = [];
     let originalVertices: [number, number, number][] = [];
     let oldTimeStamp = performance.now();
@@ -311,12 +301,9 @@ export default function App() {
       originalVertices.push([x, y, z]);
     }
 
-    const analyser = new Tone.Analyser("fft", 128);
-    const synth = new Tone.Synth({
-      oscillator: { type: "fattriangle4" },
-      envelope: {},
-    }).toDestination();
-    synth.connect(analyser);
+    const globalGain = new Tone.Gain(0.5).toDestination();
+    const backgroundSynth = new Tone.PolySynth().connect(globalGain);
+    const melodySynth = new Tone.Synth().connect(globalGain);
 
     const loop = (timeStamp = performance.now()) => {
       const dt = (timeStamp - oldTimeStamp) / 1000;
@@ -415,35 +402,31 @@ export default function App() {
     };
 
     Tone.start().then(() => {
+      backgroundSynth.set({
+        oscillator: { type: "sine" },
+        envelope: { attack: 2.0, release: 10.0 },
+      });
+      backgroundSynth.triggerAttack(["C3", "G3", "E4"]);
+
       const play = (emotion: string) => {
         const note = emotionNotes[emotion] || "C4";
-        const now = Tone.now();
         //@ts-ignore
-        const env = emotionToEnvelope[emotion] || { attack: 0.2, release: 1.5 };
-        //@ts-ignore
-        const oscType = emotionToOscillator[emotion] || "fattriangle";
-
-        // Update oscillator and envelope dynamically
-        synth.oscillator.type = oscType;
-        synth.envelope.attack = env.attack;
-        synth.envelope.release = env.release;
-
-        try {
-          synth.triggerRelease();
-          synth.triggerAttackRelease(note, "2n", now + 0.05);
-        } catch (err) {
-          console.warn("Tone.js trigger error:", err);
-        }
+        const oscType = emotionToOscillator[emotion] || "sine";
+        melodySynth.oscillator.type = oscType;
+        melodySynth.triggerAttackRelease(note, "2n", Tone.now());
       };
+
       play(current.emotionScores[0].label);
+
       const interval = setInterval(() => {
         setIndex((i) => {
           const next = (i + 1) % sampleSpeech.length;
           emotionRef.current = sampleSpeech[next].emotionScores[0].label;
-          play(sampleSpeech[next].emotionScores[0].label);
+          play(emotionRef.current);
           return next;
         });
       }, 1000);
+
       loop();
       return () => clearInterval(interval);
     });
