@@ -11,6 +11,19 @@ const emotionColors: Record<string, string> = {
   surprise: "#ff66cc",
 };
 
+const emotionVisuals: Record<
+  string,
+  { size: number; opacity: number; blur: number }
+> = {
+  anger: { size: 6, opacity: 0.7, blur: 20 },
+  sadness: { size: 4, opacity: 0.4, blur: 15 },
+  fear: { size: 3, opacity: 0.6, blur: 8 },
+  joy: { size: 5, opacity: 0.8, blur: 25 },
+  disgust: { size: 4, opacity: 0.5, blur: 18 },
+  surprise: { size: 7, opacity: 0.9, blur: 30 },
+  neutral: { size: 3, opacity: 0.3, blur: 10 },
+};
+
 const emotionToOscillator = {
   joy: "triangle4",
   anger: "sawtooth4",
@@ -368,6 +381,10 @@ export default function App() {
       frame += dt * 50;
 
       const emotionScores = currentRef.current.emotionScores;
+
+      const visualStyle =
+        emotionVisuals[emotionRef.current] || emotionVisuals["neutral"];
+
       const gradient = c.createLinearGradient(
         -canvas.width / 2,
         0,
@@ -443,10 +460,13 @@ export default function App() {
         x /= z / canvas.height / 2;
         y /= z / canvas.height / 2;
 
+        c.globalAlpha = visualStyle.opacity;
         c.fillStyle = particleGradient;
-        c.shadowBlur = 15;
+        c.shadowBlur = visualStyle.blur;
         c.shadowColor = c.fillStyle as any;
-        c.fillRect(x - 2, y - 2, 4, 4);
+
+        const s = visualStyle.size;
+        c.fillRect(x - s / 2, y - s / 2, s, s);
       }
 
       c.restore();
