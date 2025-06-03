@@ -185,8 +185,11 @@ export default function App() {
         0,
       );
       let offset = 0;
-      const total = emotionScores.reduce((sum, e) => sum + e.score, 0);
-      emotionScores.forEach((e) => {
+      const total = emotionScores.reduce(
+        (sum: any, e: any) => sum + e.score,
+        0,
+      );
+      emotionScores.forEach((e: any) => {
         const norm = e.score / total;
         gradient.addColorStop(offset, emotionColors[e.label] || "#ffffff");
         offset += norm;
