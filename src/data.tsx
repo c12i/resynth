@@ -207,4 +207,153 @@ export const speeches = [
       emotionScores: [{ label: "joy", score: 1.0 }],
     },
   ],
+  [
+    {
+      text: "What an incredible journey this has been!",
+      emotionScores: [
+        { label: "joy", score: 0.8 },
+        { label: "surprise", score: 0.2 },
+      ],
+    },
+    {
+      text: "When I first arrived here, I was terrified.",
+      emotionScores: [
+        { label: "fear", score: 0.7 },
+        { label: "sadness", score: 0.3 },
+      ],
+    },
+    {
+      text: "Everything felt foreign, unwelcoming, cold.",
+      emotionScores: [
+        { label: "sadness", score: 0.6 },
+        { label: "disgust", score: 0.4 },
+      ],
+    },
+    {
+      text: "I remember crying myself to sleep, wondering if I'd made a terrible mistake.",
+      emotionScores: [
+        { label: "sadness", score: 0.9 },
+        { label: "fear", score: 0.1 },
+      ],
+    },
+    {
+      text: "But then something unexpected happened.",
+      emotionScores: [
+        { label: "surprise", score: 0.7 },
+        { label: "neutral", score: 0.3 },
+      ],
+    },
+    {
+      text: "A stranger smiled at me on the street — just a simple smile.",
+      emotionScores: [
+        { label: "joy", score: 0.6 },
+        { label: "surprise", score: 0.4 },
+      ],
+    },
+    {
+      text: "That small gesture changed everything.",
+      emotionScores: [
+        { label: "joy", score: 0.7 },
+        { label: "neutral", score: 0.3 },
+      ],
+    },
+    {
+      text: "I started noticing kindness everywhere — in the coffee shop, at the library, on the bus.",
+      emotionScores: [
+        { label: "joy", score: 0.8 },
+        { label: "surprise", score: 0.2 },
+      ],
+    },
+    {
+      text: "Of course, there were still hard days.",
+      emotionScores: [
+        { label: "sadness", score: 0.5 },
+        { label: "neutral", score: 0.5 },
+      ],
+    },
+    {
+      text: "Days when I felt utterly alone and misunderstood.",
+      emotionScores: [
+        { label: "sadness", score: 0.7 },
+        { label: "fear", score: 0.3 },
+      ],
+    },
+    {
+      text: "Days when I was angry at myself for leaving home.",
+      emotionScores: [
+        { label: "anger", score: 0.6 },
+        { label: "sadness", score: 0.4 },
+      ],
+    },
+    {
+      text: "But I kept pushing forward, one step at a time.",
+      emotionScores: [
+        { label: "neutral", score: 0.6 },
+        { label: "joy", score: 0.4 },
+      ],
+    },
+    {
+      text: "And then I met people who became my chosen family.",
+      emotionScores: [
+        { label: "joy", score: 0.9 },
+        { label: "surprise", score: 0.1 },
+      ],
+    },
+    {
+      text: "People who celebrated my differences instead of fearing them.",
+      emotionScores: [
+        { label: "joy", score: 0.8 },
+        { label: "surprise", score: 0.2 },
+      ],
+    },
+    {
+      text: "Now, looking back, I'm amazed at how far I've come.",
+      emotionScores: [
+        { label: "surprise", score: 0.6 },
+        { label: "joy", score: 0.4 },
+      ],
+    },
+    {
+      text: "The fear is still there sometimes, lurking in the shadows.",
+      emotionScores: [
+        { label: "fear", score: 0.6 },
+        { label: "neutral", score: 0.4 },
+      ],
+    },
+    {
+      text: "But it no longer controls me.",
+      emotionScores: [
+        { label: "joy", score: 0.7 },
+        { label: "neutral", score: 0.3 },
+      ],
+    },
+    {
+      text: "I've learned that home isn't just a place — it's a feeling.",
+      emotionScores: [
+        { label: "neutral", score: 0.5 },
+        { label: "joy", score: 0.5 },
+      ],
+    },
+    {
+      text: "And I've found that feeling here, in the most unexpected way.",
+      emotionScores: [
+        { label: "joy", score: 0.8 },
+        { label: "surprise", score: 0.2 },
+      ],
+    },
+    {
+      text: "So to anyone out there feeling lost or afraid — hold on.",
+      emotionScores: [
+        { label: "joy", score: 0.6 },
+        { label: "fear", score: 0.4 },
+      ],
+    },
+    {
+      text: "Your story isn't over yet.",
+      emotionScores: [
+        { label: "joy", score: 0.7 },
+        { label: "surprise", score: 0.3 },
+      ],
+    },
+  ],
 ];
