@@ -12,37 +12,40 @@ const emotionColors: Record<string, string> = {
   surprise: "#ff66cc",
 };
 
+// Reduced blur and adjusted opacity for cleaner visuals
 const emotionVisuals: Record<
   string,
-  { size: number; opacity: number; blur: number }
+  { lineWidth: number; opacity: number; blur: number }
 > = {
-  anger: { size: 6, opacity: 0.7, blur: 20 },
-  sadness: { size: 4, opacity: 0.4, blur: 15 },
-  fear: { size: 3, opacity: 0.6, blur: 8 },
-  joy: { size: 5, opacity: 0.8, blur: 25 },
-  disgust: { size: 4, opacity: 0.5, blur: 18 },
-  surprise: { size: 7, opacity: 0.9, blur: 30 },
-  neutral: { size: 3, opacity: 0.3, blur: 10 },
+  anger: { lineWidth: 2.5, opacity: 0.7, blur: 8 },
+  sadness: { lineWidth: 1.5, opacity: 0.5, blur: 6 },
+  fear: { lineWidth: 1.0, opacity: 0.6, blur: 4 },
+  joy: { lineWidth: 2.0, opacity: 0.8, blur: 10 },
+  disgust: { lineWidth: 1.8, opacity: 0.6, blur: 7 },
+  surprise: { lineWidth: 3.0, opacity: 0.9, blur: 12 },
+  neutral: { lineWidth: 1.2, opacity: 0.4, blur: 5 },
 };
 
+// Smoother, filtered oscillators for less grainy audio
 const emotionToOscillator = {
-  joy: "triangle4",
-  anger: "sawtooth4",
-  sadness: "sine2",
-  fear: "fatsine2",
-  disgust: "triangle8",
-  surprise: "square2",
-  neutral: "sine",
+  joy: "triangle",      // Bright and smooth
+  anger: "sawtooth",    // Will be filtered for warmth
+  sadness: "sine",      // Pure and melancholic
+  fear: "sine2",        // Subtle texture
+  disgust: "square",    // Will be heavily filtered
+  surprise: "triangle", // Quick and bright
+  neutral: "sine",      // Pure tone
 } as const;
 
+// Refined note mappings for better emotional resonance
 const emotionNotes: Record<string, string> = {
-  anger: "A2",
-  disgust: "C3",
-  fear: "E3",
-  joy: "A4",
-  neutral: "C4",
-  sadness: "D3",
-  surprise: "E4",
+  anger: "G2",      // Lower, more aggressive
+  disgust: "Bb2",   // Dissonant, unsettling
+  fear: "Eb3",      // Mid-range tension
+  joy: "C5",        // Higher, brighter
+  neutral: "A3",    // Centered, balanced
+  sadness: "D3",    // Low, somber
+  surprise: "F#4",  // Sharp, unexpected
 };
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -148,11 +151,17 @@ export default function App() {
     let { sin, cos, PI } = Math;
     let frame = 0;
     let particleGradient: string | CanvasGradient = "#ffffff";
-    const cubeSize = 12;
+    const cubeSize = 8; // Reduced from 12 (512 vs 1728 particles)
     let vertices: [number, number, number][] = [];
     let originalVertices: [number, number, number][] = [];
+    let edges: [number, number][] = []; // Store particle connections
     let oldTimeStamp = performance.now();
 
+    // Enable anti-aliasing for smoother rendering
+    c.imageSmoothingEnabled = true;
+    c.imageSmoothingQuality = "high";
+
+    // Create particles in 3D grid
     for (let i = 0; i < cubeSize ** 3; i++) {
       let x = i % cubeSize;
       let y = ((i / cubeSize) >> 0) % cubeSize;
@@ -164,7 +173,37 @@ export default function App() {
       originalVertices.push([x, y, z]);
     }
 
-    const globalGain = new Tone.Gain(0.5).toDestination();
+    // Create mesh connections (edges between nearby particles)
+    for (let i = 0; i < vertices.length; i++) {
+      const x = i % cubeSize;
+      const y = ((i / cubeSize) >> 0) % cubeSize;
+      const z = (i / cubeSize ** 2) >> 0;
+
+      // Connect to adjacent particles (right, down, back)
+      if (x < cubeSize - 1) edges.push([i, i + 1]); // Right
+      if (y < cubeSize - 1) edges.push([i, i + cubeSize]); // Down
+      if (z < cubeSize - 1) edges.push([i, i + cubeSize ** 2]); // Back
+    }
+
+    // Audio effects chain for smoother, less grainy sound
+    const reverb = new Tone.Reverb({
+      decay: 3.5,
+      wet: 0.3,
+    }).toDestination();
+
+    const delay = new Tone.FeedbackDelay({
+      delayTime: "8n",
+      feedback: 0.2,
+      wet: 0.15,
+    }).connect(reverb);
+
+    const filter = new Tone.Filter({
+      frequency: 2000,
+      type: "lowpass",
+      rolloff: -24,
+    }).connect(delay);
+
+    const globalGain = new Tone.Gain(0.1).connect(filter); // Reduced volume for headphone safety
     const backgroundSynth = new Tone.PolySynth().connect(globalGain);
     const melodySynth = new Tone.Synth().connect(globalGain);
 
@@ -221,6 +260,8 @@ export default function App() {
       c.save();
       c.translate(canvas.width / 2, canvas.height / 2);
 
+      // Transform all vertices first
+      const projectedVertices: [number, number, number][] = [];
       for (let i = 0; i < vertices.length; i++) {
         let [x0, y0, z0] = vertices[i];
         const [ox, oy, oz] = originalVertices[i];
@@ -233,11 +274,13 @@ export default function App() {
           frame,
         );
 
-        x0 = lerp(x0, dx, 0.05);
-        y0 = lerp(y0, dy, 0.05);
-        z0 = lerp(z0, dz, 0.05);
+        // Increased lerp factor for smoother transitions
+        x0 = lerp(x0, dx, 0.12);
+        y0 = lerp(y0, dy, 0.12);
+        z0 = lerp(z0, dz, 0.12);
         vertices[i] = [x0, y0, z0];
 
+        // Apply rotation transformations
         let x = x0 * cos((frame / 360) * PI) + sin((frame / 360) * PI) * z0;
         let z = -x0 * sin((frame / 360) * PI) + cos((frame / 360) * PI) * z0;
         let y = y0;
@@ -247,6 +290,7 @@ export default function App() {
         x = tx;
         y = ty;
 
+        // Apply perspective
         z -= 70;
         z += 1.2;
         y += 0.01;
@@ -256,13 +300,34 @@ export default function App() {
         x /= z / canvas.height / 2;
         y /= z / canvas.height / 2;
 
-        c.globalAlpha = visualStyle.opacity;
-        c.fillStyle = particleGradient;
-        c.shadowBlur = visualStyle.blur;
-        c.shadowColor = c.fillStyle as any;
+        projectedVertices.push([x, y, z]);
+      }
 
-        const s = visualStyle.size;
-        c.fillRect(x - s / 2, y - s / 2, s, s);
+      // Draw mesh lines connecting particles
+      c.globalAlpha = visualStyle.opacity;
+      c.strokeStyle = particleGradient;
+      c.lineWidth = visualStyle.lineWidth;
+      c.shadowBlur = visualStyle.blur;
+      c.shadowColor = particleGradient as any;
+
+      for (const [i1, i2] of edges) {
+        const [x1, y1] = projectedVertices[i1];
+        const [x2, y2] = projectedVertices[i2];
+
+        c.beginPath();
+        c.moveTo(x1, y1);
+        c.lineTo(x2, y2);
+        c.stroke();
+      }
+
+      // Draw particles as small points for additional detail
+      c.shadowBlur = visualStyle.blur * 0.5;
+      for (let i = 0; i < projectedVertices.length; i++) {
+        const [x, y] = projectedVertices[i];
+        c.fillStyle = particleGradient;
+        c.beginPath();
+        c.arc(x, y, visualStyle.lineWidth * 0.6, 0, PI * 2);
+        c.fill();
       }
 
       c.restore();
@@ -280,18 +345,36 @@ export default function App() {
       backgroundSynth.triggerAttack(["C3", "G3", "E4"]);
 
       const play = (emotion: string) => {
-        const note = emotionNotes[emotion] || "C4";
+        const note = emotionNotes[emotion] || "A3";
         //@ts-ignore
         const oscType = emotionToOscillator[emotion] || "sine";
+
+        // Gentler envelope settings for smoother sound
         melodySynth.set({
-          oscillator: { type: oscType },
+          oscillator: {
+            type: oscType,
+            partialCount: 4, // Limit harmonics for cleaner sound
+          },
           envelope: {
-            attack: 0.1,
-            decay: 0.2,
-            sustain: 0.7,
-            release: 1.5,
+            attack: 0.3,    // Gentler attack
+            decay: 0.4,
+            sustain: 0.6,
+            release: 2.5,   // Longer release for smoother fade
           },
         });
+
+        // Adjust filter cutoff based on emotion
+        const filterFreqs: Record<string, number> = {
+          anger: 1200,   // Darker, more aggressive
+          disgust: 800,  // Very filtered, muted
+          fear: 1500,    // Mid-range tension
+          joy: 3000,     // Bright and open
+          neutral: 2000, // Balanced
+          sadness: 1000, // Dark and somber
+          surprise: 2500,// Bright but not harsh
+        };
+        filter.frequency.rampTo(filterFreqs[emotion] || 2000, 0.3);
+
         melodySynth.triggerAttackRelease(note, "2n", Tone.now());
       };
 
