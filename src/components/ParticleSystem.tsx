@@ -159,7 +159,7 @@ export function ParticleSystem({
   currentEmotion,
   emotionScores,
 }: ParticleSystemProps) {
-  const pointsRef = useRef<THREE.Points>(null!);
+  const pointsRef = useRef<THREE.Group>(null!);
   const geometryRef = useRef<THREE.BufferGeometry>(null!);
   const materialRef = useRef<THREE.ShaderMaterial>(null!);
   const frameRef = useRef(0);
@@ -348,24 +348,200 @@ export function ParticleSystem({
       geometry.attributes.distortionIntensity.needsUpdate = true;
     }
 
-    // Apply rotation (matching original double rotation)
-    points.rotation.y = frameRef.current / 360;
-    points.rotation.x = frameRef.current / 360;
+    // Update edge particles with same distortions
+    const edgeGeometry = edgeGeometryRef.current;
+    const edgeMaterial = edgeMaterialRef.current;
+
+    if (edgeGeometry && edgeMaterial && edgeGeometry.attributes.position) {
+      // Update edge material uniforms to match main material
+      edgeMaterial.uniforms.uTime.value = frameRef.current;
+      edgeMaterial.uniforms.uEmotionWeights.value = material.uniforms.uEmotionWeights.value;
+      edgeMaterial.uniforms.uCoreGlowIntensity.value = material.uniforms.uCoreGlowIntensity.value;
+
+      // Apply same distortions to edge particles
+      for (let i = 0; i < edgeCount; i++) {
+        const idx = i * 3;
+        const ox = edgeOriginalPositions[idx];
+        const oy = edgeOriginalPositions[idx + 1];
+        const oz = edgeOriginalPositions[idx + 2];
+
+        // Apply emotion distortion
+        const [dx, dy, dz] = applyEmotionDistortion(
+          currentEmotion,
+          ox,
+          oy,
+          oz,
+          frameRef.current,
+        );
+
+        edgeTargetPositions[idx] = dx;
+        edgeTargetPositions[idx + 1] = dy;
+        edgeTargetPositions[idx + 2] = dz;
+
+        // Smooth interpolation
+        edgeCurrentPositions[idx] = lerp(
+          edgeCurrentPositions[idx],
+          edgeTargetPositions[idx],
+          0.04,
+        );
+        edgeCurrentPositions[idx + 1] = lerp(
+          edgeCurrentPositions[idx + 1],
+          edgeTargetPositions[idx + 1],
+          0.04,
+        );
+        edgeCurrentPositions[idx + 2] = lerp(
+          edgeCurrentPositions[idx + 2],
+          edgeTargetPositions[idx + 2],
+          0.04,
+        );
+
+        // Calculate distortion intensity
+        const distance = Math.sqrt(
+          Math.pow(edgeCurrentPositions[idx] - ox, 2) +
+            Math.pow(edgeCurrentPositions[idx + 1] - oy, 2) +
+            Math.pow(edgeCurrentPositions[idx + 2] - oz, 2),
+        );
+
+        edgeIntensities[i] = Math.min(distance / 10.0, 1.0);
+      }
+
+      edgeGeometry.attributes.position.needsUpdate = true;
+      if (edgeGeometry.attributes.distortionIntensity) {
+        edgeGeometry.attributes.distortionIntensity.needsUpdate = true;
+      }
+    }
+
+    // Automatic rotation removed - now controlled by OrbitControls
   });
 
+  // Create edge particles for cube outline that morphs with distortions
+  const {
+    edgePositions,
+    edgeOriginalPositions,
+    edgeCurrentPositions,
+    edgeTargetPositions,
+    edgeIntensities,
+    edgeCount,
+  } = useMemo(() => {
+    const edgeParticles: Array<{x: number, y: number, z: number}> = [];
+    const halfSize = (cubeSize - 1) / 2;
+    const spacing = 1.07;
+
+    // Generate edge particles along the 12 edges of the cube
+    const steps = cubeSize; // Number of particles per edge
+
+    // Helper to add edge particles
+    const addEdge = (
+      startX: number, startY: number, startZ: number,
+      endX: number, endY: number, endZ: number
+    ) => {
+      for (let i = 0; i < steps; i++) {
+        const t = i / (steps - 1);
+        const x = (startX + (endX - startX) * t) * spacing;
+        const y = (startY + (endY - startY) * t) * spacing;
+        const z = (startZ + (endZ - startZ) * t) * spacing;
+        edgeParticles.push({x, y, z});
+      }
+    };
+
+    // Bottom face edges (4 edges)
+    addEdge(-halfSize, -halfSize, -halfSize, halfSize, -halfSize, -halfSize);
+    addEdge(halfSize, -halfSize, -halfSize, halfSize, -halfSize, halfSize);
+    addEdge(halfSize, -halfSize, halfSize, -halfSize, -halfSize, halfSize);
+    addEdge(-halfSize, -halfSize, halfSize, -halfSize, -halfSize, -halfSize);
+
+    // Top face edges (4 edges)
+    addEdge(-halfSize, halfSize, -halfSize, halfSize, halfSize, -halfSize);
+    addEdge(halfSize, halfSize, -halfSize, halfSize, halfSize, halfSize);
+    addEdge(halfSize, halfSize, halfSize, -halfSize, halfSize, halfSize);
+    addEdge(-halfSize, halfSize, halfSize, -halfSize, halfSize, -halfSize);
+
+    // Vertical edges (4 edges)
+    addEdge(-halfSize, -halfSize, -halfSize, -halfSize, halfSize, -halfSize);
+    addEdge(halfSize, -halfSize, -halfSize, halfSize, halfSize, -halfSize);
+    addEdge(halfSize, -halfSize, halfSize, halfSize, halfSize, halfSize);
+    addEdge(-halfSize, -halfSize, halfSize, -halfSize, halfSize, halfSize);
+
+    const count = edgeParticles.length;
+    const positions = new Float32Array(count * 3);
+    const original = new Float32Array(count * 3);
+    const current = new Float32Array(count * 3);
+    const target = new Float32Array(count * 3);
+    const intensities = new Float32Array(count);
+
+    edgeParticles.forEach((particle, i) => {
+      const idx = i * 3;
+      positions[idx] = particle.x;
+      positions[idx + 1] = particle.y;
+      positions[idx + 2] = particle.z;
+      original[idx] = particle.x;
+      original[idx + 1] = particle.y;
+      original[idx + 2] = particle.z;
+      current[idx] = particle.x;
+      current[idx + 1] = particle.y;
+      current[idx + 2] = particle.z;
+      target[idx] = particle.x;
+      target[idx + 1] = particle.y;
+      target[idx + 2] = particle.z;
+      intensities[i] = 0;
+    });
+
+    return {
+      edgePositions: positions,
+      edgeOriginalPositions: original,
+      edgeCurrentPositions: current,
+      edgeTargetPositions: target,
+      edgeIntensities: intensities,
+      edgeCount: count,
+    };
+  }, [cubeSize]);
+
+  const edgeGeometryRef = useRef<THREE.BufferGeometry>(null!);
+  const edgeMaterialRef = useRef<THREE.ShaderMaterial>(null!);
+
+  // Initialize edge geometry
+  useEffect(() => {
+    const geometry = edgeGeometryRef.current;
+    if (!geometry) return;
+
+    const positionAttribute = new THREE.BufferAttribute(edgeCurrentPositions, 3);
+    const intensityAttribute = new THREE.BufferAttribute(edgeIntensities, 1);
+
+    geometry.setAttribute("position", positionAttribute);
+    geometry.setAttribute("distortionIntensity", intensityAttribute);
+  }, [edgeCurrentPositions, edgeIntensities]);
+
   return (
-    <points ref={pointsRef} scale={1.0}>
-      <bufferGeometry ref={geometryRef} />
-      <shaderMaterial
-        ref={materialRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={uniforms}
-        transparent
-        blending={THREE.AdditiveBlending}
-        depthTest={true}
-        depthWrite={false}
-      />
-    </points>
+    <group ref={pointsRef}>
+      {/* Main particle system */}
+      <points scale={1.0}>
+        <bufferGeometry ref={geometryRef} />
+        <shaderMaterial
+          ref={materialRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+          transparent
+          blending={THREE.AdditiveBlending}
+          depthTest={true}
+          depthWrite={false}
+        />
+      </points>
+
+      {/* Edge particles that morph with distortions */}
+      <points scale={1.0}>
+        <bufferGeometry ref={edgeGeometryRef} />
+        <shaderMaterial
+          ref={edgeMaterialRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+          transparent
+          blending={THREE.AdditiveBlending}
+          depthTest={true}
+          depthWrite={false}
+        />
+      </points>
+    </group>
   );
 }

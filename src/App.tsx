@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { OrbitControls } from "@react-three/drei";
 import * as Tone from "tone";
 import { speeches } from "./data";
 import { ParticleSystem } from "./components/ParticleSystem";
@@ -32,6 +33,7 @@ export default function App() {
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [selectedSpeech, setSelectedSpeech] = useState(0);
+  const [autoRotate, setAutoRotate] = useState(true);
   const sampleSpeech = speeches[selectedSpeech];
   const current = sampleSpeech[index];
   const currentRef = useRef(current);
@@ -182,6 +184,25 @@ export default function App() {
         <ambientLight intensity={0.15} />
         <pointLight position={[10, 10, 10]} intensity={0.3} />
         <pointLight position={[-10, -10, -10]} intensity={0.2} />
+
+        {/* OrbitControls for mouse interaction */}
+        <OrbitControls
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
+          autoRotate={autoRotate}
+          autoRotateSpeed={0.5}
+          zoomSpeed={0.6}
+          rotateSpeed={0.5}
+          minDistance={40}
+          maxDistance={100}
+          onStart={() => setAutoRotate(false)}
+          onEnd={() => {
+            // Resume auto-rotate after 3 seconds of inactivity
+            setTimeout(() => setAutoRotate(true), 3000);
+          }}
+        />
+
         {started && (
           <>
             <ParticleSystem
