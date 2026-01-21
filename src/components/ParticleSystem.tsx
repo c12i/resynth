@@ -261,7 +261,7 @@ export function ParticleSystem({
   }, []);
 
   // Animation loop
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     const geometry = geometryRef.current;
     const points = pointsRef.current;
     const material = materialRef.current;
