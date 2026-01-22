@@ -416,7 +416,6 @@ export function ParticleSystem({
 
   // Create edge particles for cube outline that morphs with distortions
   const {
-    edgePositions,
     edgeOriginalPositions,
     edgeCurrentPositions,
     edgeTargetPositions,
