@@ -1,0 +1,45 @@
+[
+  {
+    "speaker": "Kwame Nkurumah",
+    "event": "Ghana Independence Day",
+    "date": "06.04.1957",
+    "sentiment": "very_positive",
+    "sentimentScore": 0.45
+  },
+  {
+    "speaker": "Nelson Mandela",
+    "event": "Inauguration Address",
+    "date": "10.05.1994",
+    "sentiment": "very_positive",
+    "sentimentScore": 0.7
+  },
+  {
+    "speaker": "Patrice Lumumba",
+    "event": "Independence Day Speech",
+    "date": "30.06.1960",
+    "sentiment": "very_negative",
+    "sentimentScore": 0.58
+  },
+  {
+    "speaker": "Robert Mugabe",
+    "event": "United Nations General Assembly Address",
+    "date": "26.09.2008",
+    "sentiment": "neutral",
+    "sentimentScore": 0.34
+  },
+  {
+    "speaker": "Thomas Sankara",
+    "event": "United Nations General Assembly",
+    "date": "04.10.1984",
+    "sentiment": "very_negative",
+    "sentimentScore": 0.49
+  },
+  {
+    "speaker": "Wangari Maathai",
+    "event": "Nobel Peace Prize Lecture",
+    "date": "10.12.2004",
+    "sentiment": "very_positive",
+    "sentimentScore": 0.26
+  }
+]
+

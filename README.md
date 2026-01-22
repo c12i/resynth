@@ -1,7 +1,39 @@
 # Resynth
 
-**What you're seeing and hearing is not random.**  
+**What you're seeing and hearing is not random.**
 This is an audiovisual exploration of political speech — where each word's emotional tone is translated into color, sound, and motion.
+
+## Setup
+
+### Run the UI
+
+```bash
+cd ui
+npm install
+npm run dev
+```
+
+### Extract Emotions and Sentiment from Text
+
+```bash
+cd extractor
+cp .env.example .env
+# Add your HF_TOKEN to .env
+make build
+
+# Process all real speeches with both tools
+make run-all-speeches
+
+# Or run individually:
+# make run-all            # Emotions only (sample speeches)
+# make run-all-sentiment  # Sentiment only (sample speeches)
+
+# Or process individual speeches
+./emotion -input speeches/my-speech.txt
+./sentiment -input speeches/my-speech.txt
+```
+
+See [SETUP.md](SETUP.md) for detailed setup instructions.
 
 ## Visual Meaning
 

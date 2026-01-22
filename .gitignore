@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Go binaries
+/extractor/emotion
+/extractor/sentiment
+
+# Go environment
+/extractor/.env
