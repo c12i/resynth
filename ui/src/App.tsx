@@ -34,7 +34,7 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [selectedSpeech, setSelectedSpeech] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
-  const [toneStyle, setToneStyle] = useState<ToneStyle>("synthwave");
+  const [toneStyle, setToneStyle] = useState<ToneStyle>("lofi");
   const [masterVolume, setMasterVolume] = useState(0.5);
   const [speechesLoaded, setSpeechesLoaded] = useState(false);
   const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>([]);
@@ -109,7 +109,7 @@ export default function App() {
     const melodySynth = new Tone.Synth().connect(globalGain);
 
     // Drums - kick and tom for variety
-    const drumGain = new Tone.Gain(0.35).connect(masterGain); // Increased from 0.22
+    const drumGain = new Tone.Gain(0.75).connect(masterGain); // Set to 75%
 
     // Kick drum - deep bass
     const kick = new Tone.MembraneSynth({

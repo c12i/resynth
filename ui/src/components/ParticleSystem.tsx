@@ -5,7 +5,7 @@ import type { EmotionType, EmotionScore } from "../types/emotion";
 import { applyEmotionDistortion, lerp } from "../utils/emotionDistortions";
 
 const emotionColors: Record<EmotionType, string> = {
-  anger: "#cc1234",      // Darker red
+  anger: "#8B0000",      // Blood red (dark red)
   disgust: "#76ff03",
   fear: "#9c27ff",
   joy: "#d4a500",        // Darker gold/yellow
@@ -127,8 +127,8 @@ const fragmentShader = `
     float edgeHighlight = smoothstep(edge - 0.02, edge, edgeDist);
     faceBrightness = mix(faceBrightness, faceBrightness * 1.2, edgeHighlight * 0.3);
 
-    // Add soft white glow to core particles - increased radius for more glow
-    float coreRadius = 6.0;
+    // Add soft white glow to core particles - reduced radius for smaller glow
+    float coreRadius = 2.0; // Reduced from 3.5 to 2.0
     float coreGlow = 0.0;
 
     if (vDistanceFromCenter < coreRadius) {
@@ -165,7 +165,6 @@ export function ParticleSystem({
   const geometryRef = useRef<THREE.BufferGeometry>(null!);
   const materialRef = useRef<THREE.ShaderMaterial>(null!);
   const frameRef = useRef(0);
-  const rubikPhaseRef = useRef(0);
 
   // Big cube made of many mini cubes
   const cubeSize = 10; // 10x10x10 grid of particles
@@ -263,113 +262,18 @@ export function ParticleSystem({
     };
   }, []);
 
-  // Helper function to apply Rubik's cube-style rotation to a slice
-  const applyRubikRotation = (
-    x: number,
-    y: number,
-    z: number,
-    rotationPhase: number,
-    consecutiveCount: number
-  ): [number, number, number] => {
-    // Threshold for when Rubik rotations start
+  // Helper function to calculate intensity multiplier based on consecutive emotions
+  const calculateIntensityMultiplier = (consecutiveCount: number): number => {
+    // Threshold for when intensity amplification starts
     const threshold = 3;
     if (consecutiveCount < threshold) {
-      return [x, y, z];
+      return 1.0; // Normal intensity
     }
 
-    // Determine rotation intensity based on consecutive count
-    const intensity = Math.min((consecutiveCount - threshold) / 10, 1.0);
-
-    // Cycle through different rotation patterns
-    const cycleSpeed = 0.02;
-    const cycle = Math.floor(rotationPhase * cycleSpeed) % 6;
-
-    // Define slice thickness (which particles get rotated)
-    const sliceThickness = 2.5;
-
-    // Rotation angle increases with consecutive count
-    const baseAngle = rotationPhase * 0.03 * intensity;
-
-    let newX = x;
-    let newY = y;
-    let newZ = z;
-
-    // Different rotation patterns based on cycle
-    switch (cycle) {
-      case 0: // Rotate top slice around Y axis
-        if (y > cubeSize / 2 - sliceThickness) {
-          const angle = baseAngle;
-          const centerX = 0;
-          const centerZ = 0;
-          const dx = x - centerX;
-          const dz = z - centerZ;
-          newX = centerX + dx * Math.cos(angle) - dz * Math.sin(angle);
-          newZ = centerZ + dx * Math.sin(angle) + dz * Math.cos(angle);
-        }
-        break;
-
-      case 1: // Rotate bottom slice around Y axis (opposite direction)
-        if (y < -cubeSize / 2 + sliceThickness) {
-          const angle = -baseAngle;
-          const centerX = 0;
-          const centerZ = 0;
-          const dx = x - centerX;
-          const dz = z - centerZ;
-          newX = centerX + dx * Math.cos(angle) - dz * Math.sin(angle);
-          newZ = centerZ + dx * Math.sin(angle) + dz * Math.cos(angle);
-        }
-        break;
-
-      case 2: // Rotate right slice around X axis
-        if (x > cubeSize / 2 - sliceThickness) {
-          const angle = baseAngle;
-          const centerY = 0;
-          const centerZ = 0;
-          const dy = y - centerY;
-          const dz = z - centerZ;
-          newY = centerY + dy * Math.cos(angle) - dz * Math.sin(angle);
-          newZ = centerZ + dy * Math.sin(angle) + dz * Math.cos(angle);
-        }
-        break;
-
-      case 3: // Rotate left slice around X axis (opposite direction)
-        if (x < -cubeSize / 2 + sliceThickness) {
-          const angle = -baseAngle;
-          const centerY = 0;
-          const centerZ = 0;
-          const dy = y - centerY;
-          const dz = z - centerZ;
-          newY = centerY + dy * Math.cos(angle) - dz * Math.sin(angle);
-          newZ = centerZ + dy * Math.sin(angle) + dz * Math.cos(angle);
-        }
-        break;
-
-      case 4: // Rotate front slice around Z axis
-        if (z > cubeSize / 2 - sliceThickness) {
-          const angle = baseAngle;
-          const centerX = 0;
-          const centerY = 0;
-          const dx = x - centerX;
-          const dy = y - centerY;
-          newX = centerX + dx * Math.cos(angle) - dy * Math.sin(angle);
-          newY = centerY + dx * Math.sin(angle) + dy * Math.cos(angle);
-        }
-        break;
-
-      case 5: // Rotate back slice around Z axis (opposite direction)
-        if (z < -cubeSize / 2 + sliceThickness) {
-          const angle = -baseAngle;
-          const centerX = 0;
-          const centerY = 0;
-          const dx = x - centerX;
-          const dy = y - centerY;
-          newX = centerX + dx * Math.cos(angle) - dy * Math.sin(angle);
-          newY = centerY + dx * Math.sin(angle) + dy * Math.cos(angle);
-        }
-        break;
-    }
-
-    return [newX, newY, newZ];
+    // Intensity increases by 25% for each consecutive emotion beyond threshold
+    // Examples: 3 consecutive = 1.0x, 4 = 1.25x, 5 = 1.5x, 6 = 1.75x, 10 = 2.75x
+    const intensityIncrease = (consecutiveCount - threshold) * 0.25;
+    return 1.0 + intensityIncrease;
   };
 
   // Animation loop
@@ -383,9 +287,6 @@ export function ParticleSystem({
 
     // Update frame counter (preserve speed from original)
     frameRef.current += delta * 50;
-
-    // Update Rubik rotation phase
-    rubikPhaseRef.current += delta * 60;
 
     // Update shader uniforms
     material.uniforms.uTime.value = frameRef.current;
@@ -409,11 +310,11 @@ export function ParticleSystem({
     });
     material.uniforms.uEmotionWeights.value = weights;
 
-    // Update core glow based on emotion positivity - increased for more intensity
+    // Update core glow based on emotion positivity
     const emotionGlowIntensity: Record<EmotionType, number> = {
       joy: 0.9, // Brightest
       surprise: 0.85, // Bright
-      neutral: 0.6, // Medium
+      neutral: 0.2, // Very dim - reduced from 0.6 to 0.2
       sadness: 0.4, // Dim
       fear: 0.35, // Dimmer
       disgust: 0.3, // Dimmest
@@ -422,6 +323,9 @@ export function ParticleSystem({
     material.uniforms.uCoreGlowIntensity.value =
       emotionGlowIntensity[currentEmotion] || 0.6;
 
+    // Calculate intensity multiplier based on consecutive emotions
+    const intensityMultiplier = calculateIntensityMultiplier(consecutiveEmotionCount);
+
     // Update particle positions with emotion distortions
     for (let i = 0; i < particleCount; i++) {
       const idx = i * 3;
@@ -429,22 +333,14 @@ export function ParticleSystem({
       const oy = originalPositions[idx + 1];
       const oz = originalPositions[idx + 2];
 
-      // Apply emotion distortion first
+      // Apply emotion distortion with intensity amplification
       let [dx, dy, dz] = applyEmotionDistortion(
         currentEmotion,
         ox,
         oy,
         oz,
         frameRef.current,
-      );
-
-      // Then apply Rubik's cube rotation on top of emotion distortion
-      [dx, dy, dz] = applyRubikRotation(
-        dx,
-        dy,
-        dz,
-        rubikPhaseRef.current,
-        consecutiveEmotionCount
+        intensityMultiplier, // Pass intensity multiplier
       );
 
       targetPositions[idx] = dx;
@@ -489,22 +385,14 @@ export function ParticleSystem({
         const oy = edgeOriginalPositions[idx + 1];
         const oz = edgeOriginalPositions[idx + 2];
 
-        // Apply emotion distortion first
+        // Apply emotion distortion with intensity amplification
         let [dx, dy, dz] = applyEmotionDistortion(
           currentEmotion,
           ox,
           oy,
           oz,
           frameRef.current,
-        );
-
-        // Then apply Rubik's cube rotation on top
-        [dx, dy, dz] = applyRubikRotation(
-          dx,
-          dy,
-          dz,
-          rubikPhaseRef.current,
-          consecutiveEmotionCount
+          intensityMultiplier, // Pass intensity multiplier
         );
 
         edgeTargetPositions[idx] = dx;
