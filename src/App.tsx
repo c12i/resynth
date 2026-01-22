@@ -51,6 +51,9 @@ export default function App() {
     if (!started) return;
 
     let interval: any;
+    let emotionCount = 0; // Track number of emotion changes
+    let consecutiveEmotionCount = 0; // Track consecutive emotions for drum complexity
+    let lastEmotion: EmotionType | null = null;
 
     // Audio effects chain for smoother, less grainy sound
     const reverb = new Tone.Reverb({
@@ -74,6 +77,35 @@ export default function App() {
     const backgroundSynth = new Tone.PolySynth().connect(globalGain);
     const melodySynth = new Tone.Synth().connect(globalGain);
 
+    // Drums - kick and tom for variety
+    const drumGain = new Tone.Gain(0.22).toDestination();
+
+    // Kick drum - deep bass
+    const kick = new Tone.MembraneSynth({
+      pitchDecay: 0.05,
+      octaves: 4,
+      oscillator: { type: "sine" },
+      envelope: {
+        attack: 0.001,
+        decay: 0.5,
+        sustain: 0.01,
+        release: 0.5,
+      },
+    }).connect(drumGain);
+
+    // Tom drum - mid-range, softer accent
+    const tom = new Tone.MembraneSynth({
+      pitchDecay: 0.08,
+      octaves: 2,
+      oscillator: { type: "sine" },
+      envelope: {
+        attack: 0.005,
+        decay: 0.3,
+        sustain: 0.05,
+        release: 0.4,
+      },
+    }).connect(drumGain);
+
     Tone.start().then(() => {
       backgroundSynth.set({
         oscillator: { type: "sine" },
@@ -84,9 +116,78 @@ export default function App() {
       });
       backgroundSynth.triggerAttack(["C3", "G3", "E4"]);
 
+      // Drum patterns - will start after 8 emotion changes
+      let beatCount = 0;
+      const drumLoop = new Tone.Loop((time) => {
+        const measure = beatCount % 4;
+
+        // Base kick pattern - always present
+        kick.triggerAttackRelease("C1", "8n", time, 0.9);
+        kick.triggerAttackRelease("C1", "16n", time + 0.15, 0.7);
+
+        // Exponential complexity based on consecutive emotion count
+
+        // Level 1: 4+ consecutive - add extra kick
+        if (consecutiveEmotionCount >= 4) {
+          kick.triggerAttackRelease("C1", "16n", time + 0.5, 0.65);
+        }
+
+        // Level 2: 6+ consecutive - add tom accents
+        if (consecutiveEmotionCount >= 6) {
+          if (measure % 2 === 1) {
+            tom.triggerAttackRelease("G2", "32n", time + 0.75, 0.45);
+          }
+        }
+
+        // Level 3: 8+ consecutive - add tom fills
+        if (consecutiveEmotionCount >= 8) {
+          if (measure === 3) {
+            // Descending tom fill every 4 beats
+            tom.triggerAttackRelease("A2", "32n", time + 0.6, 0.5);
+            tom.triggerAttackRelease("G2", "32n", time + 0.7, 0.55);
+            tom.triggerAttackRelease("E2", "16n", time + 0.8, 0.6);
+          }
+        }
+
+        // Level 4: 10+ consecutive - double-time kicks
+        if (consecutiveEmotionCount >= 10) {
+          kick.triggerAttackRelease("C1", "32n", time + 0.35, 0.5);
+          kick.triggerAttackRelease("C1", "32n", time + 0.65, 0.55);
+        }
+
+        // Level 5: 12+ consecutive - rapid tom rolls
+        if (consecutiveEmotionCount >= 12) {
+          if (measure === 1 || measure === 3) {
+            tom.triggerAttackRelease("A2", "32n", time + 0.4, 0.4);
+            tom.triggerAttackRelease("G2", "32n", time + 0.5, 0.45);
+          }
+        }
+
+        // Level 6: 15+ consecutive - full intensity
+        if (consecutiveEmotionCount >= 15) {
+          // Extra kicks on every beat
+          kick.triggerAttackRelease("C1", "32n", time + 0.25, 0.6);
+          kick.triggerAttackRelease("C1", "32n", time + 0.85, 0.65);
+
+          // Continuous tom texture
+          if (measure % 2 === 0) {
+            tom.triggerAttackRelease("E2", "32n", time + 0.3, 0.5);
+            tom.triggerAttackRelease("G2", "32n", time + 0.55, 0.5);
+          }
+        }
+
+        beatCount++;
+      }, "1n");
+
+      Tone.Transport.bpm.value = 40; // Slower, more ambient
+      Tone.Transport.start();
+
       const play = (emotion: string) => {
         const note = emotionNotes[emotion] || "A3";
         const oscType = emotionToOscillator[emotion as EmotionType] || "sine";
+
+        // Release previous note before playing new one
+        melodySynth.triggerRelease();
 
         melodySynth.set({
           oscillator: {
@@ -96,8 +197,8 @@ export default function App() {
           envelope: {
             attack: 0.3,
             decay: 0.4,
-            sustain: 0.6,
-            release: 2.5,
+            sustain: 0.3, // Reduced from 0.6 for cleaner separation
+            release: 1.0, // Reduced from 2.5 for faster fade-out
           },
         });
 
@@ -112,7 +213,8 @@ export default function App() {
         };
         filter.frequency.rampTo(filterFreqs[emotion] || 2000, 0.3);
 
-        melodySynth.triggerAttackRelease(note, "2n", Tone.now());
+        // Play note with shorter duration for clearer separation
+        melodySynth.triggerAttackRelease(note, "4n", Tone.now());
       };
 
       play(current.emotionScores[0].label);
@@ -120,9 +222,24 @@ export default function App() {
       interval = setInterval(() => {
         setIndex((i) => {
           const next = (i + 1) % speeches[selectedSpeech].length;
-          emotionRef.current = speeches[selectedSpeech][next].emotionScores[0]
+          const newEmotion = speeches[selectedSpeech][next].emotionScores[0]
             .label as EmotionType;
-          play(emotionRef.current);
+          emotionRef.current = newEmotion;
+          play(newEmotion);
+
+          // Track consecutive emotions
+          if (newEmotion === lastEmotion) {
+            consecutiveEmotionCount++;
+          } else {
+            consecutiveEmotionCount = 1;
+            lastEmotion = newEmotion;
+          }
+
+          // Start drums after 8 emotion changes
+          emotionCount++;
+          if (emotionCount === 8) {
+            drumLoop.start(0);
+          }
 
           return next;
         });
@@ -131,10 +248,14 @@ export default function App() {
 
     return () => {
       clearInterval(interval);
+      Tone.Transport.stop();
       backgroundSynth.triggerRelease(["C3", "G3", "E4"]);
       melodySynth.triggerRelease(Tone.now());
       backgroundSynth.dispose();
       melodySynth.dispose();
+      kick.dispose();
+      tom.dispose();
+      drumGain.dispose();
       filter.dispose();
       delay.dispose();
       reverb.dispose();
