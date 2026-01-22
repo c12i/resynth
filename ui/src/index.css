@@ -102,3 +102,8 @@ canvas {
   width: 100%;
   height: 100%;
 }
+
+/* Hide scrollbar for custom dropdown menu */
+.custom-dropdown-menu::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
