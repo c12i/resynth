@@ -19,6 +19,16 @@ const emotionNotes: Record<string, string> = {
   surprise: "F#4", // Sharp, unexpected
 };
 
+// Sentiment-based background chord mappings
+// Each sentiment has a different chord voicing and mood
+const sentimentChords: Record<string, string[]> = {
+  very_negative: ["C2", "Eb2", "Gb2"], // Diminished - dark, tense, unsettling
+  negative: ["C2", "Eb2", "G2"], // Minor - somber, melancholic
+  neutral: ["C2", "F2", "A2"], // Suspended - ambiguous, floating
+  positive: ["C2", "E2", "G2"], // Major - bright, hopeful
+  very_positive: ["C2", "E2", "G2", "B2"], // Major 7th - uplifting, triumphant
+};
+
 export default function App() {
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
@@ -127,6 +137,11 @@ export default function App() {
     }).connect(drumGain);
 
     Tone.start().then(() => {
+      // Get the sentiment-based chord for this speech
+      const currentSpeech = loadedSpeeches[selectedSpeech];
+      const sentiment = currentSpeech.sentiment || "neutral";
+      const backgroundChord = sentimentChords[sentiment] || sentimentChords.neutral;
+
       backgroundSynth.set({
         oscillator: { type: "sine" },
         envelope: {
@@ -134,7 +149,7 @@ export default function App() {
           release: 10.0,
         },
       });
-      backgroundSynth.triggerAttack(["C2", "G2", "E3"]); // Lowered by one octave for darker tone
+      backgroundSynth.triggerAttack(backgroundChord);
 
       // Drum patterns - will start after 8 emotion changes
       let beatCount = 0;
@@ -281,7 +296,8 @@ export default function App() {
     return () => {
       clearInterval(interval);
       Tone.Transport.stop();
-      backgroundSynth.triggerRelease(["C2", "G2", "E3"]);
+      // Release all notes (works for any chord)
+      backgroundSynth.releaseAll();
       melodySynth.triggerRelease(Tone.now());
       backgroundSynth.dispose();
       melodySynth.dispose();
@@ -465,9 +481,15 @@ export default function App() {
           flexDirection: "column",
         }}
       >
-        <p style={{ marginBottom: "8px", fontSize: "0.9rem" }}>
+        <p style={{ marginBottom: "4px", fontSize: "0.9rem" }}>
           <strong>{sampleSpeech.speaker}</strong> - {sampleSpeech.event} ({sampleSpeech.date})
         </p>
+        {sampleSpeech.sentiment && (
+          <p style={{ marginBottom: "8px", fontSize: "0.85rem", opacity: 0.8 }}>
+            Overall sentiment: <strong>{sampleSpeech.sentiment.replace(/_/g, " ")}</strong>
+            {sampleSpeech.sentimentScore && ` (${(sampleSpeech.sentimentScore * 100).toFixed(0)}%)`}
+          </p>
+        )}
         <p>
           {current.text} ({current.emotionScores[0].label})
         </p>
