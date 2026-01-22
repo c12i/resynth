@@ -9,36 +9,50 @@ export function applyEmotionDistortion(
 ): [number, number, number] {
   switch (emotion) {
     case "anger":
-      // Sharp, aggressive expansion with violent pulsing - like an explosion
-      const distance = Math.sqrt(x * x + y * y + z * z);
-      const normalX = distance > 0 ? x / distance : 0;
-      const normalY = distance > 0 ? y / distance : 0;
-      const normalZ = distance > 0 ? z / distance : 0;
+      // Cube stretches outward uniformly with aggressive shaking and very slight corner emphasis
+      const cubeHalfSize = 8; // Approximate half-size of the cube
 
-      // Powerful, rhythmic pulsing outward
-      const angerPulse = Math.sin(frame / 12) * Math.sin(frame / 12); // Squared for sharper pulse
-      const explosionStrength = angerPulse * 5.0;
+      // Calculate distance from center
+      const angerDistFromCenter = Math.sqrt(x * x + y * y + z * z);
+      const normalX = angerDistFromCenter > 0 ? x / angerDistFromCenter : 0;
+      const normalY = angerDistFromCenter > 0 ? y / angerDistFromCenter : 0;
+      const normalZ = angerDistFromCenter > 0 ? z / angerDistFromCenter : 0;
 
-      // Sharp, jagged distortions - like shards of glass
-      const shardX = Math.floor(Math.sin(x * 2.5 + frame / 15) * 4) * 0.9;
-      const shardY = Math.floor(Math.cos(y * 2.5 + frame / 15) * 4) * 0.9;
-      const shardZ = Math.floor(Math.sin(z * 2.5 + frame / 15) * 4) * 0.9;
+      // Outward expansion - pulsing stretch with UMPH
+      const expansionPulse = Math.sin(frame / 15) * 0.5 + 0.5; // 0 to 1
+      const expansionStrength = expansionPulse * 7.0; // Strong outward push with umph!
 
-      // Violent rotation/twist
-      const twist = frame / 20;
-      const twistX = Math.cos(twist) * y * 0.3 - Math.sin(twist) * z * 0.3;
-      const twistZ = Math.sin(twist) * y * 0.3 + Math.cos(twist) * z * 0.3;
+      // VERY SLIGHT corner emphasis (barely noticeable)
+      // Calculate how "corner-like" this position is (all coords near max)
+      const cornerFactor = (Math.abs(x) / cubeHalfSize) *
+                          (Math.abs(y) / cubeHalfSize) *
+                          (Math.abs(z) / cubeHalfSize);
+      const cornerBoost = cornerFactor * 1.5; // Slightly more corner emphasis
 
-      // Aggressive vibration
-      const rage = Math.sin(frame / 8) * Math.cos(frame / 10);
-      const vibrateX = Math.sin(frame * 2 + x * 8) * rage * 0.6;
-      const vibrateY = Math.cos(frame * 2.2 + y * 9) * rage * 0.6;
-      const vibrateZ = Math.sin(frame * 1.8 + z * 7) * rage * 0.6;
+      // VERY AGGRESSIVE shaking everywhere
+      const shakeSpeed = 5.5; // Very fast, violent shaking
+      const shakeAmplitude = 2.5; // Strong shake amplitude
+      const globalShakeX = Math.sin(frame * shakeSpeed + x * 12) * shakeAmplitude;
+      const globalShakeY = Math.cos(frame * shakeSpeed * 1.15 + y * 13) * shakeAmplitude;
+      const globalShakeZ = Math.sin(frame * shakeSpeed * 0.85 + z * 11) * shakeAmplitude;
+
+      // Additional high-frequency tremor for extra aggression
+      const tremorSpeed = 9.0;
+      const tremorAmplitude = 1.5;
+      const tremorX = Math.sin(frame * tremorSpeed + x * 20) * tremorAmplitude;
+      const tremorY = Math.cos(frame * tremorSpeed * 1.2 + y * 22) * tremorAmplitude;
+      const tremorZ = Math.sin(frame * tremorSpeed * 0.9 + z * 18) * tremorAmplitude;
+
+      // Very slight scatter
+      const scatterAmplitude = 0.3; // Very subtle
+      const scatterX = Math.sin(frame / 7 + x * 3.5) * Math.cos(frame / 11 + y * 2.1) * scatterAmplitude;
+      const scatterY = Math.cos(frame / 9 + y * 4.2) * Math.sin(frame / 13 + z * 3.3) * scatterAmplitude;
+      const scatterZ = Math.sin(frame / 8 + z * 3.8) * Math.cos(frame / 10 + x * 2.7) * scatterAmplitude;
 
       return [
-        x + normalX * explosionStrength + shardX + twistX + vibrateX,
-        y + normalY * explosionStrength + shardY + vibrateY,
-        z + normalZ * explosionStrength + shardZ + twistZ + vibrateZ,
+        x + normalX * (expansionStrength + cornerBoost) + globalShakeX + tremorX + scatterX,
+        y + normalY * (expansionStrength + cornerBoost) + globalShakeY + tremorY + scatterY,
+        z + normalZ * (expansionStrength + cornerBoost) + globalShakeZ + tremorZ + scatterZ,
       ];
 
     case "sadness":
@@ -125,6 +139,14 @@ export function applyEmotionDistortion(
 
     case "disgust":
       // Only certain regions bulge - creating isolated diseased patches
+      const disgustCubeHalfSize = 8;
+
+      // Check if particle is on an edge (close to the boundary on at least one axis)
+      const disgustOnEdgeX = Math.abs(Math.abs(x) - disgustCubeHalfSize) < 0.5;
+      const disgustOnEdgeY = Math.abs(Math.abs(y) - disgustCubeHalfSize) < 0.5;
+      const disgustOnEdgeZ = Math.abs(Math.abs(z) - disgustCubeHalfSize) < 0.5;
+      const disgustIsOnEdge = disgustOnEdgeX || disgustOnEdgeY || disgustOnEdgeZ;
+
       const regionX = Math.floor(x / 2);
       const regionZ = Math.floor(z / 2);
 
@@ -134,17 +156,19 @@ export function applyEmotionDistortion(
         const warp2 = Math.cos(frame / 28 + y * 3.2);
         const warp3 = Math.sin(frame / 32 + z * 2.8);
 
-        // Asymmetric bulges that move around
-        const bulgeX = Math.sin(frame / 20 + y * z * 0.5) * 1.4;
-        const bulgeY = Math.cos(frame / 24 + x * z * 0.6) * 1.2;
-        const bulgeZ = Math.sin(frame / 22 + x * y * 0.4) * 1.4;
+        // Asymmetric bulges that move around (reduced on edges)
+        const bulgeIntensity = disgustIsOnEdge ? 0.25 : 1.0;
+        const bulgeX = Math.sin(frame / 20 + y * z * 0.5) * 1.4 * bulgeIntensity;
+        const bulgeY = Math.cos(frame / 24 + x * z * 0.6) * 1.2 * bulgeIntensity;
+        const bulgeZ = Math.sin(frame / 22 + x * y * 0.4) * 1.4 * bulgeIntensity;
 
         const wobble = Math.sin(frame / 15) * Math.cos(frame / 18);
+        const wobbleIntensity = disgustIsOnEdge ? 0.2 : 1.0;
 
         return [
-          x + bulgeX * warp1 + Math.sin(y * 5 + frame / 12) * wobble * 1.0,
-          y + bulgeY * warp2 + Math.cos(z * 4.5 + frame / 14) * wobble * 0.8,
-          z + bulgeZ * warp3 + Math.sin(x * 4.8 + frame / 11) * wobble * 1.0,
+          x + bulgeX * warp1 + Math.sin(y * 5 + frame / 12) * wobble * 1.0 * wobbleIntensity,
+          y + bulgeY * warp2 + Math.cos(z * 4.5 + frame / 14) * wobble * 0.8 * wobbleIntensity,
+          z + bulgeZ * warp3 + Math.sin(x * 4.8 + frame / 11) * wobble * 1.0 * wobbleIntensity,
         ];
       }
 

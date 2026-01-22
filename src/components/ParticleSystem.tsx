@@ -5,11 +5,11 @@ import type { EmotionType, EmotionScore } from "../types/emotion";
 import { applyEmotionDistortion, lerp } from "../utils/emotionDistortions";
 
 const emotionColors: Record<EmotionType, string> = {
-  anger: "#ff1744",
+  anger: "#cc1234",      // Darker red
   disgust: "#76ff03",
   fear: "#9c27ff",
-  joy: "#ffd600",
-  neutral: "#90a4ae",
+  joy: "#d4a500",        // Darker gold/yellow
+  neutral: "#5a6c7a",    // Darker gray-blue
   sadness: "#2979ff",
   surprise: "#ff4081",
 };
