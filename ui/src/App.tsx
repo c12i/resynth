@@ -38,6 +38,7 @@ export default function App() {
   const [masterVolume, setMasterVolume] = useState(0.5);
   const [speechesLoaded, setSpeechesLoaded] = useState(false);
   const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>([]);
+  const [consecutiveCount, setConsecutiveCount] = useState(0);
 
   const currentRef = useRef<any>(null);
   const masterGainRef = useRef<Tone.Gain | null>(null);
@@ -277,8 +278,10 @@ export default function App() {
           // Track consecutive emotions
           if (newEmotion === lastEmotion) {
             consecutiveEmotionCount++;
+            setConsecutiveCount(consecutiveEmotionCount);
           } else {
             consecutiveEmotionCount = 1;
+            setConsecutiveCount(1);
             lastEmotion = newEmotion;
           }
 
@@ -457,6 +460,7 @@ export default function App() {
             <ParticleSystem
               currentEmotion={emotionRef.current}
               emotionScores={current.emotionScores as any}
+              consecutiveEmotionCount={consecutiveCount}
             />
             <EffectComposer>
               <Bloom

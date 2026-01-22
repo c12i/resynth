@@ -153,16 +153,19 @@ const fragmentShader = `
 interface ParticleSystemProps {
   currentEmotion: EmotionType;
   emotionScores: EmotionScore[];
+  consecutiveEmotionCount?: number;
 }
 
 export function ParticleSystem({
   currentEmotion,
   emotionScores,
+  consecutiveEmotionCount = 0,
 }: ParticleSystemProps) {
   const pointsRef = useRef<THREE.Group>(null!);
   const geometryRef = useRef<THREE.BufferGeometry>(null!);
   const materialRef = useRef<THREE.ShaderMaterial>(null!);
   const frameRef = useRef(0);
+  const rubikPhaseRef = useRef(0);
 
   // Big cube made of many mini cubes
   const cubeSize = 10; // 10x10x10 grid of particles
@@ -260,6 +263,115 @@ export function ParticleSystem({
     };
   }, []);
 
+  // Helper function to apply Rubik's cube-style rotation to a slice
+  const applyRubikRotation = (
+    x: number,
+    y: number,
+    z: number,
+    rotationPhase: number,
+    consecutiveCount: number
+  ): [number, number, number] => {
+    // Threshold for when Rubik rotations start
+    const threshold = 3;
+    if (consecutiveCount < threshold) {
+      return [x, y, z];
+    }
+
+    // Determine rotation intensity based on consecutive count
+    const intensity = Math.min((consecutiveCount - threshold) / 10, 1.0);
+
+    // Cycle through different rotation patterns
+    const cycleSpeed = 0.02;
+    const cycle = Math.floor(rotationPhase * cycleSpeed) % 6;
+
+    // Define slice thickness (which particles get rotated)
+    const sliceThickness = 2.5;
+
+    // Rotation angle increases with consecutive count
+    const baseAngle = rotationPhase * 0.03 * intensity;
+
+    let newX = x;
+    let newY = y;
+    let newZ = z;
+
+    // Different rotation patterns based on cycle
+    switch (cycle) {
+      case 0: // Rotate top slice around Y axis
+        if (y > cubeSize / 2 - sliceThickness) {
+          const angle = baseAngle;
+          const centerX = 0;
+          const centerZ = 0;
+          const dx = x - centerX;
+          const dz = z - centerZ;
+          newX = centerX + dx * Math.cos(angle) - dz * Math.sin(angle);
+          newZ = centerZ + dx * Math.sin(angle) + dz * Math.cos(angle);
+        }
+        break;
+
+      case 1: // Rotate bottom slice around Y axis (opposite direction)
+        if (y < -cubeSize / 2 + sliceThickness) {
+          const angle = -baseAngle;
+          const centerX = 0;
+          const centerZ = 0;
+          const dx = x - centerX;
+          const dz = z - centerZ;
+          newX = centerX + dx * Math.cos(angle) - dz * Math.sin(angle);
+          newZ = centerZ + dx * Math.sin(angle) + dz * Math.cos(angle);
+        }
+        break;
+
+      case 2: // Rotate right slice around X axis
+        if (x > cubeSize / 2 - sliceThickness) {
+          const angle = baseAngle;
+          const centerY = 0;
+          const centerZ = 0;
+          const dy = y - centerY;
+          const dz = z - centerZ;
+          newY = centerY + dy * Math.cos(angle) - dz * Math.sin(angle);
+          newZ = centerZ + dy * Math.sin(angle) + dz * Math.cos(angle);
+        }
+        break;
+
+      case 3: // Rotate left slice around X axis (opposite direction)
+        if (x < -cubeSize / 2 + sliceThickness) {
+          const angle = -baseAngle;
+          const centerY = 0;
+          const centerZ = 0;
+          const dy = y - centerY;
+          const dz = z - centerZ;
+          newY = centerY + dy * Math.cos(angle) - dz * Math.sin(angle);
+          newZ = centerZ + dy * Math.sin(angle) + dz * Math.cos(angle);
+        }
+        break;
+
+      case 4: // Rotate front slice around Z axis
+        if (z > cubeSize / 2 - sliceThickness) {
+          const angle = baseAngle;
+          const centerX = 0;
+          const centerY = 0;
+          const dx = x - centerX;
+          const dy = y - centerY;
+          newX = centerX + dx * Math.cos(angle) - dy * Math.sin(angle);
+          newY = centerY + dx * Math.sin(angle) + dy * Math.cos(angle);
+        }
+        break;
+
+      case 5: // Rotate back slice around Z axis (opposite direction)
+        if (z < -cubeSize / 2 + sliceThickness) {
+          const angle = -baseAngle;
+          const centerX = 0;
+          const centerY = 0;
+          const dx = x - centerX;
+          const dy = y - centerY;
+          newX = centerX + dx * Math.cos(angle) - dy * Math.sin(angle);
+          newY = centerY + dx * Math.sin(angle) + dy * Math.cos(angle);
+        }
+        break;
+    }
+
+    return [newX, newY, newZ];
+  };
+
   // Animation loop
   useFrame((_, delta) => {
     const geometry = geometryRef.current;
@@ -271,6 +383,9 @@ export function ParticleSystem({
 
     // Update frame counter (preserve speed from original)
     frameRef.current += delta * 50;
+
+    // Update Rubik rotation phase
+    rubikPhaseRef.current += delta * 60;
 
     // Update shader uniforms
     material.uniforms.uTime.value = frameRef.current;
@@ -314,13 +429,22 @@ export function ParticleSystem({
       const oy = originalPositions[idx + 1];
       const oz = originalPositions[idx + 2];
 
-      // Apply emotion distortion
-      const [dx, dy, dz] = applyEmotionDistortion(
+      // Apply emotion distortion first
+      let [dx, dy, dz] = applyEmotionDistortion(
         currentEmotion,
         ox,
         oy,
         oz,
         frameRef.current,
+      );
+
+      // Then apply Rubik's cube rotation on top of emotion distortion
+      [dx, dy, dz] = applyRubikRotation(
+        dx,
+        dy,
+        dz,
+        rubikPhaseRef.current,
+        consecutiveEmotionCount
       );
 
       targetPositions[idx] = dx;
@@ -365,13 +489,22 @@ export function ParticleSystem({
         const oy = edgeOriginalPositions[idx + 1];
         const oz = edgeOriginalPositions[idx + 2];
 
-        // Apply emotion distortion
-        const [dx, dy, dz] = applyEmotionDistortion(
+        // Apply emotion distortion first
+        let [dx, dy, dz] = applyEmotionDistortion(
           currentEmotion,
           ox,
           oy,
           oz,
           frameRef.current,
+        );
+
+        // Then apply Rubik's cube rotation on top
+        [dx, dy, dz] = applyRubikRotation(
+          dx,
+          dy,
+          dz,
+          rubikPhaseRef.current,
+          consecutiveEmotionCount
         );
 
         edgeTargetPositions[idx] = dx;
