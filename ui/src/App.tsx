@@ -109,7 +109,7 @@ export default function App() {
     const melodySynth = new Tone.Synth().connect(globalGain);
 
     // Drums - kick and tom for variety
-    const drumGain = new Tone.Gain(0.22).connect(masterGain);
+    const drumGain = new Tone.Gain(0.35).connect(masterGain); // Increased from 0.22
 
     // Kick drum - deep bass
     const kick = new Tone.MembraneSynth({
