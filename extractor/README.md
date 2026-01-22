@@ -12,12 +12,19 @@ Analyzes each line of text for 7 emotions (anger, disgust, fear, joy, neutral, s
 
 Determines overall sentiment of a speech (very_negative, negative, neutral, positive, very_positive) and outputs just the sentiment classification.
 
-## Features
+## Usage
 
-- **Two Specialized Tools**: Separate binaries for emotion and sentiment analysis
-- **Free to Use**: Uses HuggingFace's free Serverless Inference API
-- **Append Mode**: Each speech file is processed individually and appended to a JSON array
-- **Configurable**: Threshold filtering, score normalization, and more
+### Emotion Extraction
+
+```bash
+./emotion -input speeches/speech.txt
+```
+
+### Sentiment Analysis
+
+```bash
+./sentiment -input speeches/speech.txt
+```
 
 ## Command-Line Flags
 

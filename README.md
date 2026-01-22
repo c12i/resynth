@@ -1,7 +1,15 @@
 # Resynth
 
-**What you're seeing and hearing is not random.**
-This is an audiovisual exploration of political speech — where each word's emotional tone is translated into color, sound, and motion.
+An audiovisual exploration of political speech, where each word's emotional tone is translated into color, sound, and motion.
+
+## How It Works
+
+1. **Emotion Detection**: Uses a machine learning models, [`j-hartmann/emotion-english-distilroberta-base`](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) and [`twitter-roberta-base-sentiment-latest`](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest), to classify emotions line-by-line and analyse overall sentiment respectively. This is handled by binaries in [/extractors](./extractor).
+2. **Data Mapping**: Each emotional label controls a set of visual and audio responses as well as distortion algorithms (all generated with AI assistance).
+3. **Web Technology**:
+   - **three.js**: Renders the responsive shape.
+   - **Tone.js**: Generates real-time synthesized audio.
+   - **React + TypeScript**: Powers the single-page application.
 
 ## Setup
 
@@ -32,53 +40,3 @@ make run-all-speeches
 ./emotion -input speeches/my-speech.txt
 ./sentiment -input speeches/my-speech.txt
 ```
-
-See [SETUP.md](SETUP.md) for detailed setup instructions.
-
-## Visual Meaning
-
-### **Color**
-
-Each dominant emotion is mapped to a distinct color:
-
-- **Joy** → Golden Yellow
-- **Anger** → Crimson Red
-- **Sadness** → Deep Blue
-- **Fear** → Violet
-- **Disgust** → Acid Green
-- **Surprise** → Pink
-- **Neutral** → Gray
-
-### **Shape Behavior**
-
-The shape reacts and deforms based on the emotion:
-
-- **Anger**: Sharp, erratic bursts
-- **Sadness**: Slow, drooping motion
-- **Joy**: Buoyant, uplifting spirals
-- **Fear**: Jittery, unstable flickers
-- **Disgust**: Twisted, warped flow
-- **Surprise**: Chaotic pulses
-- **Neutral**: Calm and minimal
-
-### **Color Gradients**
-
-When multiple emotions are detected in a single moment, colors blend into gradients to reflect emotional complexity and internal conflict.
-
-## Sound Design
-
-Each emotion triggers a unique synthesized note and timbre:
-
-- The **pitch** and **oscillator type** represent the emotional weight.
-- Sounds are tuned to create a **melodic backdrop**, even as the emotional tone shifts.
-- Ambient tones run continuously, while sharper notes mark transitions between emotions.
-
-## How It Works
-
-1. **Speech-to-Text**: Transcribes political speech in real time or from archived audio.
-2. **Emotion Detection**: Uses a machine learning model (`distilroberta-base`) to classify emotions line-by-line.
-3. **Data Mapping**: Each emotional label controls a set of visual and audio responses.
-4. **Web Technology**:
-   - **three.js**: Renders the responsive shape.
-   - **Tone.js**: Generates real-time synthesized audio.
-   - **React + TypeScript**: Powers the single-page application.

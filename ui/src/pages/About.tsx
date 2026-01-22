@@ -57,7 +57,7 @@ export default function About() {
             fontSize: "48px",
             fontWeight: "400",
             marginBottom: "1rem",
-            fontFamily: "'Syne Mono', monospace"
+            fontFamily: "'Syne Mono', monospace",
           }}
         >
           Resynth
@@ -144,14 +144,16 @@ export default function About() {
           Step 2: Emotion detection with Machine Learning
         </h3>
         <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
-          The text is analyzed line-by-line using machine learning models. Each line is classified into one of seven emotions (based on Ekman's 6 basic emotions plus neutral) using{" "}
+          The text is analyzed line-by-line using machine learning models. Each
+          line is classified into one of seven emotions (based on Ekman's 6
+          basic emotions plus neutral) using{" "}
           <a
             href="https://huggingface.co/j-hartmann/emotion-english-distilroberta-base"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#fff", textDecoration: "underline" }}
           >
-            DistilRoBERTa
+            Emotion Distilroberta Base
           </a>
           , while the overall sentiment of the speech is determined using{" "}
           <a
@@ -160,7 +162,7 @@ export default function About() {
             rel="noopener noreferrer"
             style={{ color: "#fff", textDecoration: "underline" }}
           >
-            RoBERTa
+            Twitter Roberta Base
           </a>
           :
         </p>
@@ -336,12 +338,21 @@ export default function About() {
               textAlign: "left",
             }}
           >
-            <li>A unique color. When multiple emotions are present, colors blend to form gradients that reflect the emotional complexity of the moment</li>
             <li>
-              A particle distortion algorithm (like twitching, drooping, spiraling)
+              A unique color. When multiple emotions are present, colors blend
+              to form gradients that reflect the emotional complexity of the
+              moment
             </li>
             <li>
-              A synthesized sound (softer tones for sadness, sharp spikes for anger, etc.). The overall sentiment of the speech also shapes a background tone that plays throughout, ranging from tense, dissonant chords for negative sentiment to warm, harmonious chords for positive sentiment
+              A particle distortion algorithm (like twitching, drooping,
+              spiraling)
+            </li>
+            <li>
+              A synthesized sound (softer tones for sadness, sharp spikes for
+              anger, etc.). The overall sentiment of the speech also shapes a
+              background tone that plays throughout, ranging from tense,
+              dissonant chords for negative sentiment to warm, harmonious chords
+              for positive sentiment
             </li>
           </ul>
         </div>
