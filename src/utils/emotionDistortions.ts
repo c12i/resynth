@@ -9,10 +9,10 @@ export function applyEmotionDistortion(
 ): [number, number, number] {
   switch (emotion) {
     case "anger":
-      // Cube stretches outward uniformly with aggressive shaking and very slight corner emphasis
-      const cubeHalfSize = 8; // Approximate half-size of the cube
+      // Rubik's cube style - half of the cube rotates/flips while expanding outward
+      const cubeHalfSize = 8;
 
-      // Calculate distance from center
+      // Calculate distance from center for outward expansion
       const angerDistFromCenter = Math.sqrt(x * x + y * y + z * z);
       const normalX = angerDistFromCenter > 0 ? x / angerDistFromCenter : 0;
       const normalY = angerDistFromCenter > 0 ? y / angerDistFromCenter : 0;
@@ -20,39 +20,59 @@ export function applyEmotionDistortion(
 
       // Outward expansion - pulsing stretch with UMPH
       const expansionPulse = Math.sin(frame / 15) * 0.5 + 0.5; // 0 to 1
-      const expansionStrength = expansionPulse * 7.0; // Strong outward push with umph!
+      const expansionStrength = expansionPulse * 7.0; // Strong outward push
 
-      // VERY SLIGHT corner emphasis (barely noticeable)
-      // Calculate how "corner-like" this position is (all coords near max)
+      // VERY SLIGHT corner emphasis
       const cornerFactor = (Math.abs(x) / cubeHalfSize) *
                           (Math.abs(y) / cubeHalfSize) *
                           (Math.abs(z) / cubeHalfSize);
-      const cornerBoost = cornerFactor * 1.5; // Slightly more corner emphasis
+      const cornerBoost = cornerFactor * 1.5;
+
+      // Apply expansion first
+      const expandedX = x + normalX * (expansionStrength + cornerBoost);
+      const expandedY = y + normalY * (expansionStrength + cornerBoost);
+      const expandedZ = z + normalZ * (expansionStrength + cornerBoost);
+
+      // Determine which half of the cube this particle is in
+      // Split the cube vertically (along Y axis)
+      const isTopHalf = y > 0;
+
+      // Rotation angle - light tilt, oscillates back and forth
+      const rotationAngle = Math.sin(frame / 20) * Math.PI / 12; // Light tilt - up to 15 degrees
 
       // VERY AGGRESSIVE shaking everywhere
-      const shakeSpeed = 5.5; // Very fast, violent shaking
-      const shakeAmplitude = 2.5; // Strong shake amplitude
+      const shakeSpeed = 5.5;
+      const shakeAmplitude = 2.5;
       const globalShakeX = Math.sin(frame * shakeSpeed + x * 12) * shakeAmplitude;
       const globalShakeY = Math.cos(frame * shakeSpeed * 1.15 + y * 13) * shakeAmplitude;
       const globalShakeZ = Math.sin(frame * shakeSpeed * 0.85 + z * 11) * shakeAmplitude;
 
-      // Additional high-frequency tremor for extra aggression
+      // Additional high-frequency tremor
       const tremorSpeed = 9.0;
       const tremorAmplitude = 1.5;
       const tremorX = Math.sin(frame * tremorSpeed + x * 20) * tremorAmplitude;
       const tremorY = Math.cos(frame * tremorSpeed * 1.2 + y * 22) * tremorAmplitude;
       const tremorZ = Math.sin(frame * tremorSpeed * 0.9 + z * 18) * tremorAmplitude;
 
-      // Very slight scatter
-      const scatterAmplitude = 0.3; // Very subtle
-      const scatterX = Math.sin(frame / 7 + x * 3.5) * Math.cos(frame / 11 + y * 2.1) * scatterAmplitude;
-      const scatterY = Math.cos(frame / 9 + y * 4.2) * Math.sin(frame / 13 + z * 3.3) * scatterAmplitude;
-      const scatterZ = Math.sin(frame / 8 + z * 3.8) * Math.cos(frame / 10 + x * 2.7) * scatterAmplitude;
+      let finalX = expandedX;
+      let finalY = expandedY;
+      let finalZ = expandedZ;
+
+      // Apply rotation to top half only (rotate around Y axis)
+      if (isTopHalf) {
+        // Rotate around Y axis
+        const cosAngle = Math.cos(rotationAngle);
+        const sinAngle = Math.sin(rotationAngle);
+
+        finalX = expandedX * cosAngle - expandedZ * sinAngle;
+        finalZ = expandedX * sinAngle + expandedZ * cosAngle;
+        finalY = expandedY; // Y stays the same for Y-axis rotation
+      }
 
       return [
-        x + normalX * (expansionStrength + cornerBoost) + globalShakeX + tremorX + scatterX,
-        y + normalY * (expansionStrength + cornerBoost) + globalShakeY + tremorY + scatterY,
-        z + normalZ * (expansionStrength + cornerBoost) + globalShakeZ + tremorZ + scatterZ,
+        finalX + globalShakeX + tremorX,
+        finalY + globalShakeY + tremorY,
+        finalZ + globalShakeZ + tremorZ,
       ];
 
     case "sadness":
