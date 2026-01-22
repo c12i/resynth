@@ -6,114 +6,9 @@ import * as Tone from "tone";
 import { speeches } from "./data";
 import { ParticleSystem } from "./components/ParticleSystem";
 import type { EmotionType } from "./types/emotion";
+import { toneStyles, type ToneStyle } from "./config/toneStyles";
 
-// Tone style configurations
-type ToneStyle = "ambient" | "synthwave" | "lofi";
-
-const toneStyles: Record<
-  ToneStyle,
-  {
-    oscillators: Record<EmotionType, string>;
-    synthConfig: {
-      count?: number;
-      spread?: number;
-      attack: number;
-      decay: number;
-      sustain: number;
-      release: number;
-      portamento: number;
-    };
-    filterFreqs: Record<string, number>;
-  }
-> = {
-  ambient: {
-    oscillators: {
-      joy: "triangle",
-      anger: "sawtooth",
-      sadness: "sine",
-      fear: "sine2",
-      disgust: "square",
-      surprise: "triangle",
-      neutral: "sine",
-    },
-    synthConfig: {
-      attack: 0.3,
-      decay: 0.4,
-      sustain: 0.6,
-      release: 2.5,
-      portamento: 0,
-    },
-    filterFreqs: {
-      anger: 1200,
-      disgust: 800,
-      fear: 1500,
-      joy: 3000,
-      neutral: 2000,
-      sadness: 1000,
-      surprise: 2500,
-    },
-  },
-  synthwave: {
-    oscillators: {
-      joy: "fatsawtooth",
-      anger: "fatsquare",
-      sadness: "fatsawtooth",
-      fear: "pwm",
-      disgust: "fatsquare",
-      surprise: "fatsawtooth",
-      neutral: "triangle",
-    },
-    synthConfig: {
-      count: 3,
-      spread: 40,
-      attack: 0.05,
-      decay: 0.3,
-      sustain: 0.4,
-      release: 0.8,
-      portamento: 0.05,
-    },
-    filterFreqs: {
-      anger: 1800,
-      disgust: 1000,
-      fear: 2000,
-      joy: 4000,
-      neutral: 2500,
-      sadness: 1200,
-      surprise: 3500,
-    },
-  },
-  lofi: {
-    oscillators: {
-      joy: "triangle", // Warm and mellow
-      anger: "sawtooth", // Slightly gritty but warm
-      sadness: "sine", // Soft and nostalgic
-      fear: "triangle", // Gentle tension
-      disgust: "square", // Muffled, lo-fi crunch
-      surprise: "triangle", // Soft surprise
-      neutral: "sine", // Clean and centered
-    },
-    synthConfig: {
-      count: 2, // Slight unison for warmth
-      spread: 15, // Gentle detune for lo-fi wobble
-      attack: 0.08, // Soft attack, not too slow
-      decay: 0.5,
-      sustain: 0.5, // Moderate sustain
-      release: 1.2, // Gentle fade
-      portamento: 0.02, // Subtle pitch slides
-    },
-    filterFreqs: {
-      anger: 800, // Muffled, warm
-      disgust: 600, // Very muffled
-      fear: 1000, // Subdued
-      joy: 1800, // Brighter but not harsh
-      neutral: 1200, // Balanced warmth
-      sadness: 700, // Deep, warm sadness
-      surprise: 1500, // Gentle brightness
-    },
-  },
-};
-
-// Refined note mappings for better emotional resonance
+// Emotion note mappings
 const emotionNotes: Record<string, string> = {
   anger: "G2", // Lower, more aggressive
   disgust: "Bb2", // Dissonant, unsettling
@@ -130,9 +25,11 @@ export default function App() {
   const [selectedSpeech, setSelectedSpeech] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
   const [toneStyle, setToneStyle] = useState<ToneStyle>("synthwave");
+  const [masterVolume, setMasterVolume] = useState(0.5);
   const sampleSpeech = speeches[selectedSpeech];
   const current = sampleSpeech[index];
   const currentRef = useRef(current);
+  const masterGainRef = useRef<Tone.Gain | null>(null);
 
   useEffect(() => {
     currentRef.current = sampleSpeech[index];
@@ -141,6 +38,13 @@ export default function App() {
   const emotionRef = useRef<EmotionType>(
     current.emotionScores[0].label as EmotionType,
   );
+
+  // Update master volume in real-time
+  useEffect(() => {
+    if (masterGainRef.current) {
+      masterGainRef.current.gain.rampTo(masterVolume, 0.1);
+    }
+  }, [masterVolume]);
 
   // Audio setup - reset when tone style changes
   useEffect(() => {
@@ -154,11 +58,15 @@ export default function App() {
     let consecutiveEmotionCount = 0; // Track consecutive emotions for drum complexity
     let lastEmotion: EmotionType | null = null;
 
+    // Master gain controls everything
+    const masterGain = new Tone.Gain(masterVolume).toDestination();
+    masterGainRef.current = masterGain;
+
     // Audio effects chain for smoother, less grainy sound
     const reverb = new Tone.Reverb({
       decay: 3.5,
       wet: 0.3,
-    }).toDestination();
+    }).connect(masterGain);
 
     const delay = new Tone.FeedbackDelay({
       delayTime: "8n",
@@ -177,7 +85,7 @@ export default function App() {
     const melodySynth = new Tone.Synth().connect(globalGain);
 
     // Drums - kick and tom for variety
-    const drumGain = new Tone.Gain(0.22).toDestination();
+    const drumGain = new Tone.Gain(0.22).connect(masterGain);
 
     // Kick drum - deep bass
     const kick = new Tone.MembraneSynth({
@@ -213,7 +121,7 @@ export default function App() {
           release: 10.0,
         },
       });
-      backgroundSynth.triggerAttack(["C3", "G3", "E4"]);
+      backgroundSynth.triggerAttack(["C2", "G2", "E3"]); // Lowered by one octave for darker tone
 
       // Drum patterns - will start after 8 emotion changes
       let beatCount = 0;
@@ -360,7 +268,7 @@ export default function App() {
     return () => {
       clearInterval(interval);
       Tone.Transport.stop();
-      backgroundSynth.triggerRelease(["C3", "G3", "E4"]);
+      backgroundSynth.triggerRelease(["C2", "G2", "E3"]);
       melodySynth.triggerRelease(Tone.now());
       backgroundSynth.dispose();
       melodySynth.dispose();
@@ -371,6 +279,7 @@ export default function App() {
       delay.dispose();
       reverb.dispose();
       globalGain.dispose();
+      masterGain.dispose();
     };
   }, [started, selectedSpeech, toneStyle]); // Re-run when tone style changes
 
@@ -542,6 +451,41 @@ export default function App() {
           <option value={2}>Speech C (mixed emotions)</option>
         </select>
       </div>
+
+      {/* Volume Control */}
+      {started && (
+        <div
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            zIndex: 10,
+            color: "white",
+            fontFamily: "monospace",
+            fontSize: "0.9rem",
+            background: "rgba(0, 0, 0, 0.7)",
+            padding: "15px 20px",
+            borderRadius: "8px",
+            backdropFilter: "blur(10px)",
+            minWidth: "200px",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: "5px" }}>
+            Volume: {Math.round(masterVolume * 100)}%
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={masterVolume * 100}
+            onChange={(e) => setMasterVolume(Number(e.target.value) / 100)}
+            style={{
+              width: "100%",
+              cursor: "pointer",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
