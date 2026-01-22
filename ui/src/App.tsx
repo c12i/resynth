@@ -3,9 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { OrbitControls } from "@react-three/drei";
 import * as Tone from "tone";
-import { speeches } from "./data";
+import { loadSpeeches } from "./data";
 import { ParticleSystem } from "./components/ParticleSystem";
-import type { EmotionType } from "./types/emotion";
+import type { EmotionType, SpeechWithMetadata } from "./types/emotion";
 import { toneStyles, type ToneStyle } from "./config/toneStyles";
 
 // Emotion note mappings
@@ -26,18 +26,31 @@ export default function App() {
   const [autoRotate, setAutoRotate] = useState(true);
   const [toneStyle, setToneStyle] = useState<ToneStyle>("synthwave");
   const [masterVolume, setMasterVolume] = useState(0.5);
-  const sampleSpeech = speeches[selectedSpeech];
-  const current = sampleSpeech[index];
-  const currentRef = useRef(current);
+  const [speechesLoaded, setSpeechesLoaded] = useState(false);
+  const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>([]);
+
+  const currentRef = useRef<any>(null);
   const masterGainRef = useRef<Tone.Gain | null>(null);
+  const emotionRef = useRef<EmotionType>("neutral");
 
+  // Load speeches on mount
   useEffect(() => {
-    currentRef.current = sampleSpeech[index];
-  }, [index, sampleSpeech]);
+    loadSpeeches().then((data) => {
+      setLoadedSpeeches(data);
+      setSpeechesLoaded(true);
+    });
+  }, []);
 
-  const emotionRef = useRef<EmotionType>(
-    current.emotionScores[0].label as EmotionType,
-  );
+  // Update current ref when index or speech changes
+  useEffect(() => {
+    if (speechesLoaded && loadedSpeeches.length > 0) {
+      const sampleSpeech = loadedSpeeches[selectedSpeech];
+      if (sampleSpeech && sampleSpeech.lines[index]) {
+        currentRef.current = sampleSpeech.lines[index];
+        emotionRef.current = sampleSpeech.lines[index].emotionScores[0].label as EmotionType;
+      }
+    }
+  }, [index, selectedSpeech, speechesLoaded, loadedSpeeches]);
 
   // Update master volume in real-time
   useEffect(() => {
@@ -48,7 +61,7 @@ export default function App() {
 
   // Audio setup - reset when tone style changes
   useEffect(() => {
-    if (!started) return;
+    if (!started || !speechesLoaded || loadedSpeeches.length === 0) return;
 
     // Reset index when tone style changes
     setIndex(0);
@@ -240,8 +253,8 @@ export default function App() {
 
       interval = setInterval(() => {
         setIndex((i) => {
-          const next = (i + 1) % speeches[selectedSpeech].length;
-          const newEmotion = speeches[selectedSpeech][next].emotionScores[0]
+          const next = (i + 1) % loadedSpeeches[selectedSpeech].lines.length;
+          const newEmotion = loadedSpeeches[selectedSpeech].lines[next].emotionScores[0]
             .label as EmotionType;
           emotionRef.current = newEmotion;
           play(newEmotion);
@@ -281,7 +294,28 @@ export default function App() {
       globalGain.dispose();
       masterGain.dispose();
     };
-  }, [started, selectedSpeech, toneStyle]); // Re-run when tone style changes
+  }, [started, selectedSpeech, toneStyle, loadedSpeeches]); // Re-run when tone style changes
+
+  // Don't render until speeches are loaded
+  if (!speechesLoaded || loadedSpeeches.length === 0) {
+    return (
+      <div style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#0a0a0a",
+        color: "white",
+        fontFamily: "monospace",
+      }}>
+        Loading speeches...
+      </div>
+    );
+  }
+
+  const sampleSpeech = loadedSpeeches[selectedSpeech];
+  const current = sampleSpeech.lines[index];
 
   return (
     <div
@@ -431,24 +465,31 @@ export default function App() {
           flexDirection: "column",
         }}
       >
+        <p style={{ marginBottom: "8px", fontSize: "0.9rem" }}>
+          <strong>{sampleSpeech.speaker}</strong> - {sampleSpeech.event} ({sampleSpeech.date})
+        </p>
         <p>
           {current.text} ({current.emotionScores[0].label})
         </p>
         <select
           style={{
-            width: "250px",
+            width: "350px",
             margin: "4px",
-            padding: "4px",
+            padding: "6px",
+            fontFamily: "monospace",
           }}
           disabled={started}
           value={selectedSpeech}
           onChange={(e) => {
             setSelectedSpeech(Number(e.target.value));
+            setIndex(0); // Reset to first line when changing speech
           }}
         >
-          <option value={0}>Speech A (mostly negative)</option>
-          <option value={1}>Speech B (mostly positive)</option>
-          <option value={2}>Speech C (mixed emotions)</option>
+          {loadedSpeeches.map((speech, idx) => (
+            <option key={idx} value={idx}>
+              {speech.speaker} - {speech.event} ({speech.date})
+            </option>
+          ))}
         </select>
       </div>
 

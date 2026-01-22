@@ -1,0 +1,4432 @@
+[
+  {
+    "speaker": "Kwame Nkurumah",
+    "event": "Ghana Independence Day",
+    "date": "06.04.1957",
+    "lines": [
+      {
+        "text": "At long last,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "the battle has ended.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.68
+          },
+          {
+            "label": "neutral",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "And thus,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "Ghana, your beloved country,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.62
+          },
+          {
+            "label": "neutral",
+            "score": 0.24
+          }
+        ]
+      },
+      {
+        "text": "is free forever.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          },
+          {
+            "label": "joy",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "And yet again,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.61
+          },
+          {
+            "label": "surprise",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "I want to take this opportunity",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "to thank the chiefs and people of Ghana",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.7
+          },
+          {
+            "label": "surprise",
+            "score": 0.17
+          },
+          {
+            "label": "neutral",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "for all that they have done for Ghana’s independence.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.49
+          },
+          {
+            "label": "neutral",
+            "score": 0.21
+          },
+          {
+            "label": "disgust",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "We have won the battle",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.76
+          },
+          {
+            "label": "joy",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "and again rededicate ourselves,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "in the struggle to emancipate the African continent.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.31
+          },
+          {
+            "label": "joy",
+            "score": 0.24
+          },
+          {
+            "label": "fear",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "We pledge ourselves to work unceasingly",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.55
+          },
+          {
+            "label": "fear",
+            "score": 0.12
+          },
+          {
+            "label": "anger",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "to shoulder the responsibilities",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.51
+          },
+          {
+            "label": "joy",
+            "score": 0.19
+          },
+          {
+            "label": "anger",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "that go with independence.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "We are going to demonstrate to the world,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "joy",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "to other nations,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.82
+          }
+        ]
+      },
+      {
+        "text": "that we are prepared to lay our own foundation,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "that we are strong enough to establish our own African personality.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "We are going to create our own African society,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.93
+          }
+        ]
+      },
+      {
+        "text": "not patterned after any other society,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "but one based on African ideals and principles,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.74
+          },
+          {
+            "label": "sadness",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "and our own culture.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "We are going to establish a society",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "in which justice and freedom",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.3
+          },
+          {
+            "label": "neutral",
+            "score": 0.29
+          },
+          {
+            "label": "anger",
+            "score": 0.25
+          }
+        ]
+      },
+      {
+        "text": "will reign.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.7
+          },
+          {
+            "label": "anger",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "We shall measure our progress",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "by the improvement in the health of our people;",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "by the number of children in school;",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "surprise",
+            "score": 0.35
+          }
+        ]
+      },
+      {
+        "text": "and by the quality of their education;",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.44
+          },
+          {
+            "label": "joy",
+            "score": 0.43
+          }
+        ]
+      },
+      {
+        "text": "by the availability of water and electricity in our towns and villages;",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.69
+          },
+          {
+            "label": "surprise",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "and by the happiness which our people take in being able to manage their own affairs.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.95
+          }
+        ]
+      },
+      {
+        "text": "We are prepared to face all disappointments",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.82
+          }
+        ]
+      },
+      {
+        "text": "that may come our way.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          }
+        ]
+      },
+      {
+        "text": "We are prepared to face all obstacles",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.76
+          },
+          {
+            "label": "fear",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "that stand in our path.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.5
+          },
+          {
+            "label": "neutral",
+            "score": 0.25
+          },
+          {
+            "label": "anger",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "We have confidence in ourselves,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.49
+          },
+          {
+            "label": "joy",
+            "score": 0.41
+          }
+        ]
+      },
+      {
+        "text": "and in our ability to chart our own destiny.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "We are going to see that we create the necessary machinery",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.95
+          }
+        ]
+      },
+      {
+        "text": "by which we can ensure that the independence of Ghana",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.73
+          }
+        ]
+      },
+      {
+        "text": "becomes a living reality to every man, woman, and child.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "It is not possible for a country to be truly independent",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.55
+          },
+          {
+            "label": "surprise",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "unless it is economically independent.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.51
+          },
+          {
+            "label": "sadness",
+            "score": 0.17
+          },
+          {
+            "label": "anger",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "We therefore pledge ourselves",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.73
+          },
+          {
+            "label": "joy",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "to pursue a policy of industrialization",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.33
+          },
+          {
+            "label": "anger",
+            "score": 0.27
+          },
+          {
+            "label": "joy",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "so that Ghana may be self-sufficient.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.73
+          },
+          {
+            "label": "joy",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "We shall not allow ourselves",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.28
+          },
+          {
+            "label": "sadness",
+            "score": 0.25
+          },
+          {
+            "label": "fear",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "to be exploited or dominated again.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.41
+          },
+          {
+            "label": "sadness",
+            "score": 0.27
+          },
+          {
+            "label": "disgust",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "We shall ensure that the resources of Ghana",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "are used for the benefit of the people of Ghana.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.53
+          },
+          {
+            "label": "anger",
+            "score": 0.21
+          },
+          {
+            "label": "joy",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "From now on,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "we are no longer a colonial but a free and independent people.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "We must live up to the name of Ghana,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "the proud name of Ghana.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "joy",
+            "score": 0.38
+          }
+        ]
+      },
+      {
+        "text": "We must live up to the standards of Ghana.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We must show the world that Africans are capable",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "of managing their own affairs.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.53
+          },
+          {
+            "label": "anger",
+            "score": 0.16
+          },
+          {
+            "label": "sadness",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "Our independence is meaningless",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.34
+          },
+          {
+            "label": "anger",
+            "score": 0.26
+          },
+          {
+            "label": "neutral",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "unless it is linked up with the total liberation",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          }
+        ]
+      },
+      {
+        "text": "of the African continent.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "surprise",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "We therefore dedicate ourselves",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "to the great cause of African unity.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "Long live Ghana.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "Long live Africa.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "Long live African unity.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "speaker": "Nelson Mandela",
+    "event": "Inauguration Address",
+    "date": "10.05.1994",
+    "lines": [
+      {
+        "text": "Today, all of us do, by our presence here, and by our celebrations in other parts of our country and the world, confer glory and hope to newborn liberty.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.65
+          },
+          {
+            "label": "neutral",
+            "score": 0.3
+          }
+        ]
+      },
+      {
+        "text": "Out of the experience of an extraordinary human disaster that lasted too long, must be born a society of which all humanity will be proud.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "Our daily deeds as ordinary South Africans must produce an actual South African reality that will reinforce humanity’s belief in justice, strengthen its confidence in the nobility of the human soul and sustain all our hopes for a glorious life for all.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.83
+          },
+          {
+            "label": "joy",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "All this we owe both to ourselves and to the peoples of the world who are so well represented here today.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "To my compatriots, I am both humbled and elevated by the honour and privilege you have bestowed on me and on the African National Congress. Together with the other parties and formations that have joined hands with us in the common pursuit of a peaceful and democratic South Africa, this moment is ours.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "We thank all of our distinguished international guests for having come to take possession with the people of our country of what is, after all, a common victory for justice, for peace, for human dignity.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.58
+          },
+          {
+            "label": "neutral",
+            "score": 0.34
+          }
+        ]
+      },
+      {
+        "text": "We trust that you will continue to stand by us as we tackle the challenges of building peace, prosperity, non-sexism, non-racialism and democracy.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "We deeply appreciate the role that the masses of our people and their political formations, religious bodies, the women, youth, business, traditional leaders and workers played to bring about this conclusion. Not least among them is my second Deputy President, the Honourable F. W. de Klerk.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.69
+          },
+          {
+            "label": "neutral",
+            "score": 0.24
+          }
+        ]
+      },
+      {
+        "text": "We would also like to pay tribute to our security forces, both the old and the new, who in the final analysis have worked to ensure that our first democratic elections will be remembered as free, fair and peaceful.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.66
+          },
+          {
+            "label": "joy",
+            "score": 0.18
+          },
+          {
+            "label": "sadness",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "The time for the healing of the wounds has come.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "The moment to bridge the chasms that divide us has come.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          }
+        ]
+      },
+      {
+        "text": "The time to build is upon us.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "We have, at last, achieved our political emancipation. We pledge ourselves to liberate all our people from the continuing bondage of poverty, deprivation, suffering, gender and other discrimination.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.82
+          }
+        ]
+      },
+      {
+        "text": "We succeeded to take our last steps to freedom in conditions of relative peace. We commit ourselves to the construction of a complete, just and lasting peace.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "joy",
+            "score": 0.39
+          }
+        ]
+      },
+      {
+        "text": "We have triumphed in the effort to implant hope in the breasts of the millions of our people.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "We enter into a covenant that we shall build the society in which all South Africans, both black and white, will be able to walk tall, without any fear in their hearts, assured of their inalienable right to human dignity – a rainbow nation at peace with itself and the world.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.72
+          },
+          {
+            "label": "joy",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "As a token of this commitment, the Government of National Unity will address the matter of the amnesty for various categories of people who are currently serving sentences of imprisonment.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.6
+          },
+          {
+            "label": "disgust",
+            "score": 0.14
+          },
+          {
+            "label": "sadness",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "We dedicate this day to all the heroes and heroines in this country and the rest of the world who sacrificed in many ways and surrendered their lives so that we could be free.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          },
+          {
+            "label": "joy",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Their dreams have become reality. Freedom is their reward.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.64
+          },
+          {
+            "label": "joy",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "We are both humbled and inspired by the sacrifices that they made.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We know it well that none of us acting alone can achieve success. We must therefore act together as a united people, for national reconciliation, for nation building, for the birth of a new world.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "Let there be justice for all.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.44
+          },
+          {
+            "label": "anger",
+            "score": 0.43
+          }
+        ]
+      },
+      {
+        "text": "Let there be peace for all.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.56
+          },
+          {
+            "label": "sadness",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "Let there be work, bread, water and salt for all.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "disgust",
+            "score": 0.32
+          }
+        ]
+      },
+      {
+        "text": "Let each know that for each the body, the mind and the soul have been freed to fulfil themselves.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "Never, never and never again shall it be that this beautiful land will again experience the oppression of one by another and suffer the indignity of being the skunk of the world.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.57
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          },
+          {
+            "label": "neutral",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "Let freedom reign.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "anger",
+            "score": 0.35
+          }
+        ]
+      },
+      {
+        "text": "The sun shall never set on so glorious a human achievement.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "God bless Africa.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.55
+          },
+          {
+            "label": "joy",
+            "score": 0.35
+          }
+        ]
+      },
+      {
+        "text": "Thank you.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "joy",
+            "score": 0.21
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "speaker": "Patrice Lumumba",
+    "event": "Independence Day Speech",
+    "date": "30.06.1960",
+    "lines": [
+      {
+        "text": "Congolese men and women,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "Victorious independence fighters,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "I salute you in the name of the Congolese government.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.3
+          },
+          {
+            "label": "anger",
+            "score": 0.27
+          },
+          {
+            "label": "disgust",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "You, my friends, who fought tirelessly at our side, I ask you to make this 30th of June 1960 an illustrious date which will remain engraved forever in your hearts, a date whose meaning you will proudly teach to your children, so that they may know by what glorious struggle their ancestors won liberty for all of us.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.85
+          },
+          {
+            "label": "joy",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "Although this independence of the Congo is being proclaimed today in agreement with Belgium, a friendly country with whom we deal as equals, no Congolese worthy of the name will ever be able to forget that it was won by struggle, a struggle carried on day by day, a struggle in which we were not spared deprivation or suffering, and for which we gave our strength and our blood.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          }
+        ]
+      },
+      {
+        "text": "We are proud of this struggle, of tears, of fire, and of blood, to the depths of our being, for it was a noble and just struggle, and indispensable to put an end to the humiliating slavery which was imposed upon us by force.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.47
+          },
+          {
+            "label": "neutral",
+            "score": 0.25
+          },
+          {
+            "label": "joy",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "This was our fate for eighty years of colonial rule, our wounds are too fresh and too painful still for us to drive them from our memory.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.63
+          },
+          {
+            "label": "neutral",
+            "score": 0.18
+          },
+          {
+            "label": "disgust",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "We have known ironies, insults, blows endured morning, noon, and night because we were “Negroes.”",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.37
+          },
+          {
+            "label": "disgust",
+            "score": 0.33
+          },
+          {
+            "label": "anger",
+            "score": 0.26
+          }
+        ]
+      },
+      {
+        "text": "We have seen that our lands were seized in the name of supposedly legal laws, which in fact recognized only the right of the strongest.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.6
+          },
+          {
+            "label": "anger",
+            "score": 0.34
+          }
+        ]
+      },
+      {
+        "text": "We have seen that the law was never the same, whether it concerned a white or a black; accommodating for the former, cruel and inhuman for the latter.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We have witnessed atrocious sufferings of those condemned for their political opinions or religious beliefs; exiled in their own country, their fate truly worse than death itself.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "We have seen that in the towns there were magnificent houses for the whites and crumbling shanties for the blacks, that a black was not admitted in cinemas, restaurants, and so-called European stores.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.63
+          },
+          {
+            "label": "neutral",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "We have seen that a black traveled in the holds, at the feet of the whites in their luxury cabins.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.64
+          },
+          {
+            "label": "disgust",
+            "score": 0.31
+          }
+        ]
+      },
+      {
+        "text": "Who will ever forget the massacres where so many of our brothers perished, the cells into which those who refused to submit to a regime of oppression and exploitation were thrown?",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.63
+          },
+          {
+            "label": "anger",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "All that, my brothers, we have endured.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "But we, whom the vote of your elected representatives has called to direct our dear country, we who have suffered in our body and soul from colonial oppression, we tell you very loudly: all that is now ended.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "sadness",
+            "score": 0.25
+          }
+        ]
+      },
+      {
+        "text": "The Republic of the Congo has been proclaimed, and our beloved country is now in the hands of its own children.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.59
+          },
+          {
+            "label": "neutral",
+            "score": 0.36
+          }
+        ]
+      },
+      {
+        "text": "Together, my brothers, my sisters, we are going to begin a new struggle, a sublime struggle, which will lead our country to peace, prosperity, and greatness.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.54
+          },
+          {
+            "label": "neutral",
+            "score": 0.25
+          },
+          {
+            "label": "fear",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Together, we are going to establish social justice and ensure that everyone has a fair remuneration for his labor.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We are going to show the world what the black man can do when he works in freedom, and we are going to make of the Congo the center of the sun’s radiance for all of Africa.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.95
+          }
+        ]
+      },
+      {
+        "text": "We are going to keep a watchful eye on foreign lands, but we will not tolerate any attempt at colonialist domination or interference.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.74
+          }
+        ]
+      },
+      {
+        "text": "We ask foreign countries to help us, but we will not accept their imposition.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.5
+          },
+          {
+            "label": "anger",
+            "score": 0.33
+          }
+        ]
+      },
+      {
+        "text": "We will rely on our own strength and will not hesitate to call on foreign cooperation whose aims we clearly understand and which respects our sovereignty.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.98
+          }
+        ]
+      },
+      {
+        "text": "The Congo’s independence marks a decisive step towards the liberation of the entire African continent.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.42
+          },
+          {
+            "label": "joy",
+            "score": 0.31
+          }
+        ]
+      },
+      {
+        "text": "Our government, strong, national, popular, will be the health of our country.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.68
+          },
+          {
+            "label": "joy",
+            "score": 0.28
+          }
+        ]
+      },
+      {
+        "text": "I call upon all Congolese citizens, men, women, and children, to set themselves resolutely to the task of creating a national economy and ensuring our economic independence.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.46
+          },
+          {
+            "label": "anger",
+            "score": 0.22
+          },
+          {
+            "label": "fear",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "Eternal glory to the fighters for national liberation!",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.78
+          },
+          {
+            "label": "neutral",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "Long live independence and African unity!",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.56
+          },
+          {
+            "label": "joy",
+            "score": 0.28
+          }
+        ]
+      },
+      {
+        "text": "Long live the independent and sovereign Congo!",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.6
+          },
+          {
+            "label": "joy",
+            "score": 0.26
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "speaker": "Robert Mugabe",
+    "event": "United Nations General Assembly Address",
+    "date": "26.09.2008",
+    "lines": [
+      {
+        "text": "Mr. President,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "Distinguished delegates,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "We meet here today while some nations continue to behave",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.47
+          },
+          {
+            "label": "disgust",
+            "score": 0.36
+          },
+          {
+            "label": "anger",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "as if they were ordained by God",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "to rule over the affairs of others.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.7
+          },
+          {
+            "label": "disgust",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "Zimbabwe will never be a colony again.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "We are not prepared to surrender our sovereignty",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "fear",
+            "score": 0.26
+          }
+        ]
+      },
+      {
+        "text": "to those who seek to recolonize us",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.3
+          },
+          {
+            "label": "sadness",
+            "score": 0.26
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "through economic pressure,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.47
+          },
+          {
+            "label": "surprise",
+            "score": 0.15
+          },
+          {
+            "label": "fear",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "political interference,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.54
+          },
+          {
+            "label": "neutral",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "and illegal sanctions.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.68
+          },
+          {
+            "label": "sadness",
+            "score": 0.11
+          },
+          {
+            "label": "disgust",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "Britain and its allies have imposed sanctions on Zimbabwe",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.63
+          },
+          {
+            "label": "sadness",
+            "score": 0.18
+          },
+          {
+            "label": "disgust",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "not because we have violated human rights,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.72
+          },
+          {
+            "label": "disgust",
+            "score": 0.15
+          },
+          {
+            "label": "neutral",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "but because we reclaimed our land.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.64
+          },
+          {
+            "label": "anger",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "They want us to reverse land reform",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "anger",
+            "score": 0.32
+          }
+        ]
+      },
+      {
+        "text": "and return our country",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "to white settler control.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.57
+          },
+          {
+            "label": "anger",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "That will never happen.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.79
+          }
+        ]
+      },
+      {
+        "text": "The land question in Zimbabwe",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.61
+          },
+          {
+            "label": "fear",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "is a closed chapter.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "It is irreversible.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.79
+          }
+        ]
+      },
+      {
+        "text": "We took back what was stolen from us",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.8
+          },
+          {
+            "label": "neutral",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "by the gun.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.3
+          },
+          {
+            "label": "anger",
+            "score": 0.28
+          },
+          {
+            "label": "neutral",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "If it was wrong to take land by force,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "then it was wrong to colonize Zimbabwe in the first place.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.71
+          },
+          {
+            "label": "disgust",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "Those who lecture us on democracy",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.63
+          },
+          {
+            "label": "anger",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "have blood on their hands",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.6
+          },
+          {
+            "label": "sadness",
+            "score": 0.2
+          },
+          {
+            "label": "disgust",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "from Iraq,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "Afghanistan,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.56
+          },
+          {
+            "label": "sadness",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "and elsewhere.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "They should first put their own houses in order",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.71
+          },
+          {
+            "label": "anger",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "before pointing fingers at us.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.63
+          },
+          {
+            "label": "fear",
+            "score": 0.26
+          }
+        ]
+      },
+      {
+        "text": "We reject the hypocrisy",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.51
+          },
+          {
+            "label": "disgust",
+            "score": 0.39
+          }
+        ]
+      },
+      {
+        "text": "of those who claim to be champions of freedom",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.43
+          },
+          {
+            "label": "anger",
+            "score": 0.39
+          }
+        ]
+      },
+      {
+        "text": "while denying us our right",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.79
+          },
+          {
+            "label": "disgust",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "to economic self-determination.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.53
+          },
+          {
+            "label": "anger",
+            "score": 0.17
+          },
+          {
+            "label": "fear",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "Zimbabwe is not a basket case.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "Zimbabwe is under attack.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "And we shall resist that attack",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.45
+          },
+          {
+            "label": "anger",
+            "score": 0.29
+          },
+          {
+            "label": "neutral",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "with every means at our disposal.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "We will not be intimidated.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "We will not be dictated to.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.49
+          },
+          {
+            "label": "neutral",
+            "score": 0.43
+          }
+        ]
+      },
+      {
+        "text": "We will not betray the struggle",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.56
+          },
+          {
+            "label": "neutral",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "that liberated this country.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.27
+          },
+          {
+            "label": "joy",
+            "score": 0.24
+          },
+          {
+            "label": "anger",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "Let it be known",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "that Zimbabwe stands firm",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          }
+        ]
+      },
+      {
+        "text": "against imperialism,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "racism,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.39
+          },
+          {
+            "label": "disgust",
+            "score": 0.36
+          },
+          {
+            "label": "neutral",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "and neo-colonial domination.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.49
+          },
+          {
+            "label": "neutral",
+            "score": 0.24
+          },
+          {
+            "label": "disgust",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "The voice of Zimbabwe",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "is the voice of Africa.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.85
+          }
+        ]
+      },
+      {
+        "text": "And Africa will never submit again.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.66
+          },
+          {
+            "label": "anger",
+            "score": 0.13
+          },
+          {
+            "label": "sadness",
+            "score": 0.12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "speaker": "Thomas Sankara",
+    "event": "United Nations General Assembly",
+    "date": "04.10.1984",
+    "lines": [
+      {
+        "text": "Mr. President,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "Distinguished delegates,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "Ladies and gentlemen,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.79
+          },
+          {
+            "label": "joy",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "I bring fraternal greetings from the people of Burkina Faso, the land of upright people.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.66
+          },
+          {
+            "label": "neutral",
+            "score": 0.28
+          }
+        ]
+      },
+      {
+        "text": "I speak on behalf of a people who have chosen to stand upright and speak the truth.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.65
+          },
+          {
+            "label": "disgust",
+            "score": 0.11
+          },
+          {
+            "label": "anger",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "I speak on behalf of a people who have decided to take their destiny into their own hands, without submitting to any form of domination, exploitation, or humiliation.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.43
+          },
+          {
+            "label": "anger",
+            "score": 0.29
+          },
+          {
+            "label": "neutral",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "Burkina Faso is not speaking here through me.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.45
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          },
+          {
+            "label": "sadness",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "Through me speaks the voice of all those who suffer from the world order that prevails today.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.65
+          },
+          {
+            "label": "neutral",
+            "score": 0.25
+          }
+        ]
+      },
+      {
+        "text": "I speak for the hungry, the illiterate, the barefoot, the homeless, and the victims of imperialism.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.52
+          },
+          {
+            "label": "sadness",
+            "score": 0.21
+          },
+          {
+            "label": "neutral",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "I speak for those who are crushed by debt, strangled by structural adjustment, and condemned to misery in the name of a so-called international order.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "This order has been established without us, against us, and continues to function without us.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.68
+          },
+          {
+            "label": "disgust",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "We are here to denounce it.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.55
+          },
+          {
+            "label": "disgust",
+            "score": 0.38
+          }
+        ]
+      },
+      {
+        "text": "The present international economic system is unjust and immoral.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.67
+          },
+          {
+            "label": "anger",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "It condemns the majority of humanity to live in misery while a small minority enjoys obscene luxury.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "It is a system in which the rich become richer and the poor become poorer.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.63
+          },
+          {
+            "label": "neutral",
+            "score": 0.27
+          }
+        ]
+      },
+      {
+        "text": "It is a system that turns human beings into commodities and reduces entire peoples to instruments of profit.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "We refuse to accept this situation as inevitable.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.43
+          },
+          {
+            "label": "sadness",
+            "score": 0.32
+          },
+          {
+            "label": "neutral",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "We refuse to accept hunger as destiny.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.52
+          },
+          {
+            "label": "neutral",
+            "score": 0.24
+          },
+          {
+            "label": "disgust",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "We refuse to accept ignorance as fate.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.45
+          },
+          {
+            "label": "neutral",
+            "score": 0.26
+          },
+          {
+            "label": "disgust",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "We refuse to accept dependence as the future of our peoples.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.47
+          },
+          {
+            "label": "neutral",
+            "score": 0.25
+          },
+          {
+            "label": "disgust",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "We say no to the domination of one people by another.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.39
+          },
+          {
+            "label": "neutral",
+            "score": 0.29
+          },
+          {
+            "label": "anger",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "We say no to the exploitation of one class by another.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.56
+          },
+          {
+            "label": "anger",
+            "score": 0.21
+          },
+          {
+            "label": "neutral",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "We say no to the pillage of our resources in the name of cooperation.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.46
+          },
+          {
+            "label": "anger",
+            "score": 0.24
+          },
+          {
+            "label": "disgust",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "Our country is poor, but our people are rich in dignity.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.68
+          },
+          {
+            "label": "joy",
+            "score": 0.12
+          },
+          {
+            "label": "disgust",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "Our people understand that true development is not measured by the accumulation of goods, but by the liberation of human beings.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "Development must be conceived as a process that puts people first, not profit.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "It must free women and men from ignorance, disease, and fear.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.61
+          },
+          {
+            "label": "fear",
+            "score": 0.27
+          }
+        ]
+      },
+      {
+        "text": "It must allow each individual to flourish fully, materially, intellectually, and culturally.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We do not accept aid that humiliates.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "We do not accept aid that perpetuates dependence.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.42
+          },
+          {
+            "label": "neutral",
+            "score": 0.32
+          },
+          {
+            "label": "anger",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "We do not accept aid that dictates our choices and compromises our sovereignty.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.4
+          },
+          {
+            "label": "neutral",
+            "score": 0.21
+          },
+          {
+            "label": "sadness",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "He who feeds you, controls you.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.57
+          },
+          {
+            "label": "disgust",
+            "score": 0.21
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "That is why we have chosen to rely first on our own efforts.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "We know that this path is difficult.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.85
+          }
+        ]
+      },
+      {
+        "text": "We know that it demands sacrifices.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "But we also know that it is the only path that leads to dignity and freedom.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "Imperialism is not only external.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.54
+          },
+          {
+            "label": "disgust",
+            "score": 0.33
+          }
+        ]
+      },
+      {
+        "text": "It also lives within our societies, through corruption, privilege, and submission.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.81
+          },
+          {
+            "label": "anger",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "That is why we have undertaken a revolution not only against external domination, but also against internal injustice.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.56
+          },
+          {
+            "label": "anger",
+            "score": 0.27
+          },
+          {
+            "label": "disgust",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "Our revolution is democratic and popular.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.44
+          },
+          {
+            "label": "joy",
+            "score": 0.3
+          },
+          {
+            "label": "anger",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "It is carried out by the masses themselves, not by a small elite.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "It is a revolution that gives land to the peasants, dignity to women, and hope to the youth.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.65
+          },
+          {
+            "label": "joy",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "Women’s liberation is not an act of charity.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.63
+          },
+          {
+            "label": "disgust",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "It is a fundamental necessity for the triumph of the revolution.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.58
+          },
+          {
+            "label": "joy",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "A revolution that excludes women is a revolution that fails.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.36
+          },
+          {
+            "label": "sadness",
+            "score": 0.32
+          },
+          {
+            "label": "neutral",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "We refuse to export our raw materials at giveaway prices while importing manufactured goods at exorbitant cost.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.77
+          },
+          {
+            "label": "neutral",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "We refuse to be a reservoir of cheap labor and raw materials for the industrialized world.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.5
+          },
+          {
+            "label": "anger",
+            "score": 0.25
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "We refuse to mortgage the future of our children to pay debts we did not contract.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.78
+          }
+        ]
+      },
+      {
+        "text": "The debt is a cleverly managed reconquest of Africa.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "It is a new form of slavery.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.82
+          },
+          {
+            "label": "neutral",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "Those who led us into debt were not accountable to our peoples.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.4
+          },
+          {
+            "label": "neutral",
+            "score": 0.27
+          },
+          {
+            "label": "anger",
+            "score": 0.24
+          }
+        ]
+      },
+      {
+        "text": "And those who demand repayment today are not accountable for the consequences.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.42
+          },
+          {
+            "label": "disgust",
+            "score": 0.25
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "We therefore say that the debt cannot be repaid.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.54
+          },
+          {
+            "label": "neutral",
+            "score": 0.34
+          }
+        ]
+      },
+      {
+        "text": "Not because we refuse to honor commitments,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.75
+          },
+          {
+            "label": "neutral",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "but because we refuse to die.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.62
+          },
+          {
+            "label": "neutral",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "If Burkina Faso alone refuses to pay, I will not be here at the next General Assembly.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.39
+          },
+          {
+            "label": "sadness",
+            "score": 0.34
+          },
+          {
+            "label": "neutral",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "But if all of Africa refuses,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.43
+          },
+          {
+            "label": "anger",
+            "score": 0.34
+          },
+          {
+            "label": "disgust",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "I assure you I will be here, with the support of my people.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.82
+          },
+          {
+            "label": "neutral",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "We call for a united front of oppressed peoples.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.55
+          },
+          {
+            "label": "neutral",
+            "score": 0.22
+          },
+          {
+            "label": "fear",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "We call for solidarity among nations that refuse exploitation.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.44
+          },
+          {
+            "label": "neutral",
+            "score": 0.26
+          },
+          {
+            "label": "disgust",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "We call for a new international order based on justice, equality, and mutual respect.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.34
+          },
+          {
+            "label": "neutral",
+            "score": 0.31
+          },
+          {
+            "label": "fear",
+            "score": 0.25
+          }
+        ]
+      },
+      {
+        "text": "Let us dare to invent the future.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.68
+          },
+          {
+            "label": "fear",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "Let us dare to break with the past.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.7
+          },
+          {
+            "label": "fear",
+            "score": 0.25
+          }
+        ]
+      },
+      {
+        "text": "Let us dare to build a world in which no child dies of hunger,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "in which no woman is humiliated,",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.93
+          }
+        ]
+      },
+      {
+        "text": "and in which no people is condemned to silence.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.43
+          },
+          {
+            "label": "disgust",
+            "score": 0.33
+          },
+          {
+            "label": "neutral",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Fatherland or death,",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.66
+          },
+          {
+            "label": "neutral",
+            "score": 0.11
+          },
+          {
+            "label": "fear",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "we shall overcome.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.63
+          },
+          {
+            "label": "fear",
+            "score": 0.13
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "speaker": "Wangari Maathai",
+    "event": "Nobel Peace Prize Lecture",
+    "date": "10.12.2004",
+    "lines": [
+      {
+        "text": "Your Majesties,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.88
+          }
+        ]
+      },
+      {
+        "text": "Your Royal Highnesses,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          }
+        ]
+      },
+      {
+        "text": "Distinguished members of the Norwegian Nobel Committee,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.48
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          },
+          {
+            "label": "joy",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "Distinguished guests,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.53
+          },
+          {
+            "label": "disgust",
+            "score": 0.23
+          },
+          {
+            "label": "joy",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Ladies and gentlemen,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.79
+          },
+          {
+            "label": "joy",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "I stand before you and the world humbled by this great honor,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "and inspired by the acknowledgment that the Nobel Committee has given to the critical links between environment, democracy, and peace.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.87
+          }
+        ]
+      },
+      {
+        "text": "I am particularly grateful for the recognition of the work of the Green Belt Movement,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "an organization that began with a simple idea:",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.48
+          },
+          {
+            "label": "neutral",
+            "score": 0.33
+          }
+        ]
+      },
+      {
+        "text": "that ordinary citizens, especially women,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.79
+          }
+        ]
+      },
+      {
+        "text": "could protect the environment while improving their livelihoods.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.76
+          },
+          {
+            "label": "anger",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "I accept this award on behalf of the people of Kenya,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "particularly the women of Kenya and Africa,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.69
+          }
+        ]
+      },
+      {
+        "text": "who have worked tirelessly to restore degraded environments,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.85
+          }
+        ]
+      },
+      {
+        "text": "raise their families, and build strong communities.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          },
+          {
+            "label": "joy",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "This award is also for all those who believe that peace is indivisible",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.71
+          },
+          {
+            "label": "joy",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "and that it cannot exist without environmental security,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "social justice, and respect for human rights.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.6
+          },
+          {
+            "label": "disgust",
+            "score": 0.19
+          },
+          {
+            "label": "anger",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "In the course of history,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.82
+          }
+        ]
+      },
+      {
+        "text": "humanity has had to confront many challenges,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.85
+          }
+        ]
+      },
+      {
+        "text": "but perhaps none more urgent than the need",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          }
+        ]
+      },
+      {
+        "text": "to care for the environment that sustains us.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.51
+          },
+          {
+            "label": "joy",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "As we celebrate the dawn of the twenty-first century,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.82
+          },
+          {
+            "label": "neutral",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "we are confronted with new challenges that require a shift in our thinking",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.72
+          }
+        ]
+      },
+      {
+        "text": "and a renewal of our commitment to shared values.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.66
+          },
+          {
+            "label": "neutral",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "Environmental degradation and resource depletion",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.36
+          },
+          {
+            "label": "neutral",
+            "score": 0.22
+          },
+          {
+            "label": "sadness",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "are increasing at alarming rates,",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "threatening livelihoods, human dignity, and peace.",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.59
+          },
+          {
+            "label": "anger",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "In Africa, women are the primary caretakers of their families,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.64
+          },
+          {
+            "label": "disgust",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "and they are often the first to feel the effects",
+        "emotionScores": [
+          {
+            "label": "surprise",
+            "score": 0.47
+          },
+          {
+            "label": "neutral",
+            "score": 0.28
+          },
+          {
+            "label": "joy",
+            "score": 0.21
+          }
+        ]
+      },
+      {
+        "text": "of environmental degradation.",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.63
+          },
+          {
+            "label": "sadness",
+            "score": 0.16
+          },
+          {
+            "label": "anger",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "When the land is degraded,",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.7
+          },
+          {
+            "label": "anger",
+            "score": 0.15
+          },
+          {
+            "label": "sadness",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "women must walk longer distances to find firewood and water,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "leaving less time for education, income generation,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.64
+          },
+          {
+            "label": "sadness",
+            "score": 0.24
+          }
+        ]
+      },
+      {
+        "text": "and participation in community life.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "It was this reality that inspired the Green Belt Movement.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "In 1977, we began to plant trees,",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.42
+          },
+          {
+            "label": "disgust",
+            "score": 0.19
+          },
+          {
+            "label": "neutral",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "first to provide firewood,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.8
+          }
+        ]
+      },
+      {
+        "text": "then to prevent soil erosion,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.74
+          }
+        ]
+      },
+      {
+        "text": "restore watersheds,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.73
+          }
+        ]
+      },
+      {
+        "text": "and improve food security.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "Over time, we came to understand",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.93
+          }
+        ]
+      },
+      {
+        "text": "that the environment cannot be conserved",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.47
+          },
+          {
+            "label": "anger",
+            "score": 0.24
+          },
+          {
+            "label": "neutral",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "without addressing issues of governance,",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.35
+          },
+          {
+            "label": "disgust",
+            "score": 0.26
+          },
+          {
+            "label": "neutral",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "human rights, and empowerment.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.7
+          },
+          {
+            "label": "disgust",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "Poor governance and corruption",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.57
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          },
+          {
+            "label": "sadness",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "lead to the mismanagement of resources,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.37
+          },
+          {
+            "label": "sadness",
+            "score": 0.25
+          },
+          {
+            "label": "disgust",
+            "score": 0.15
+          }
+        ]
+      },
+      {
+        "text": "environmental destruction,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.4
+          },
+          {
+            "label": "disgust",
+            "score": 0.33
+          },
+          {
+            "label": "sadness",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "and social conflict.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.91
+          }
+        ]
+      },
+      {
+        "text": "We learned that sustainable development",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "requires democratic space,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "anger",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "where people can participate in decisions",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.82
+          },
+          {
+            "label": "joy",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "that affect their lives.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.52
+          },
+          {
+            "label": "neutral",
+            "score": 0.15
+          },
+          {
+            "label": "anger",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Through the Green Belt Movement,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          }
+        ]
+      },
+      {
+        "text": "we encouraged communities to reclaim their power,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.75
+          },
+          {
+            "label": "joy",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "to protect their environment,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.48
+          },
+          {
+            "label": "anger",
+            "score": 0.36
+          }
+        ]
+      },
+      {
+        "text": "and to hold leaders accountable.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "We discovered that when people are empowered,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.71
+          },
+          {
+            "label": "joy",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "especially women,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.72
+          }
+        ]
+      },
+      {
+        "text": "they become agents of change.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.84
+          }
+        ]
+      },
+      {
+        "text": "Tree planting became a symbol of this empowerment.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.65
+          },
+          {
+            "label": "joy",
+            "score": 0.22
+          }
+        ]
+      },
+      {
+        "text": "Trees are living symbols of hope.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.78
+          },
+          {
+            "label": "joy",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "They represent peace and conflict resolution,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.92
+          }
+        ]
+      },
+      {
+        "text": "because a healthy environment supports livelihoods",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.94
+          }
+        ]
+      },
+      {
+        "text": "and reduces competition over scarce resources.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.38
+          },
+          {
+            "label": "anger",
+            "score": 0.34
+          },
+          {
+            "label": "neutral",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "Throughout my life,",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.43
+          },
+          {
+            "label": "neutral",
+            "score": 0.28
+          },
+          {
+            "label": "sadness",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "I have seen how environmental destruction",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "goes hand in hand with the erosion of democratic space",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.35
+          },
+          {
+            "label": "sadness",
+            "score": 0.26
+          },
+          {
+            "label": "fear",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "and the suppression of human rights.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.79
+          },
+          {
+            "label": "disgust",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "Conversely,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "disgust",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "I have seen how restoring the environment",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.32
+          },
+          {
+            "label": "neutral",
+            "score": 0.3
+          },
+          {
+            "label": "surprise",
+            "score": 0.29
+          }
+        ]
+      },
+      {
+        "text": "can restore hope, dignity, and peace.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.46
+          },
+          {
+            "label": "joy",
+            "score": 0.38
+          }
+        ]
+      },
+      {
+        "text": "As a young girl,",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.86
+          },
+          {
+            "label": "disgust",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "I remember pristine forests, clear streams,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.46
+          },
+          {
+            "label": "joy",
+            "score": 0.44
+          }
+        ]
+      },
+      {
+        "text": "and abundant biodiversity in my homeland.",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.97
+          }
+        ]
+      },
+      {
+        "text": "Many of these have disappeared,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "sadness",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "sacrificed to short-term economic gain",
+        "emotionScores": [
+          {
+            "label": "disgust",
+            "score": 0.32
+          },
+          {
+            "label": "anger",
+            "score": 0.25
+          },
+          {
+            "label": "joy",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "and poor decision-making.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.66
+          },
+          {
+            "label": "anger",
+            "score": 0.19
+          }
+        ]
+      },
+      {
+        "text": "We must reverse this trend.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "We must recognize that the earth’s resources are finite",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.86
+          }
+        ]
+      },
+      {
+        "text": "and that we have a moral responsibility",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.56
+          },
+          {
+            "label": "anger",
+            "score": 0.28
+          }
+        ]
+      },
+      {
+        "text": "to manage them sustainably.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "The environment is where we all live.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.97
+          }
+        ]
+      },
+      {
+        "text": "Development is what we all do",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.96
+          }
+        ]
+      },
+      {
+        "text": "in attempting to improve our lot within that abode.",
+        "emotionScores": [
+          {
+            "label": "sadness",
+            "score": 0.41
+          },
+          {
+            "label": "neutral",
+            "score": 0.24
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          }
+        ]
+      },
+      {
+        "text": "Therefore, the two are inseparable.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.89
+          }
+        ]
+      },
+      {
+        "text": "I believe that the Nobel Peace Prize",
+        "emotionScores": [
+          {
+            "label": "surprise",
+            "score": 0.75
+          },
+          {
+            "label": "neutral",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "sends a powerful message:",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.61
+          },
+          {
+            "label": "neutral",
+            "score": 0.27
+          }
+        ]
+      },
+      {
+        "text": "that protecting the environment is not a luxury,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.74
+          },
+          {
+            "label": "anger",
+            "score": 0.1
+          }
+        ]
+      },
+      {
+        "text": "but a necessity for peace.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.52
+          },
+          {
+            "label": "sadness",
+            "score": 0.2
+          },
+          {
+            "label": "disgust",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "I call on world leaders",
+        "emotionScores": [
+          {
+            "label": "fear",
+            "score": 0.56
+          },
+          {
+            "label": "anger",
+            "score": 0.18
+          },
+          {
+            "label": "neutral",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "to embrace sustainable development,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "joy",
+            "score": 0.2
+          }
+        ]
+      },
+      {
+        "text": "strengthen democratic institutions,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.51
+          },
+          {
+            "label": "fear",
+            "score": 0.14
+          },
+          {
+            "label": "disgust",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "and respect the rights of all people.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.5
+          },
+          {
+            "label": "neutral",
+            "score": 0.39
+          }
+        ]
+      },
+      {
+        "text": "I also call on young people",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.9
+          }
+        ]
+      },
+      {
+        "text": "to be agents of change,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          }
+        ]
+      },
+      {
+        "text": "to plant trees,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.51
+          },
+          {
+            "label": "joy",
+            "score": 0.3
+          }
+        ]
+      },
+      {
+        "text": "to protect the environment,",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.56
+          },
+          {
+            "label": "neutral",
+            "score": 0.2
+          },
+          {
+            "label": "fear",
+            "score": 0.11
+          }
+        ]
+      },
+      {
+        "text": "and to stand up for justice.",
+        "emotionScores": [
+          {
+            "label": "anger",
+            "score": 0.83
+          }
+        ]
+      },
+      {
+        "text": "As I conclude,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.81
+          }
+        ]
+      },
+      {
+        "text": "I reflect on a proverb from my community:",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.77
+          },
+          {
+            "label": "disgust",
+            "score": 0.13
+          }
+        ]
+      },
+      {
+        "text": "“When we plant trees,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.39
+          },
+          {
+            "label": "disgust",
+            "score": 0.32
+          },
+          {
+            "label": "fear",
+            "score": 0.12
+          }
+        ]
+      },
+      {
+        "text": "we plant the seeds of peace and hope.”",
+        "emotionScores": [
+          {
+            "label": "joy",
+            "score": 0.82
+          },
+          {
+            "label": "neutral",
+            "score": 0.14
+          }
+        ]
+      },
+      {
+        "text": "Let us continue to nurture those seeds.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.95
+          }
+        ]
+      },
+      {
+        "text": "Let us work together for peace,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.65
+          },
+          {
+            "label": "sadness",
+            "score": 0.16
+          }
+        ]
+      },
+      {
+        "text": "for environmental integrity,",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.71
+          },
+          {
+            "label": "anger",
+            "score": 0.17
+          }
+        ]
+      },
+      {
+        "text": "and for the well-being of future generations.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.65
+          },
+          {
+            "label": "joy",
+            "score": 0.23
+          }
+        ]
+      },
+      {
+        "text": "Thank you.",
+        "emotionScores": [
+          {
+            "label": "neutral",
+            "score": 0.67
+          },
+          {
+            "label": "joy",
+            "score": 0.21
+          }
+        ]
+      }
+    ]
+  }
+]

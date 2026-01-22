@@ -22,3 +22,10 @@ export interface SpeechSegment {
   text: string;
   emotionScores: EmotionScore[];
 }
+
+export interface SpeechWithMetadata {
+  speaker: string;
+  event: string;
+  date: string;
+  lines: SpeechSegment[];
+}
