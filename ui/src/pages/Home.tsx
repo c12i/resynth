@@ -4,6 +4,7 @@ import { Button } from "../components/Button";
 import { useState, useEffect } from "react";
 import { loadSpeeches } from "../data";
 import type { SpeechWithMetadata } from "../types/emotion";
+import { format, parse } from "date-fns";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -12,21 +13,28 @@ export default function Home() {
   const [speeches, setSpeeches] = useState<SpeechWithMetadata[]>([]);
 
   useEffect(() => {
-    // Load speeches
     loadSpeeches().then((data) => {
       setSpeeches(data);
     });
   }, []);
 
-  // Format speeches for dropdown
-  const dropdownOptions = speeches.map((speech, index) => ({
-    value: index,
-    label: speech.speaker,
-    sublabel: `${speech.event}, ${speech.date}`,
-  }));
+  const dropdownOptions = speeches.map((speech, index) => {
+    let formattedDate = speech.date;
+    try {
+      const parsedDate = parse(speech.date, "dd.MM.yyyy", new Date());
+      formattedDate = format(parsedDate, "d MMMM yyyy");
+    } catch (e) {
+      formattedDate = speech.date;
+    }
+
+    return {
+      value: index,
+      label: speech.speaker,
+      sublabel: `${speech.event}, ${formattedDate}`,
+    };
+  });
 
   const handleSpeechSelect = (value: string | number) => {
-    // Navigate to play page with selected speech index
     navigate(`/play?speech=${value}`);
   };
 
@@ -45,8 +53,8 @@ export default function Home() {
         onClick={() => navigate("/about")}
         style={{
           position: "fixed",
-          top: "2rem",
-          right: "2rem",
+          top: "1.75rem",
+          right: "2.5rem",
           padding: "0.75rem 1.5rem",
           fontSize: "1rem",
           fontWeight: "600",
@@ -76,7 +84,7 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          paddingTop: "25vh",
         }}
       >
         <h1

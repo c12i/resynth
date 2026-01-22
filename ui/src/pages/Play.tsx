@@ -365,18 +365,28 @@ export default function Play() {
       <div
         style={{
           position: "absolute",
-          top: "20px",
-          left: "20px",
+          top: "1.75rem",
+          left: "2.5rem",
           zIndex: 10,
           minWidth: "250px",
         }}
       >
         <CustomDropdown
-          options={loadedSpeeches.map((speech, idx) => ({
-            value: idx,
-            label: speech.speaker,
-            sublabel: `${speech.event}, ${speech.date}`,
-          }))}
+          options={loadedSpeeches.map((speech, idx) => {
+            let formattedDate = speech.date;
+            try {
+              const parsedDate = parse(speech.date, "dd.MM.yyyy", new Date());
+              formattedDate = format(parsedDate, "d MMMM yyyy");
+            } catch (e) {
+              formattedDate = speech.date;
+            }
+
+            return {
+              value: idx,
+              label: speech.speaker,
+              sublabel: `${speech.event}, ${formattedDate}`,
+            };
+          })}
           onSelect={(value) => {
             const speechIndex = Number(value);
             setSelectedSpeech(speechIndex);
@@ -397,8 +407,8 @@ export default function Play() {
         onClick={() => navigate("/about")}
         style={{
           position: "absolute",
-          top: "20px",
-          right: "20px",
+          top: "1.75rem",
+          right: "2.5rem",
           zIndex: 10,
           padding: "0.75rem 1.5rem",
           fontSize: "1rem",
@@ -423,14 +433,11 @@ export default function Play() {
 
       {/* Speech Details - TOP of cube (centered) */}
       {started && (() => {
-        // Format date: "10 May 1994"
         let formattedDate = sampleSpeech.date;
         try {
-          // Try to parse the date and format it
-          const parsedDate = parse(sampleSpeech.date, "yyyy-MM-dd", new Date());
+          const parsedDate = parse(sampleSpeech.date, "dd.MM.yyyy", new Date());
           formattedDate = format(parsedDate, "d MMMM yyyy");
         } catch (e) {
-          // If parsing fails, use original date
           formattedDate = sampleSpeech.date;
         }
 

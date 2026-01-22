@@ -17,8 +17,8 @@ export default function About() {
         onClick={() => navigate("/")}
         style={{
           position: "fixed",
-          top: "2rem",
-          left: "2rem",
+          top: "1.75rem",
+          left: "2.5rem",
           zIndex: 100,
           background: "transparent",
           border: "none",
@@ -125,7 +125,7 @@ export default function About() {
             marginTop: "2rem",
           }}
         >
-          Step 1 – Speech is transcribed
+          Step 1: Speech is transcribed
         </h3>
         <p style={{ marginBottom: "2rem", fontSize: "1.1rem" }}>
           We start by collecting speeches from African political figures. These
@@ -141,10 +141,10 @@ export default function About() {
             marginTop: "2rem",
           }}
         >
-          Step 2 – Emotion detection with Machine Learning
+          Step 2: Emotion detection with Machine Learning
         </h3>
         <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
-          The text is analyzed line-by-line using machine learning models. Each line is classified into one of seven emotions using{" "}
+          The text is analyzed line-by-line using machine learning models. Each line is classified into one of seven emotions (based on Ekman's 6 basic emotions plus neutral) using{" "}
           <a
             href="https://huggingface.co/j-hartmann/emotion-english-distilroberta-base"
             target="_blank"
@@ -322,7 +322,7 @@ export default function About() {
             marginTop: "2rem",
           }}
         >
-          Step 3 – Emotional data becomes visual and sound output
+          Step 3: Emotional data becomes visual and sound output
         </h3>
         <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
           Each emotion is mapped to:
@@ -336,21 +336,15 @@ export default function About() {
               textAlign: "left",
             }}
           >
-            <li>A unique color</li>
+            <li>A unique color. When multiple emotions are present, colors blend to form gradients that reflect the emotional complexity of the moment</li>
             <li>
-              Particle distortion (like twitching, drooping, spiraling)
+              A particle distortion algorithm (like twitching, drooping, spiraling)
             </li>
             <li>
-              A synthesized sound created using Tone.js (softer tones for
-              sadness, sharp spikes for anger, etc.). The overall sentiment of the speech also shapes a background tone that plays throughout — ranging from tense, dissonant chords for negative sentiment to warm, harmonious chords for positive sentiment
+              A synthesized sound (softer tones for sadness, sharp spikes for anger, etc.). The overall sentiment of the speech also shapes a background tone that plays throughout, ranging from tense, dissonant chords for negative sentiment to warm, harmonious chords for positive sentiment
             </li>
           </ul>
         </div>
-        <p style={{ marginBottom: "3rem", fontSize: "1.1rem" }}>
-          The system reacts in real time, blending emotional states to create
-          transitions and gradients, just like a real person might feel more
-          than one emotion at once.
-        </p>
 
         <h2
           style={{
