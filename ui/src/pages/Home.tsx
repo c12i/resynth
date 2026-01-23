@@ -49,6 +49,25 @@ export default function Home() {
         position: "relative",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          top: "60%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "90%",
+          height: "100%",
+          backgroundImage: "url(/resynth-cube.png)",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          opacity: 0.6,
+          zIndex: 0,
+          pointerEvents: "none",
+          mixBlendMode: "screen",
+        }}
+      />
+
       <button
         onClick={() => navigate("/about")}
         style={{
@@ -84,7 +103,9 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: "25vh",
+          paddingTop: "20vh",
+          position: "relative",
+          zIndex: 10,
         }}
       >
         <h1
@@ -105,7 +126,7 @@ export default function Home() {
           style={{
             fontSize: "1.2rem",
             color: "#aaa",
-            marginBottom: "3rem",
+            marginBottom: "2rem",
             textAlign: "center",
             maxWidth: "600px",
             fontFamily: "'Work Sans', sans-serif",

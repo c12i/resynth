@@ -59,17 +59,14 @@ export default function App() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      // Consider desktop as 1024px and above (typical tablet landscape and desktop)
+      // consider desktop as 1024px and above (typical tablet landscape and desktop)
       setIsDesktop(window.innerWidth >= 1024);
     };
 
-    // Check on mount
     checkScreenSize();
 
-    // Add resize listener
     window.addEventListener("resize", checkScreenSize);
 
-    // Cleanup
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
@@ -85,3 +82,4 @@ export default function App() {
     </Routes>
   );
 }
+
