@@ -45,6 +45,7 @@ export default function Play() {
   const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>([]);
   const [consecutiveCount, setConsecutiveCount] = useState(0);
   const [isSwitchDropdownOpen, setIsSwitchDropdownOpen] = useState(false);
+  const [showStatsForNerds, setShowStatsForNerds] = useState(false);
 
   const currentRef = useRef<any>(null);
   const masterGainRef = useRef<Tone.Gain | null>(null);
@@ -461,6 +462,12 @@ export default function Play() {
             <p style={{ fontSize: "24px", opacity: 0.9 }}>
               {sampleSpeech.event} ({formattedDate})
             </p>
+            {showStatsForNerds && sampleSpeech.sentiment && (
+              <p style={{ fontSize: "14px", opacity: 0.7, marginTop: "8px", fontFamily: "monospace" }}>
+                Overall Sentiment: {sampleSpeech.sentiment.replace(/_/g, " ")}
+                {sampleSpeech.sentimentScore && ` (${(sampleSpeech.sentimentScore * 100).toFixed(1)}%)`}
+              </p>
+            )}
           </div>
         );
       })()}
@@ -532,6 +539,15 @@ export default function Play() {
           <p style={{ fontSize: "16px" }}>
             {current.text}
           </p>
+          {showStatsForNerds && current.emotionScores && current.emotionScores.length > 0 && (
+            <div style={{ marginTop: "10px", fontSize: "12px", opacity: 0.7, fontFamily: "monospace" }}>
+              {current.emotionScores.map((emotion, idx) => (
+                <span key={idx} style={{ marginRight: "12px" }}>
+                  {emotion.label}: {(emotion.score * 100).toFixed(1)}%
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -572,7 +588,7 @@ export default function Play() {
           </div>
 
           {/* Tone Selection */}
-          <div>
+          <div style={{ marginBottom: "15px" }}>
             <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>
               Tone:
             </label>
@@ -606,6 +622,24 @@ export default function Play() {
             <p style={{ fontSize: "0.75rem", opacity: 0.6, marginTop: "5px", fontStyle: "italic" }}>
               Changing tone will restart the experience
             </p>
+          </div>
+
+          {/* Stats for Nerds Toggle */}
+          <div>
+            <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontWeight: "500" }}>
+              <input
+                type="checkbox"
+                checked={showStatsForNerds}
+                onChange={(e) => setShowStatsForNerds(e.target.checked)}
+                style={{
+                  marginRight: "8px",
+                  cursor: "pointer",
+                  width: "16px",
+                  height: "16px",
+                }}
+              />
+              Stats for nerds
+            </label>
           </div>
         </div>
       )}
