@@ -14,25 +14,6 @@ export default function About() {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "-80px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          maxWidth: "600px",
-          height: "400px",
-          backgroundImage: "url(/resynth-cube.png)",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          opacity: 0.5,
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
-
       <button
         onClick={() => navigate("/")}
         style={{
@@ -74,11 +55,21 @@ export default function About() {
           zIndex: 10,
         }}
       >
+        <img
+          src="/cube.png"
+          alt="Cube"
+          style={{
+            maxWidth: "180px",
+            width: "100%",
+            height: "auto",
+            opacity: 0.8,
+          }}
+        />
+
         <h1
           style={{
             fontSize: "48px",
             fontWeight: "400",
-            marginTop: "7rem",
             marginBottom: "1rem",
             fontFamily: "'Syne Mono', monospace",
           }}

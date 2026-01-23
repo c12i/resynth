@@ -49,24 +49,7 @@ export default function Home() {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "60%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "90%",
-          height: "100%",
-          backgroundImage: "url(/resynth-cube.png)",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          opacity: 0.6,
-          zIndex: 0,
-          pointerEvents: "none",
-          mixBlendMode: "screen",
-        }}
-      />
+
 
       <button
         onClick={() => navigate("/about")}
@@ -151,6 +134,20 @@ export default function Home() {
             />
           </div>
         )}
+
+        {/* Cube image below button */}
+        <img
+          src="/cube.png"
+          alt="Cube"
+          style={{
+            marginTop: "3rem",
+            maxWidth: "400px",
+            width: "100%",
+            height: "auto",
+            opacity: 0.8,
+            zIndex: 10,
+          }}
+        />
       </div>
     </div>
   );
