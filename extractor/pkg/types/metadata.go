@@ -11,10 +11,7 @@ import (
 func ParseMetadataFromFilename(filename string) SpeechMetadata {
 	// get base filename without path
 	base := filepath.Base(filename)
-
 	base = strings.TrimSuffix(base, ".txt")
-
-	// Split by hyphen
 	parts := strings.Split(base, "-")
 
 	metadata := SpeechMetadata{}

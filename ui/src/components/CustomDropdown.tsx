@@ -28,7 +28,10 @@ export function CustomDropdown({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         if (isOpen) {
           onToggle();
         }
@@ -116,7 +119,9 @@ export function CustomDropdown({
                 padding: "1rem 1.5rem",
                 cursor: "pointer",
                 borderBottom:
-                  index < options.length - 1 ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+                  index < options.length - 1
+                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    : "none",
                 transition: "all 0.2s",
               }}
               onMouseEnter={(e) => {
@@ -126,7 +131,15 @@ export function CustomDropdown({
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              <div style={{ color: "#fff", fontSize: "1rem", marginBottom: "0.25rem", fontFamily: "'Work Sans', sans-serif", fontWeight: "500" }}>
+              <div
+                style={{
+                  color: "#fff",
+                  fontSize: "1rem",
+                  marginBottom: "0.25rem",
+                  fontFamily: "'Work Sans', sans-serif",
+                  fontWeight: "500",
+                }}
+              >
                 {option.label}
               </div>
               {option.sublabel && (
@@ -149,4 +162,3 @@ export function CustomDropdown({
     </div>
   );
 }
-

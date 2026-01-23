@@ -7,10 +7,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/collinsmuriuki/resynth/extractor/internal/client"
-	"github.com/collinsmuriuki/resynth/extractor/internal/models"
-	"github.com/collinsmuriuki/resynth/extractor/internal/processor"
-	"github.com/collinsmuriuki/resynth/extractor/pkg/types"
+	"github.com/c12i/resynth/extractor/internal/client"
+	"github.com/c12i/resynth/extractor/internal/models"
+	"github.com/c12i/resynth/extractor/internal/processor"
+	"github.com/c12i/resynth/extractor/pkg/types"
 	"github.com/joho/godotenv"
 )
 
@@ -45,13 +45,11 @@ func main() {
 	hfClient := client.NewHuggingFaceClient(hfToken)
 	proc := processor.NewProcessor(hfClient, config)
 
-	// Read the input file (single speech)
 	content, err := os.ReadFile(*inputFile)
 	if err != nil {
 		log.Fatalf("Error reading input file: %v", err)
 	}
 
-	// Parse lines from the file
 	lines := parseLines(string(content))
 	if len(lines) == 0 {
 		log.Fatal("Error: No content found in input file")
@@ -59,7 +57,6 @@ func main() {
 
 	log.Printf("Processing speech from %s (%d lines)...", *inputFile, len(lines))
 
-	// Process the speech
 	speech, err := proc.ProcessSpeech(lines)
 	if err != nil {
 		log.Fatalf("Error processing speech: %v", err)
@@ -67,13 +64,11 @@ func main() {
 
 	log.Printf("✓ Speech processed (sentiment: %s, %.2f)", speech.Sentiment, speech.SentimentScore)
 
-	// Parse metadata from filename
 	metadata := types.ParseMetadataFromFilename(*inputFile)
 	log.Printf("  Speaker: %s", metadata.Speaker)
 	log.Printf("  Event: %s", metadata.Event)
 	log.Printf("  Date: %s", metadata.Date)
 
-	// Read existing speeches from output file (if it exists)
 	existingSpeeches := make([]types.SpeechWithMetadata, 0)
 	if data, err := os.ReadFile(*outputFile); err == nil {
 		if err := json.Unmarshal(data, &existingSpeeches); err != nil {
@@ -85,14 +80,12 @@ func main() {
 		log.Printf("No existing file found, creating new %s", *outputFile)
 	}
 
-	// Append new speech with metadata
 	speechWithMetadata := types.SpeechWithMetadata{
 		SpeechMetadata: metadata,
 		Lines:          speech.Lines,
 	}
 	existingSpeeches = append(existingSpeeches, speechWithMetadata)
 
-	// Write back to file
 	jsonData, err := json.MarshalIndent(existingSpeeches, "", "  ")
 	if err != nil {
 		log.Fatalf("Error marshaling JSON: %v", err)

@@ -9,7 +9,7 @@ const (
 	SentimentModel   = "tabularisai/multilingual-sentiment-analysis"
 )
 
-// Config holds the configuration for the emotion extractor
+// configuration for the emotion extractor
 type Config struct {
 	HFToken            string
 	ScoreThreshold     float64
@@ -18,7 +18,6 @@ type Config struct {
 	RoundDecimals      int
 }
 
-// DefaultConfig returns a config with sensible defaults
 func DefaultConfig() *Config {
 	return &Config{
 		ScoreThreshold:     0.1,

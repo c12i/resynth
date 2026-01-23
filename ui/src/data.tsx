@@ -14,7 +14,9 @@ export async function loadSpeeches(): Promise<SpeechWithMetadata[]> {
     ]);
 
     if (!speechesResponse.ok) {
-      throw new Error(`Failed to load speeches: ${speechesResponse.statusText}`);
+      throw new Error(
+        `Failed to load speeches: ${speechesResponse.statusText}`,
+      );
     }
 
     const speechesData: SpeechWithMetadata[] = await speechesResponse.json();
@@ -33,7 +35,7 @@ export async function loadSpeeches(): Promise<SpeechWithMetadata[]> {
         (s) =>
           s.speaker === speech.speaker &&
           s.event === speech.event &&
-          s.date === speech.date
+          s.date === speech.date,
       );
 
       if (sentiment) {
@@ -55,4 +57,3 @@ export async function loadSpeeches(): Promise<SpeechWithMetadata[]> {
     return [];
   }
 }
-

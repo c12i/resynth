@@ -42,7 +42,9 @@ export default function Play() {
   const [toneStyle, setToneStyle] = useState<ToneStyle>("lofi");
   const [masterVolume, setMasterVolume] = useState(0.5);
   const [speechesLoaded, setSpeechesLoaded] = useState(false);
-  const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>([]);
+  const [loadedSpeeches, setLoadedSpeeches] = useState<SpeechWithMetadata[]>(
+    [],
+  );
   const [consecutiveCount, setConsecutiveCount] = useState(0);
   const [isSwitchDropdownOpen, setIsSwitchDropdownOpen] = useState(false);
   const [showStatsForNerds, setShowStatsForNerds] = useState(false);
@@ -61,7 +63,11 @@ export default function Play() {
       const speechParam = searchParams.get("speech");
       if (speechParam !== null) {
         const speechIndex = parseInt(speechParam, 10);
-        if (!isNaN(speechIndex) && speechIndex >= 0 && speechIndex < data.length) {
+        if (
+          !isNaN(speechIndex) &&
+          speechIndex >= 0 &&
+          speechIndex < data.length
+        ) {
           setSelectedSpeech(speechIndex);
         }
       }
@@ -74,7 +80,8 @@ export default function Play() {
       const sampleSpeech = loadedSpeeches[selectedSpeech];
       if (sampleSpeech && sampleSpeech.lines[index]) {
         currentRef.current = sampleSpeech.lines[index];
-        emotionRef.current = sampleSpeech.lines[index].emotionScores[0].label as EmotionType;
+        emotionRef.current = sampleSpeech.lines[index].emotionScores[0]
+          .label as EmotionType;
       }
     }
   }, [index, selectedSpeech, speechesLoaded, loadedSpeeches]);
@@ -157,7 +164,8 @@ export default function Play() {
       // Get the sentiment-based chord for this speech
       const currentSpeech = loadedSpeeches[selectedSpeech];
       const sentiment = currentSpeech.sentiment || "neutral";
-      const backgroundChord = sentimentChords[sentiment] || sentimentChords.neutral;
+      const backgroundChord =
+        sentimentChords[sentiment] || sentimentChords.neutral;
 
       backgroundSynth.set({
         oscillator: { type: "sine" },
@@ -286,8 +294,8 @@ export default function Play() {
       interval = setInterval(() => {
         setIndex((i) => {
           const next = (i + 1) % loadedSpeeches[selectedSpeech].lines.length;
-          const newEmotion = loadedSpeeches[selectedSpeech].lines[next].emotionScores[0]
-            .label as EmotionType;
+          const newEmotion = loadedSpeeches[selectedSpeech].lines[next]
+            .emotionScores[0].label as EmotionType;
           emotionRef.current = newEmotion;
           play(newEmotion);
 
@@ -334,16 +342,18 @@ export default function Play() {
   // Don't render until speeches are loaded
   if (!speechesLoaded || loadedSpeeches.length === 0) {
     return (
-      <div style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#0a0a0a",
-        color: "white",
-        fontFamily: "monospace",
-      }}>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#0a0a0a",
+          color: "white",
+          fontFamily: "monospace",
+        }}
+      >
         Loading speeches...
       </div>
     );
@@ -433,44 +443,63 @@ export default function Play() {
       </button>
 
       {/* Speech Details - TOP of cube (centered) */}
-      {started && (() => {
-        let formattedDate = sampleSpeech.date;
-        try {
-          const parsedDate = parse(sampleSpeech.date, "dd.MM.yyyy", new Date());
-          formattedDate = format(parsedDate, "d MMMM yyyy");
-        } catch (e) {
-          formattedDate = sampleSpeech.date;
-        }
+      {started &&
+        (() => {
+          let formattedDate = sampleSpeech.date;
+          try {
+            const parsedDate = parse(
+              sampleSpeech.date,
+              "dd.MM.yyyy",
+              new Date(),
+            );
+            formattedDate = format(parsedDate, "d MMMM yyyy");
+          } catch (e) {
+            formattedDate = sampleSpeech.date;
+          }
 
-        return (
-          <div
-            style={{
-              position: "absolute",
-              top: "120px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "white",
-              zIndex: 2,
-              textAlign: "center",
-              background: "transparent",
-              padding: "10px 20px",
-            }}
-          >
-            <p style={{ marginBottom: "8px", fontSize: "24px", fontWeight: "600" }}>
-              {sampleSpeech.speaker}
-            </p>
-            <p style={{ fontSize: "24px", opacity: 0.9 }}>
-              {sampleSpeech.event} ({formattedDate})
-            </p>
-            {showStatsForNerds && sampleSpeech.sentiment && (
-              <p style={{ fontSize: "14px", opacity: 0.7, marginTop: "8px", fontFamily: "monospace" }}>
-                Overall Sentiment: {sampleSpeech.sentiment.replace(/_/g, " ")}
-                {sampleSpeech.sentimentScore && ` (${(sampleSpeech.sentimentScore * 100).toFixed(1)}%)`}
+          return (
+            <div
+              style={{
+                position: "absolute",
+                top: "120px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                color: "white",
+                zIndex: 2,
+                textAlign: "center",
+                background: "transparent",
+                padding: "10px 20px",
+              }}
+            >
+              <p
+                style={{
+                  marginBottom: "8px",
+                  fontSize: "24px",
+                  fontWeight: "600",
+                }}
+              >
+                {sampleSpeech.speaker}
               </p>
-            )}
-          </div>
-        );
-      })()}
+              <p style={{ fontSize: "24px", opacity: 0.9 }}>
+                {sampleSpeech.event} ({formattedDate})
+              </p>
+              {showStatsForNerds && sampleSpeech.sentiment && (
+                <p
+                  style={{
+                    fontSize: "14px",
+                    opacity: 0.7,
+                    marginTop: "8px",
+                    fontFamily: "monospace",
+                  }}
+                >
+                  Overall Sentiment: {sampleSpeech.sentiment.replace(/_/g, " ")}
+                  {sampleSpeech.sentimentScore &&
+                    ` (${(sampleSpeech.sentimentScore * 100).toFixed(1)}%)`}
+                </p>
+              )}
+            </div>
+          );
+        })()}
 
       <Canvas
         camera={{ position: [0, 0, 80], fov: 45, near: 0.1, far: 1000 }}
@@ -536,18 +565,25 @@ export default function Play() {
             maxWidth: "80%",
           }}
         >
-          <p style={{ fontSize: "16px" }}>
-            {current.text}
-          </p>
-          {showStatsForNerds && current.emotionScores && current.emotionScores.length > 0 && (
-            <div style={{ marginTop: "10px", fontSize: "12px", opacity: 0.7, fontFamily: "monospace" }}>
-              {current.emotionScores.map((emotion, idx) => (
-                <span key={idx} style={{ marginRight: "12px" }}>
-                  {emotion.label}: {(emotion.score * 100).toFixed(1)}%
-                </span>
-              ))}
-            </div>
-          )}
+          <p style={{ fontSize: "16px" }}>{current.text}</p>
+          {showStatsForNerds &&
+            current.emotionScores &&
+            current.emotionScores.length > 0 && (
+              <div
+                style={{
+                  marginTop: "10px",
+                  fontSize: "12px",
+                  opacity: 0.7,
+                  fontFamily: "monospace",
+                }}
+              >
+                {current.emotionScores.map((emotion, idx) => (
+                  <span key={idx} style={{ marginRight: "12px" }}>
+                    {emotion.label}: {(emotion.score * 100).toFixed(1)}%
+                  </span>
+                ))}
+              </div>
+            )}
         </div>
       )}
 
@@ -571,7 +607,13 @@ export default function Play() {
         >
           {/* Volume Control */}
           <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "500",
+              }}
+            >
               Volume: {Math.round(masterVolume * 100)}%
             </label>
             <input
@@ -589,7 +631,13 @@ export default function Play() {
 
           {/* Tone Selection */}
           <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "500",
+              }}
+            >
               Tone:
             </label>
             <select
@@ -619,14 +667,28 @@ export default function Play() {
               <option value="ambient">Ambient</option>
               <option value="synthwave">Synthwave</option>
             </select>
-            <p style={{ fontSize: "0.75rem", opacity: 0.6, marginTop: "5px", fontStyle: "italic" }}>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                opacity: 0.6,
+                marginTop: "5px",
+                fontStyle: "italic",
+              }}
+            >
               Changing tone will restart the experience
             </p>
           </div>
 
           {/* Stats for Nerds Toggle */}
           <div>
-            <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontWeight: "500" }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+                fontWeight: "500",
+              }}
+            >
               <input
                 type="checkbox"
                 checked={showStatsForNerds}
@@ -646,4 +708,3 @@ export default function Play() {
     </div>
   );
 }
-

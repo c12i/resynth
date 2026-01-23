@@ -7,10 +7,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/collinsmuriuki/resynth/extractor/internal/client"
-	"github.com/collinsmuriuki/resynth/extractor/internal/models"
-	"github.com/collinsmuriuki/resynth/extractor/internal/processor"
-	"github.com/collinsmuriuki/resynth/extractor/pkg/types"
+	"github.com/c12i/resynth/extractor/internal/client"
+	"github.com/c12i/resynth/extractor/internal/models"
+	"github.com/c12i/resynth/extractor/internal/processor"
+	"github.com/c12i/resynth/extractor/pkg/types"
 	"github.com/joho/godotenv"
 )
 
@@ -31,7 +31,6 @@ func main() {
 		log.Fatal("Error: HF_TOKEN environment variable not set")
 	}
 
-	// Initialize client and processor
 	hfClient := client.NewHuggingFaceClient(apiToken)
 	proc := processor.NewProcessor(hfClient, &models.Config{
 		ScoreThreshold:     0.1,
@@ -40,13 +39,11 @@ func main() {
 		RoundDecimals:      *roundTo,
 	})
 
-	// Read input file
 	content, err := os.ReadFile(*inputFile)
 	if err != nil {
 		log.Fatalf("Error reading input file: %v", err)
 	}
 
-	// Split into lines and filter empty ones
 	allLines := strings.Split(string(content), "\n")
 	lines := make([]string, 0)
 	for _, line := range allLines {
@@ -61,28 +58,24 @@ func main() {
 
 	log.Printf("Processing speech from %s (%d lines)...", *inputFile, len(lines))
 
-	// Process speech to get sentiment
 	speech, err := proc.ProcessSpeech(lines)
 	if err != nil {
 		log.Fatalf("Error processing speech: %v", err)
 	}
 
-	log.Printf("✓ Speech analyzed (sentiment: %s, %.2f)", speech.Sentiment, speech.SentimentScore)
+	log.Printf("✓ Speech analyzed (sentiment: %s, %.1f)", speech.Sentiment, speech.SentimentScore)
 
-	// Parse metadata from filename
 	metadata := types.ParseMetadataFromFilename(*inputFile)
 	log.Printf("  Speaker: %s", metadata.Speaker)
 	log.Printf("  Event: %s", metadata.Event)
 	log.Printf("  Date: %s", metadata.Date)
 
-	// Create sentiment output with metadata
 	sentimentOutput := types.SentimentWithMetadata{
 		SpeechMetadata: metadata,
 		Sentiment:      speech.Sentiment,
 		SentimentScore: speech.SentimentScore,
 	}
 
-	// Read existing sentiments from output file (if it exists)
 	existingSentiments := make([]types.SentimentWithMetadata, 0)
 	if data, err := os.ReadFile(*outputFile); err == nil {
 		if err := json.Unmarshal(data, &existingSentiments); err != nil {
@@ -94,10 +87,8 @@ func main() {
 		log.Printf("No existing file found, creating new %s", *outputFile)
 	}
 
-	// Append new sentiment
 	existingSentiments = append(existingSentiments, sentimentOutput)
 
-	// Write back to file
 	jsonData, err := json.MarshalIndent(existingSentiments, "", "  ")
 	if err != nil {
 		log.Fatalf("Error marshaling JSON: %v", err)
@@ -110,4 +101,3 @@ func main() {
 	log.Printf("✓ Appended sentiment to %s (now contains %d sentiment(s))", *outputFile, len(existingSentiments))
 	log.Println("✓ Analysis complete!")
 }
-

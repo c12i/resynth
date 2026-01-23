@@ -5,11 +5,11 @@ import type { EmotionType, EmotionScore } from "../types/emotion";
 import { applyEmotionDistortion, lerp } from "../utils/emotionDistortions";
 
 const emotionColors: Record<EmotionType, string> = {
-  anger: "#8B0000",      // Blood red (dark red)
+  anger: "#8B0000", // Blood red (dark red)
   disgust: "#76ff03",
   fear: "#9c27ff",
-  joy: "#d4a500",        // Darker gold/yellow
-  neutral: "#5a6c7a",    // Darker gray-blue
+  joy: "#d4a500", // Darker gold/yellow
+  neutral: "#5a6c7a", // Darker gray-blue
   sadness: "#2979ff",
   surprise: "#ff4081",
 };
@@ -324,7 +324,9 @@ export function ParticleSystem({
       emotionGlowIntensity[currentEmotion] || 0.6;
 
     // Calculate intensity multiplier based on consecutive emotions
-    const intensityMultiplier = calculateIntensityMultiplier(consecutiveEmotionCount);
+    const intensityMultiplier = calculateIntensityMultiplier(
+      consecutiveEmotionCount,
+    );
 
     // Update particle positions with emotion distortions
     for (let i = 0; i < particleCount; i++) {
@@ -375,8 +377,10 @@ export function ParticleSystem({
     if (edgeGeometry && edgeMaterial && edgeGeometry.attributes.position) {
       // Update edge material uniforms to match main material
       edgeMaterial.uniforms.uTime.value = frameRef.current;
-      edgeMaterial.uniforms.uEmotionWeights.value = material.uniforms.uEmotionWeights.value;
-      edgeMaterial.uniforms.uCoreGlowIntensity.value = material.uniforms.uCoreGlowIntensity.value;
+      edgeMaterial.uniforms.uEmotionWeights.value =
+        material.uniforms.uEmotionWeights.value;
+      edgeMaterial.uniforms.uCoreGlowIntensity.value =
+        material.uniforms.uCoreGlowIntensity.value;
 
       // Apply same distortions to edge particles
       for (let i = 0; i < edgeCount; i++) {
@@ -443,7 +447,7 @@ export function ParticleSystem({
     edgeIntensities,
     edgeCount,
   } = useMemo(() => {
-    const edgeParticles: Array<{x: number, y: number, z: number}> = [];
+    const edgeParticles: Array<{ x: number; y: number; z: number }> = [];
     const halfSize = (cubeSize - 1) / 2;
     const spacing = 1.07;
 
@@ -452,15 +456,19 @@ export function ParticleSystem({
 
     // Helper to add edge particles
     const addEdge = (
-      startX: number, startY: number, startZ: number,
-      endX: number, endY: number, endZ: number
+      startX: number,
+      startY: number,
+      startZ: number,
+      endX: number,
+      endY: number,
+      endZ: number,
     ) => {
       for (let i = 0; i < steps; i++) {
         const t = i / (steps - 1);
         const x = (startX + (endX - startX) * t) * spacing;
         const y = (startY + (endY - startY) * t) * spacing;
         const z = (startZ + (endZ - startZ) * t) * spacing;
-        edgeParticles.push({x, y, z});
+        edgeParticles.push({ x, y, z });
       }
     };
 
@@ -524,7 +532,10 @@ export function ParticleSystem({
     const geometry = edgeGeometryRef.current;
     if (!geometry) return;
 
-    const positionAttribute = new THREE.BufferAttribute(edgeCurrentPositions, 3);
+    const positionAttribute = new THREE.BufferAttribute(
+      edgeCurrentPositions,
+      3,
+    );
     const intensityAttribute = new THREE.BufferAttribute(edgeIntensities, 1);
 
     geometry.setAttribute("position", positionAttribute);

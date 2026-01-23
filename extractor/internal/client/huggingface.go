@@ -12,13 +12,11 @@ import (
 	"github.com/c12i/resynth/extractor/pkg/types"
 )
 
-// HuggingFaceClient handles API calls to HuggingFace
 type HuggingFaceClient struct {
 	apiToken   string
 	httpClient *http.Client
 }
 
-// NewHuggingFaceClient creates a new HuggingFace API client
 func NewHuggingFaceClient(apiToken string) *HuggingFaceClient {
 	return &HuggingFaceClient{
 		apiToken: apiToken,
@@ -28,7 +26,6 @@ func NewHuggingFaceClient(apiToken string) *HuggingFaceClient {
 	}
 }
 
-// callAPI makes a POST request to a HuggingFace model endpoint
 func (c *HuggingFaceClient) callAPI(modelName, text string) (types.HuggingFaceResponse, error) {
 	url := fmt.Sprintf("%s/%s", models.HFAPIBaseURL, modelName)
 

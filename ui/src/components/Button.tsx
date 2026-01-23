@@ -7,7 +7,12 @@ interface ButtonProps {
   style?: CSSProperties;
 }
 
-export function Button({ onClick, children, variant = "primary", style }: ButtonProps) {
+export function Button({
+  onClick,
+  children,
+  variant = "primary",
+  style,
+}: ButtonProps) {
   const baseStyle: CSSProperties = {
     padding: "1rem 3rem",
     fontSize: "1.25rem",
@@ -62,4 +67,3 @@ export function Button({ onClick, children, variant = "primary", style }: Button
     </button>
   );
 }
-

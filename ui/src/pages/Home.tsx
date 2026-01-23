@@ -49,8 +49,6 @@ export default function Home() {
         position: "relative",
       }}
     >
-
-
       <button
         onClick={() => navigate("/about")}
         style={{
