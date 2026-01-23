@@ -429,38 +429,82 @@ export default function About() {
             flexWrap: "wrap",
           }}
         >
-          <div style={{ fontSize: "1.1rem" }}>
-            <strong>Collins Muriuki</strong>
-            <br />
-            <span style={{ fontSize: "0.95rem", color: "#aaa" }}>
-              (Developer)
-            </span>
-            <br />
-            <a
-              href="https://c12i.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#fff", textDecoration: "underline" }}
-            >
-              c12i.xyz
-            </a>
+          <div
+            style={{
+              fontSize: "1.1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <img
+              src="/collins-muriuki.png"
+              alt="Collins Muriuki"
+              style={{
+                width: "120px",
+                height: "120px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                marginBottom: "1rem",
+                border: "3px solid rgba(255, 255, 255, 0.2)",
+              }}
+            />
+            <div style={{ lineHeight: "1.6" }}>
+              <strong>Collins Muriuki</strong>
+              <br />
+              <span style={{ fontSize: "0.95rem", color: "#aaa" }}>
+                (Developer)
+              </span>
+              <br />
+              <a
+                href="https://c12i.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#fff", textDecoration: "underline" }}
+              >
+                c12i.xyz
+              </a>
+            </div>
           </div>
 
-          <div style={{ fontSize: "1.1rem" }}>
-            <strong>Charity Wachira</strong>
-            <br />
-            <span style={{ fontSize: "0.95rem", color: "#aaa" }}>
-              (Designer)
-            </span>
-            <br />
-            <a
-              href="https://charitywachira.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#fff", textDecoration: "underline" }}
-            >
-              charitywachira.com
-            </a>
+          <div
+            style={{
+              fontSize: "1.1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <img
+              src="/charity-wachira.png"
+              alt="Charity Wachira"
+              style={{
+                width: "120px",
+                height: "120px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                marginBottom: "1rem",
+                border: "3px solid rgba(255, 255, 255, 0.2)",
+              }}
+            />
+            <div style={{ lineHeight: "1.6" }}>
+              <strong>Charity Wachira</strong>
+              <br />
+              <span style={{ fontSize: "0.95rem", color: "#aaa" }}>
+                (Designer)
+              </span>
+              <br />
+              <a
+                href="https://charitywachira.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#fff", textDecoration: "underline" }}
+              >
+                charitywachira.com
+              </a>
+            </div>
           </div>
         </div>
 
